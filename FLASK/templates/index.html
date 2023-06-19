@@ -1,0 +1,3222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..static/style.css" />
+    <link rel="stylesheet" href="./fontawesome-free-5.15.4-web/css/all.css" />
+    <title>Document</title>
+
+    <style>
+*{
+  margin: 0%;
+}
+  
+  html {
+    background: linear-gradient(to bottom, #000000 0%, #040404 100%);
+    min-height: 100%;
+    font-size: 62.5%;
+    overflow-x: hidden;
+  }
+
+  input{
+    padding: 2 rem;
+    margin-left: 3rem;
+    margin-bottom: 2rem;
+  }
+ 
+  #titlebar {
+    background-color: rgb(6, 6, 6);
+    height: 80px;
+    display: flex;
+    justify-content: flex-start;
+  }
+ 
+  #tagline {
+    color: #fbfbf9;
+    font-size: 2.6rem;
+    margin-left: 20em;
+    margin-top: 4rem;
+    flex-grow: 1;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+  
+  /* stling plane logo */
+
+  
+  /* styling bluesky title */
+  #title {
+    color: #fefefe;
+    font-weight: 900;
+    font-size: 2.5em;
+    margin-left: 10rem;
+    margin-top: 3.5rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  #bookflt-widget {
+    margin-top: 2em;
+    margin-left: 4em;
+    margin-right: 4em;
+    padding-bottom: 1em;
+    background: linear-gradient(rgb(11, 11, 11),rgb(233, 163, 14));
+  }
+
+  .dataframe{
+    width: 85em;
+  }
+
+
+  
+  #bookflt {
+    font-weight: 900;
+    font-size: large;
+    text-align: center;
+    line-height: 80px;
+    height: 50px;
+    padding-bottom: 2em;
+    margin-right: 2em;
+  }
+  #header {
+    display: inline-block;
+    color: #fbfbf9;
+    vertical-align: middle;
+  }
+  
+  
+  table caption {
+    padding-bottom: 2em;
+    font-weight: 900;
+    font-size: larger;
+    color: white;
+  }
+  
+  td,
+  th {
+    padding: 1em;
+  }
+  
+  table {
+    border: 2px solid rgb(255, 254, 254);
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    margin: 1em;
+  }
+  
+  tr{
+    background: #838f9e;
+    font-weight: 900;
+    
+  }
+  
+  #heading{
+    background: #2f3640;
+    color: white;
+
+  }
+  
+   .but{
+    background-color: #414b57;
+    height: 40px;
+    width: 100px;
+    color: white;
+    font-weight: 700;
+  }
+
+  .spant{
+    font-weight: bolder;
+    margin-left: 2rem;
+    color: white;
+    font-size: larger;
+    font-family:'Segoe UI', Tahoma, 'Geneva', Verdana, sans-serif;
+  }
+
+  .dist{
+    font-weight: 900;
+    margin-left: 25rem;
+    font-size: large;
+    margin-top: -1rem;
+    margin-bottom: 3rem;
+    align-self: center;
+    color: white;
+  
+  }
+
+
+    </style>
+</head>
+<body>
+     <!-- ----------------------------------------creating navbar --------------------------------------------------->
+     
+  
+      <!-- -----------------------------------creating side menu------------------------------------------------- -->
+  
+  
+      <!-- ------------------- BlueSky title bar------------------------------------------------ -->
+      <div id="titlebar">
+        <!--  --- Logo  -->
+        <div id="logo">
+         
+          <i class="fas fa-plane-departure"> </i>
+          <img src="../static/logo_bus.jpg" height="100" width="100">
+          <!-- <p id="title"><i>Find your Bus</i></p> -->
+          <!-- <img src="../static/logo_bus.jpg" height="90" width="90"> -->
+          
+        </div>
+  
+        <!-- tagline -->
+        <p id="tagline">FIND YOUR BUS</p>
+        <div>WELCOME TO MTC BUS ROUTE</div>
+      </div>
+  
+      <!-- --------------------Book a Flight Widget-------------------------- -->
+      
+      <div id="bookflt-widget">
+        <div id="bookflt">
+          <span id="header"> VIEW DETAILS </span>
+        </div>
+
+        <form action="/adding" method="POST">
+            <div><span class="spant">ENTER START POINT : </span><input type="text" name="START" placeholder="ENTER START LOCATION"></div>
+            <div><span class ="spant">ENTER ENDING POINT:</span><input type="text" name ="DEST" placeholder="ENTER DESTINATION"></div>
+            <input type="submit" name="Submit" class="but">
+        </form>
+        <span class="dist">BUS ROUTE: {{route}}</span><br>
+        <span class="dist">SHORTEST DISTANCE : {{dist}}</span><br>
+        <table  class="dataframe">
+            <thead>
+              <tr style="text-align: right;">
+                <th></th>
+                <th>BUS NO</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>1</th>
+                <td>101</td>
+                <td>THRUVOTRIYUR TEMPLE,  THANGAL,  ANNA NAGAR,  ROYAPURAM P.S,  CLIVE BATTERY,  PARRYS,  M.G.R.CENTRAL,  DASAPRAKASH,  TAYLORS ROAD,  AMINJIKARAI,  NADUVANKARAI,  ARUMBAKKAM,  NERKUNDRAM,  MADURAVOYAL,  VAANAGARAM,  VELAPPANCHAVADI,  KUMUNANCHAVADI</td>
+              </tr>
+              <tr>
+                <th>3</th>
+                <td>102</td>
+                <td>SECRETARIAT,  CHEPAUK,  Q.M.C,  FORESHORE ESTATE,  A.M.S.HOSPITAL,  ADYAR O.T.,  INDIRA NAGAR WATER TANK,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  CHURCH,  PALAVASTHIC CHEMICALS,  HINDUSTAN ENG. COLLEGE</td>
+              </tr>
+              <tr>
+                <th>5</th>
+                <td>102A</td>
+                <td>SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  SIPCOT,  SIRUSERI I.T.PARK,  PUDUPAKKAM P.U.O.</td>
+              </tr>
+              <tr>
+                <th>7</th>
+                <td>102C</td>
+                <td>SECRETARIAT,  CHEPAUK,  Q.M.C,  FORESHORE ESTATE,  A.M.S.HOSPITAL,  ADYAR O.T.,  ADYAR DEPOT,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  NUCLEUS COMPANY</td>
+              </tr>
+              <tr>
+                <th>9</th>
+                <td>102CT</td>
+                <td>SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  SIPCOT</td>
+              </tr>
+              <tr>
+                <th>11</th>
+                <td>102K</td>
+                <td>SECRETARIAT,  CHEPAUK,  Q.M.C,  FORESHORE ESTATE,  A.M.S.HOSPITAL,  ADYAR O.T.,  INDIRA NAGAR,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  THORAPPAKKAM P.T.C COLONY</td>
+              </tr>
+              <tr>
+                <th>13</th>
+                <td>102K#</td>
+                <td>SECRETARIAT,  CHEPAUK,  Q.M.C,  FORESHORE ESTATE,  A.M.S.HOSPITAL,  ADYAR O.T.,  INDIRA NAGAR,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  THORAPPAKKAM P.T.C COLONY</td>
+              </tr>
+              <tr>
+                <th>15</th>
+                <td>102M</td>
+                <td>ADYAR DEPOT,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  CHURCH,  PALAVASTHIC CHEMICALS,  HINDUSTAN ENG. COLLEGE,  KELAMBAKKAM,  CHENGAMMAL RD. JN.,  KOMAN NAGAR RD JN.,  KALAVAKKAM TEA STALL,  THIRUPORUR,  MANAMATHI ROAD JN,  CHIRUTHAVOOR JN.,  AMMUR COLONY,  KALAVAKKAM,  MANAMATHI SCHOOL</td>
+              </tr>
+              <tr>
+                <th>17</th>
+                <td>102P</td>
+                <td>SECRETARIAT,  CHEPAUK,  Q.M.C,  FORESHORE ESTATE,  A.M.S.HOSPITAL,  ADYAR O.T.,  ADYAR DEPOT,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  NUCLEUS COMPANY</td>
+              </tr>
+              <tr>
+                <th>19</th>
+                <td>102S</td>
+                <td>SECRETARIAT,  CHEPAUK,  Q.M.C,  FORESHORE ESTATE,  A.M.S.HOSPITAL,  ADYAR O.T.,  ADYAR DEPOT,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP</td>
+              </tr>
+              <tr>
+                <th>21</th>
+                <td>102X</td>
+                <td>SECRETARIAT,  CHEPAUK,  Q.M.C,  FORESHORE ESTATE,  A.M.S.HOSPITAL,  ADYAR O.T.,  INDIRA NAGAR WATER TANK,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  CHURCH,  PALAVASTHIC CHEMICALS,  HINDUSTAN ENG. COLLEGE,  KELAMBAKKAM,  CHENGAMMAL RD. JN.,  KOMAN NAGAR RD JN.,  KALAVAKKAM TEA STALL</td>
+              </tr>
+              <tr>
+                <th>23</th>
+                <td>104</td>
+                <td>AYURVEDHA ASHARAMAM,  KAVANGARAI,  SCREW FACTORY,  SURAPEDU,  KALLIKUPPAM,  PUDUR,  AMBATTUR O.T.,  DUNLOP,  AMBATTUR I.E.,  NALAMBUR SERVICE RD,  MADURAVOYAL JN,  TVS MCC MOTORS,  TOLL PLAZA,  PORUR JN,  MANGADU RD JN,  KOVOOR RD JN,  PAMMAL ADAYAR BRIDGE,  THENDRAL NAGAR,  THIRUNEERMALAI RD.JN.,  PETROL BUNK,  MUDICHUR RD.JN.,  IRUMBULIYUR</td>
+              </tr>
+              <tr>
+                <th>25</th>
+                <td>104C</td>
+                <td>KOYAMBEDU SCHOOL,  NERKUNDRAM,  MADURAVOYAL,  TVS MCC MOTORS,  TOLL PLAZA,  PORUR JN,  MANGADU RD JN,  KOVOOR RD JN,  PAMMAL ADAYAR BRIDGE,  THENDRAL NAGAR,  THIRUNEERMALAI RD.JN.,  PETROL BUNK,  MUDICHUR RD.JN.,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  URAPAKKAM,  PALAKKA COMPANY</td>
+              </tr>
+              <tr>
+                <th>27</th>
+                <td>105</td>
+                <td>TAMBARAM EAST,  CONVENT,  MAHALAKSHMI NAGAR,  S.I.V.E.T,  MEDAVAKKAM RD.JN.,  CHITHALAPAKKAM,  ARASANKAZHANI,  OTTIAMBAKKAM,  THAZHAMBUR ROAD JN,  THAZHAMBUR PANCHAYAT OFFICE,  NAVALUR,  SIPCOT</td>
+              </tr>
+              <tr>
+                <th>29</th>
+                <td>105A</td>
+                <td>TAMBARAM EAST,  CONVENT,  CAMP ROAD,  BALAJI NAGAR (BHARATH ENG COL),  MADAMBAKKAM KOIL,  NOOTHANCHERI,  JN.OF MAMBAKKAM &amp; O.BAKKAM RD.,  CHITHALAPAKKAM,  ARASANKAZHANI,  OTTIAMBAKKAM,  KARANAI,  THALAMBUR,  NAVALUR,  SIPCOT</td>
+              </tr>
+              <tr>
+                <th>31</th>
+                <td>109</td>
+                <td>SECRETARIAT,  CHEPAUK,  Q.M.C,  FORESHORE ESTATE,  A.M.S.HOSPITAL,  ADYAR O.T.,  ADYAR DEPOT,  THIRUVANMIYUR,  KOTTIVAKKAM,  PALAVAKKAM,  NEELANKARAI,  VETTUVANKENI,  CHOLA MANDAL,  INJAMBAKKAM,  PANAIYUR,  UTHANDI VILLAGE,  KANATHUR,  NATURE CARE HOSPITAL,  MUTTUKKADU,  MUTTUKKADU BOAT YARD</td>
+              </tr>
+              <tr>
+                <th>33</th>
+                <td>109CT</td>
+                <td>ADYAR DEPOT,  THIRUVANMIYUR,  KOTTIVAKKAM,  PALAVAKKAM,  NEELANKARAI,  VETTUVANKENI,  CHOLA MANDAL,  INJAMBAKKAM,  PANAIYUR,  UTHANDI VILLAGE,  KANATHUR,  NATURE CARE HOSPITAL,  MUTTUKKADU,  MUTTUKKADU BOAT YARD</td>
+              </tr>
+              <tr>
+                <th>35</th>
+                <td>109T</td>
+                <td>THRUVOTRIYUR TEMPLE,  THANGAL,  ANNA NAGAR,  ROYAPURAM P.S,  CLIVE BATTERY,  PARRYS,  SECRETARIAT,  CHEPAUK,  Q.M.C,  FORESHORE ESTATE,  A.M.S.HOSPITAL,  ADYAR O.T.,  ADYAR DEPOT,  THIRUVANMIYUR,  KOTTIVAKKAM,  PALAVAKKAM,  NEELANKARAI,  VETTUVANKENI,  CHOLA MANDAL,  INJAMBAKKAM,  PANAIYUR,  UTHANDI VILLAGE,  KANATHUR,  NATURE CARE HOSPITAL,  MUTTUKKADU,  MUTTUKKADU BOAT YARD</td>
+              </tr>
+              <tr>
+                <th>37</th>
+                <td>109X</td>
+                <td>SECRETARIAT,  CHEPAUK,  Q.M.ARTS COLLEGE,  FORESHORE ESTATE,  A.M.S.HOSPITAL,  ADYAR O.T.,  ADYAR DEPOT,  THIRUVANMIYUR,  KOTTIVAKKAM,  PALAVAKKAM,  NEELANKARAI,  VETTUVANKENI,  CHOLA MANDAL,  INJAMBAKKAM,  PANAIYUR,  UTHANDI VILLAGE,  KANATHUR,  NATURE CARE HOSPITAL,  MUTTUKKADU,  MUTTUKKADU BOAT YARD,  KOVALAM,  SALT OFFICE,  KELAMBAKKAM,  CHENGAMMAL RD. JN.,  KOMAN NAGAR RD JN.,  KALAVAKKAM TEA STALL</td>
+              </tr>
+              <tr>
+                <th>39</th>
+                <td>10A</td>
+                <td>TONDAIAYRPET,  KALMANDAPAM P.S.,  CLIVE BATTERY,  PARRYS\BROADWAY,  M.G.R.CENTRAL,  EGMORE,  MATERNITY HOSPITAL,  D.P.I,  STERLING RD./METROLOG. DEPT.,  VIDYODAYA,  PONDY BAZAAR/VIVEK &amp; CO,  THIAGARAYA NAGAR,  SRINIVASA THEATER</td>
+              </tr>
+              <tr>
+                <th>41</th>
+                <td>10E</td>
+                <td>M.G.R.CENTRAL,  EGMORE,  MATERNITY HOSPITAL,  D.P.I,  STERLING RD./METROLOG. DEPT.,  VIDYODAYA,  VIVEK &amp; CO (KRISHNAN KOIL),  THIAGARAYA NAGAR,  SRINIVASA THEATER,  GOVT. GIRLS H.SC,  JAFFARKHAN PET</td>
+              </tr>
+              <tr>
+                <th>43</th>
+                <td>11</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  PONDY BAZAAR</td>
+              </tr>
+              <tr>
+                <th>45</th>
+                <td>111</td>
+                <td>VELAPPANCHAVADI,  VAANAGARAM,  MADURAVOYAL,  NERKUNDRAM,  KOYAMBEDU MARKET,  KOYAMBEDU P.S,  M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM</td>
+              </tr>
+              <tr>
+                <th>47</th>
+                <td>113</td>
+                <td>AAYURVEDA ASHRAMAM,  KAVANGARAI,  KATHIRVEDU,  VINAYAGAPURAM,  MALLIGAI NAGAR AVE,  WATER PIPE THATHANKUPPAM,  WEELS INDIA RD.JN.,  THIRUMANGALAM,  KOYAMBEDU SCHOOL,  M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET</td>
+              </tr>
+              <tr>
+                <th>49</th>
+                <td>114</td>
+                <td>AAYURVEDA ASHRAMAM,  KAVANGARAI,  CYCLE SHOP,  BUS BAY-17TH KM,  MALLIGAI NAGAR AVE,  WATER PIPE THATHANKUPPAM,  WEELS INDIA RD.JN.,  THIRUMANGALAM,  KOYAMBEDU SCHOOL</td>
+              </tr>
+              <tr>
+                <th>51</th>
+                <td>114A</td>
+                <td>AAYURVEDA ASHRAMAM,  KAVANGARAI,  CYCLE SHOP,  BUS BAY-17TH KM,  MALLIGAI NAGAR AVE,  SRINIVASA NAGAR,  VILLIVAKKAM,  KAMABAR ARANGAM</td>
+              </tr>
+              <tr>
+                <th>53</th>
+                <td>114C</td>
+                <td>KOYAMBEDU SCHOOL,  THIRUMANGALAM,  WEELS INDIA RD.JN.,  WATER PIPE THATHANKUPPAM,  MALLIGAI NAGAR AVE,  BUS BAY-17TH KM,  CYCLE SHOP,  KAVANGARAI,  AAYURVEDA ASHRAMAM,  REDHILLS,  PAMMADU KULAM RD.JN.,  JN.OF RACE COURSE RD,  ALAMADHI OLD,  DRY CATTLLE FORM,  ALAMADHI,  AMBEDKAR NAGAR,  POOCHIATHIPEDU,  GURUVOYAL KARANIBATTAI,  GURUVOYAL VILLAGE,  SETHUPAKKAM,  AGARAM KANDIGAI</td>
+              </tr>
+              <tr>
+                <th>55</th>
+                <td>114CCT</td>
+                <td>KOYAMBEDU SCHOOL,  THIRUMANGALAM,  WEELS INDIA RD.JN.,  WATER PIPE THATHANKUPPAM,  MALLIGAI NAGAR AVE,  BUS BAY-17TH KM,  CYCLE SHOP,  KAVANGARAI,  AAYURVEDA ASHRAMAM,  REDHILLS,  AZHINJIVAKKAM RD.JN.,  KUMMANUR,  BUDUR,  ARUMANDAI RD.JN.,  PUDUKUPPAM</td>
+              </tr>
+              <tr>
+                <th>57</th>
+                <td>114D</td>
+                <td>AGARAM,  CHINNAMBEDU VILLAGE,  CHINAMBEDU COLONY,  NEW ROAD,  THATCHUR ROAD JN,  PANJETTI,  PERIYAPALAYAM RD JN.,  KARANODAI,  SHOLAVARAM,  SEMILIVARAM,  PADIYANALLUR,  REDHILLS,  AAYURVEDA ASHRAMAM,  KAVANGARAI,  CYCLE SHOP,  BUS BAY-17TH KM,  MALLIGAI NAGAR AVE,  WATER PIPE THATHANKUPPAM,  WEELS INDIA RD.JN.,  THIRUMANGALAM,  KOYAMBEDU SCHOOL</td>
+              </tr>
+              <tr>
+                <th>59</th>
+                <td>114E</td>
+                <td>KOYAMBEDU P.S,  KOYAMBEDU SCHOOL,  THIRUMANGALAM,  WEELS INDIA RD.JN.,  WATER PIPE THATHANKUPPAM,  MALLIGAI NAGAR AVE,  BUS BAY-17TH KM,  CYCLE SHOP,  KAVANGARAI,  AAYURVEDA ASHRAMAM,  REDHILLS,  PADIYANALLUR,  SEMILIVARAM,  SHOLAVARAM,  KARANODAI,  ATHUR,  OLD&amp;NEW ERUMAI VETTI PALAYAM,  OLD ERUMAI VETTI PALAYAM</td>
+              </tr>
+              <tr>
+                <th>61</th>
+                <td>114ET</td>
+                <td>KUTHAMKULAM,  PERUVOYAL,  PUDUVOYAL,  NEW ROAD,  THATCHUR ROAD JN,  PANJETTI,  PERIYAPALAYAM RD JN.,  KARANODAI,  SHOLAVARAM,  SEMILIVARAM,  PADIYANALLUR,  REDHILLS,  AAYURVEDA ASHRAMAM,  KAVANGARAI,  CYCLE SHOP,  BUS BAY-17TH KM,  MALLIGAI NAGAR AVE,  WATER PIPE THATHANKUPPAM,  WEELS INDIA RD.JN.,  THIRUMANGALAM,  KOYAMBEDU SCHOOL</td>
+              </tr>
+              <tr>
+                <th>63</th>
+                <td>114G</td>
+                <td>KOYAMBEDU SCHOOL,  THIRUMANGALAM,  WEELS INDIA RD.JN.,  WATER PIPE THATHANKUPPAM,  MALLIGAI NAGAR AVE,  BUS BAY-17TH KM,  MADHAVARAM,  MOOLAKADAI,  MADHAVARAM POST BOX,  MADHAVARAM VILLAGE,  MATHUR RD. JN.,,  VADAPERUMBAKKAM,  GRAND LINE,  REDHILLS,  PADIYANALLUR,  SEMILIVARAM,  SHOLAVARAM,  SHOZHIPALAYAM,  ORAKKADU,  BUDUR,  ARUMANDAI RD.JN.,  PUDUKUPPAM</td>
+              </tr>
+              <tr>
+                <th>65</th>
+                <td>114P</td>
+                <td>REDHILLS,  AAYURVEDA ASHRAMAM,  KAVANGARAI,  CYCLE SHOP,  BUS BAY-17TH KM,  MALLIGAI NAGAR AVE,  WATER PIPE THATHANKUPPAM,  WEELS INDIA RD.JN.,  THIRUMANGALAM,  KOYAMBEDU SCHOOL</td>
+              </tr>
+              <tr>
+                <th>67</th>
+                <td>114S</td>
+                <td>CHINNAMADIYOOR,  THANDAVARAYAN PALAYAM,  KANNIAMPALAYAM,  PUDUKUPPAM,  NERKUNDRAM,  SOTHUPERMEDU,  KARANODAI SCHOOL,  SHOLAVARAM P.S.,  SEMILIVARAM,  PADIYANALLUR,  REDHILLS,  AAYURVEDA ASHRAMAM,  KAVANGARAI,  CYCLE SHOP,  BUS BAY-17TH KM,  MALLIGAI NAGAR AVE,  WATER PIPE THATHANKUPPAM,  WEELS INDIA RD.JN.,  THIRUMANGALAM,  KOYAMBEDU SCHOOL,  KOYAMBEDU P.S</td>
+              </tr>
+              <tr>
+                <th>69</th>
+                <td>118</td>
+                <td>IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  URAPAKKAM,  PALAKKA COMPANY,  GUDUVANCHERY,  THAILAPURAM,  MARAIMALAI NAGAR,  PAVENTHER SALAI</td>
+              </tr>
+              <tr>
+                <th>71</th>
+                <td>118ET</td>
+                <td>IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  URAPAKKAM,  PALAKKA COMPANY,  GUDUVANCHERY,  THAILAPURAM,  MARAIMALAI NAGAR,  PAVENTHER SALAI,  MARAIMALAI NAGAR P.S.JN.,  GUDALOOR TEA SHOP,  KARUNEELAM ROAD JN,  KADAMBUR</td>
+              </tr>
+              <tr>
+                <th>73</th>
+                <td>118T</td>
+                <td>IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  URAPAKKAM,  PALAKKA COMPANY,  GUDUVANCHERY,  GOVINDARAJAPURAM,  PERUMATTU NALLUR</td>
+              </tr>
+              <tr>
+                <th>75</th>
+                <td>119</td>
+                <td>CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE,  VELACHERY,  I.R.T. RD.JN.,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  NUCLEUS COMPANY</td>
+              </tr>
+              <tr>
+                <th>77</th>
+                <td>119G</td>
+                <td>CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE,  VIJAYA NAGAR,  I.R.T. RD.JN.,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  NUCLEUS COMPANY</td>
+              </tr>
+              <tr>
+                <th>79</th>
+                <td>11G</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  PONDY BAZAAR,  ANJUGAM SCHOOL,  GOVT. GIRLS H.SC,  Jn.OF P.T.R Rd/KAMARAJ Rd,  MUTHUMARIAMMAN KOIL</td>
+              </tr>
+              <tr>
+                <th>81</th>
+                <td>11GET</td>
+                <td>SECRETARIAT,  CHEPAUK,  ANNA ROAD P.O./DAMS ROAD,  T.V.S,  D.M.S,  PONDY BAZAAR,  ANJUGAM SCHOOL,  GOVT. GIRLS H.SC,  Jn.OF P.T.R Rd/KAMARAJ Rd,  MUTHUMARIAMMAN KOIL,  VIRUGAMBAKKAM,  VALASARAVAKKAM,  PORUR</td>
+              </tr>
+              <tr>
+                <th>83</th>
+                <td>11H</td>
+                <td>SECRETARIAT,  CHEPAUK,  ANNA ROAD P.O./DAMS ROAD,  T.V.S,  D.M.S,  PONDY BAZAAR,  ANJUGAM SCHOOL,  GOVT. GIRLS H.SC,  Jn.OF P.T.R Rd/KAMARAJ Rd,  MUTHUMARIAMMAN KOIL,  VIRUGAMBAKKAM,  VALASARAVAKKAM,  PORUR</td>
+              </tr>
+              <tr>
+                <th>85</th>
+                <td>120</td>
+                <td>M.G.R.CENTRAL,  DHARMAPRAKASH/PETROL BUNK,  KELLEYS,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM,  NATHAMUNI TALKIES,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  THIRUMULLAIVOYAL,  POLYTECHNIC</td>
+              </tr>
+              <tr>
+                <th>87</th>
+                <td>120A</td>
+                <td>M.G.R.CENTRAL,  DHARMAPRAKASH/PETROL BUNK,  KELLEYS,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM,  NATHAMUNI TALKIES,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  THIRUMULLAIVOYAL,  POLYTECHNIC,  AVADI CIRCLE,  KOILPATHAGAI RD.JN.,  H.V.F.MAIN GATE,  AAFS CROSS ROAD,  VENGAL CROSS ROAD,  VEERAPURAM,  ARAKKAMBAKKAM RD.JN.</td>
+              </tr>
+              <tr>
+                <th>89</th>
+                <td>120CT</td>
+                <td>M.G.R.CENTRAL,  DHARMAPRAKASH/PETROL BUNK,  KELLEYS,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM,  NATHAMUNI TALKIES,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  THIRUMULLAIVOYAL,  PERIYAR NAGAR</td>
+              </tr>
+              <tr>
+                <th>91</th>
+                <td>120E</td>
+                <td>M.G.R.CENTRAL,  DHARMAPRAKASH/PETROL BUNK,  KELLEYS,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM,  NATHAMUNI TALKIES,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  THIRUMULLAIVOYAL,  POLYTECHNIC,  AVADI CIRCLE,  KOILPATHAGAI RD.JN.,  H.V.F.MAIN GATE,  AAFS CROSS ROAD,  VENGAL CROSS ROAD,  VEERAPURAM,  ARAKKAMBAKKAM,  PANDESWARAM,  KADHAVOOR RD.JN.</td>
+              </tr>
+              <tr>
+                <th>93</th>
+                <td>120F</td>
+                <td>M.G.R.CENTRAL,  DHARMAPRAKASH/PETROL BUNK,  KELLEYS,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM,  NATHAMUNI TALKIES,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  ORAGADAM O.T.</td>
+              </tr>
+              <tr>
+                <th>95</th>
+                <td>120G</td>
+                <td>M.G.R.CENTRAL,  DHARMAPRAKASH/PETROL BUNK,  KELLEYS,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM,  NATHAMUNI TALKIES,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  VENGATAPURAM</td>
+              </tr>
+              <tr>
+                <th>97</th>
+                <td>120K</td>
+                <td>M.G.R.CENTRAL,  DHARMAPRAKASH/PETROL BUNK,  KELLEYS,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM,  NATHAMUNI TALKIES,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  THIRUMULLAIVOYAL,  POLYTECHNIC,  AVADI CIRCLE,  KOILPATHAGAI RD.JN.,  H.V.F.MAIN GATE,  AIRFORCE STATION,  VENGAL CROSS ROAD,  VEERAPURAM,  NALLUR PUDU NAGAR</td>
+              </tr>
+              <tr>
+                <th>99</th>
+                <td>120KET</td>
+                <td>M.G.R.CENTRAL,  DHARMAPRAKASH/PETROL BUNK,  KELLEYS,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM,  NATHAMUNI TALKIES,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  THIRUMULLAIVOYAL,  POLYTECHNIC,  AVADI CIRCLE,  KOILPATHAGAI RD.JN.,  H.V.F.MAIN GATE,  AAFS CROSS ROAD,  VENGAL CROSS ROAD,  VEERAPURAM RD JN.,  MORAI,  KADHAVOOR,  KADHAVOOR RD.JN.</td>
+              </tr>
+              <tr>
+                <th>101</th>
+                <td>121</td>
+                <td>MINJUR O.T,  MINJUR B.D.O,  PATTAMANDIRI,  KONDAKKARAI,  NAPALAYAM,  ECHANKUZHI,  ANDARKUPPAM, ,  FEET ROAD JN.,  MANALI ARIYALUR RD JN.,  MATHUR RD. JN.,,  KOSAPUR RD. JN.,,  MADHAVARAM,  BUS BAY-17TH KM,  MALLIGAI NAGAR AVE,  WATER PIPE THATHANKUPPAM,  WEELS INDIA RD.JN.,  THIRUMANGALAM,  KOYAMBEDU SCHOOL</td>
+              </tr>
+              <tr>
+                <th>103</th>
+                <td>121A</td>
+                <td>MANALAI SEEKADU,  MADHAVARAM MILLK COLONY,  MADHAVARAM POST BOX,  MOOLAKADAI,  MADHAVARAM,  BUS BAY-17TH KM,  MALLIGAI NAGAR AVE,  WATER PIPE THATHANKUPPAM,  WEELS INDIA RD.JN.,  THIRUMANGALAM,  KOYAMBEDU SCHOOL</td>
+              </tr>
+              <tr>
+                <th>105</th>
+                <td>121C</td>
+                <td>ASHOK LEYLAND,  ERNAVOOR GATE,  SATHIYAMOORTHY NAGAR,  JN. OF PONNERI RD &amp; ERANOOR,  MANALI RD JN.,  MANALAI SEEKADU,  M.M.C,  MADHAVARAM POST BOX,  MOOLAKADAI,  MADHAVARAM,  BUS BAY-17TH KM,  MALLIGAI NAGAR AVE,  WATER PIPE THATHANKUPPAM,  WEELS INDIA RD.JN.,  THIRUMANGALAM,  KOYAMBEDU SCHOOL</td>
+              </tr>
+              <tr>
+                <th>107</th>
+                <td>121CT</td>
+                <td>KOYAMBEDU SCHOOL,  THIRUMANGALAM,  WEELS INDIA RD.JN.,  WATER PIPE THATHANKUPPAM,  MALLIGAI NAGAR AVE</td>
+              </tr>
+              <tr>
+                <th>109</th>
+                <td>121D</td>
+                <td>ECHANKUZHI,  ANDARKUPPAM,  JN. OF PONNERI RD &amp; ERANOOR,  MANALI RD JN.,  MANALAI SEEKADU,  MADHAVARAM MILLK COLONY,  MADHAVARAM POST BOX,  MOOLAKADAI,  MADHAVARAM,  BUS BAY-17TH KM,  MALLIGAI NAGAR AVE,  THAZHANKUPPAM,  WEELS INDIA RD.JN.,  THIRUMANGALAM,  KOYAMBEDU SCHOOL</td>
+              </tr>
+              <tr>
+                <th>111</th>
+                <td>121F</td>
+                <td>MADHAVARAM POST BOX,  MOOLAKADAI,  MADHAVARAM,  BUS BAY-17TH KM,  MALLIGAI NAGAR AVE,  WATER PIPE THATHANKUPPAM,  WEELS INDIA RD.JN.,  THIRUMANGALAM,  KOYAMBEDU SCHOOL,  M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM</td>
+              </tr>
+              <tr>
+                <th>113</th>
+                <td>121G</td>
+                <td>SIDCO,  MOOLAKADAI,  MADHAVARAM,  BUS BAY-17TH KM,  MALLIGAI NAGAR AVE,  WATER PIPE THATHANKUPPAM,  WEELS INDIA RD.JN.,  THIRUMANGALAM,  KOYAMBEDU SCHOOL</td>
+              </tr>
+              <tr>
+                <th>115</th>
+                <td>121H</td>
+                <td>SIDCO,  SARMA NAGAR,  MOOLAKADAI,  MADHAVARAM,  BUS BAY-17TH KM,  MALLIGAI NAGAR AVE,  WATER PIPE THATHANKUPPAM,  WEELS INDIA RD.JN.,  THIRUMANGALAM,  KOYAMBEDU SCHOOL,  M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM</td>
+              </tr>
+              <tr>
+                <th>117</th>
+                <td>121M</td>
+                <td>KOYAMBEDU SCHOOL,  THIRUMANGALAM,  WEELS INDIA RD.JN.,  WATER PIPE THATHANKUPPAM,  MALLIGAI NAGAR AVE,  BUS BAY-17TH KM</td>
+              </tr>
+              <tr>
+                <th>119</th>
+                <td>129C</td>
+                <td>JAMALAYA,  SHIVASHANMUGAPURAM,  LADY MCTM SCHOOL/MILLERS RD,  K.M.C.,  STERLING RD./METROLOG. DEPT.,  CORPORATION OFFICE/STERLING RD,  VIDYODAYA,  BHARATHI NAGAR(PERIYAR PATAHI),  THIAGARAYA NAGAR,  SAIDAPET,  CONCORDE,  GUINDY R.S,  ST THOMAS MOUNT PO,  PAZHAVANTHANGAL ROAD JN.,  CHIDAMBARAM STORES</td>
+              </tr>
+              <tr>
+                <th>121</th>
+                <td>12B</td>
+                <td>TRUSTPURAM,  BHARATHI NAGAR(PERIYAR PATAHI),  PONDY BAZAAR,  F.C.I OLD,  LUZ,  SANTHOME P.O</td>
+              </tr>
+              <tr>
+                <th>123</th>
+                <td>12E</td>
+                <td>VADAPALANI,  TRUSTPURAM,  BHARATHI NAGAR(PERIYAR PATAHI),  PONDY BAZAAR,  F.C.I OLD,  LUZ,  SANTHOME P.O</td>
+              </tr>
+              <tr>
+                <th>125</th>
+                <td>12G</td>
+                <td>VIVEKANANDA HOUSE,  V.M.STREET,  LUZ,  F.C.I OLD,  PONDY BAZAAR,  ANJUGAM SCHOOL,  GOVT. GIRLS H.SC,  Jn.OF P.T.R Rd/KAMARAJ Rd,  MUTHUMARIAMMAN KOIL</td>
+              </tr>
+              <tr>
+                <th>127</th>
+                <td>12M</td>
+                <td>LUZ,  F.C.I OLD,  PONDY BAZAAR,  ANJUGAM SCHOOL,  GOVT. GIRLS H.SC,  K.K.NAGAR,  K.K.NAGAR WEST,  VIRUGAMBAKKAM,  VALASARAVAKKAM,  PORUR</td>
+              </tr>
+              <tr>
+                <th>129</th>
+                <td>12X</td>
+                <td>SANTHOME P.O,  LUZ,  F.C.I OLD,  PONDY BAZAAR,  BHARATHI NAGAR(PERIYAR PATAHI),  TRUSTPURAM,  VADAPALANI P.S.,  M.M.D.A.COLONY RD.JN.</td>
+              </tr>
+              <tr>
+                <th>131</th>
+                <td>13</td>
+                <td>VANIMAHAL,  SUN THEATER,  CORPN. PLAY GROUND,  WESLEY H.S,  TRIPLICANE,  CHEPAUK,  SECRETARIAT</td>
+              </tr>
+              <tr>
+                <th>133</th>
+                <td>142</td>
+                <td>VEENUS,  S.R.P. COLONY,  KOLATHUR</td>
+              </tr>
+              <tr>
+                <th>135</th>
+                <td>142B</td>
+                <td>M.G.R.CENTRAL,  DOVETON,  P1.POLICE STATION,  GANESH PURAM,  PERAMBUR,  VEENUS,  S.R.P. COLONY</td>
+              </tr>
+              <tr>
+                <th>137</th>
+                <td>142P</td>
+                <td>VEENUS,  S.R.P. COLONY,  KOLATHUR,  VINAYAGAPURAM</td>
+              </tr>
+              <tr>
+                <th>139</th>
+                <td>147A</td>
+                <td>PONDY BAZAAR,  VIDYODAYA,  STERLING RD./METROLOG. DEPT.,  NUNGAMBAKKAM R.S.,  HOTEL ARUN,  ANNA NAGAR CIRCLE,  THIRUMANGALAM,  FIRE STATION</td>
+              </tr>
+              <tr>
+                <th>141</th>
+                <td>147B</td>
+                <td>PONDY BAZAAR,  VIDYODAYA,  PUSHPA NAGAR,  NUNGAMBAKKAM R.S.,  HOTEL ARUN,  ANNA NAGAR CIRCLE,  THIRUMANGALAM,  MOGAPPAIR ROAD JN</td>
+              </tr>
+              <tr>
+                <th>143</th>
+                <td>147C</td>
+                <td>DUNLOP,  AMBATTUR I.E.,  MOGAIPAIR ROAD JN.,  THIRUMANGALAM,  ANNA NAGAR CIRCLE,  HOTEL ARUN,  NUNGAMBAKKAM R.S.,  STERLING RD./METROLOG. DEPT.,  UTHAMAR GANDHISALAI (CORP.OFF),  VIDYODAYA,  PONDY BAZAAR</td>
+              </tr>
+              <tr>
+                <th>145</th>
+                <td>147V</td>
+                <td>VINAYAGAR KOIL,  THIRUMULLAIVOYAL,  AMBATTUR O.T.,  DUNLOP,  MOGAIPAIR ROAD JN.,  THIRUMANGALAM,  ANNA NAGAR CIRCLE,  HOTEL ARUN,  NUNGAMBAKKAM R.S.,  STERLING RD./METROLOG. DEPT.,  UTHAMAR GANDHISALAI (CORP.OFF),  VIDYODAYA,  PONDY BAZAAR</td>
+              </tr>
+              <tr>
+                <th>147</th>
+                <td>14M</td>
+                <td>ST THOMAS MOUNT R.S,  VANUVAMPET,  PUZHITHIVAKKAM MRTS,  KAIVELI,  MADIPAKKAM RD. JN./POONIAMMAN,  KILKATTALAI,  VELLAIKAL</td>
+              </tr>
+              <tr>
+                <th>149</th>
+                <td>15</td>
+                <td>M.G.R.CENTRAL,  DASAPRAKASH,  TAYLORS ROAD,  AMINJIKARAI,  NADUVANKARAI,  ARUMBAKKAM</td>
+              </tr>
+              <tr>
+                <th>151</th>
+                <td>150</td>
+                <td>M.G.R.CENTRAL,  DASAPRAKASH,  TAYLORS ROAD,  AMINJIKARAI,  NADUVANKARAI,  ARUMBAKKAM,  NERKUNDRAM,  MADURAVOYAL,  VAANAGARAM,  VELAPPANCHAVADI,  THIRUVERKADU,  SUNDARASOZHAPURAM,  PARUTHIPATTU RD. JN.,  GOVARDANAGIRI,  AVADI MOSQUE</td>
+              </tr>
+              <tr>
+                <th>153</th>
+                <td>153A</td>
+                <td>KOYAMBEDU SCHOOL,  NERKUNDRAM,  MADURAVOYAL,  VAANAGARAM,  VELAPPANCHAVADI,  KUMUNANCHAVADI,  POONAMALLEE,  VARADARAJA PURAM,  THIRUMAZHISAI,  VELLAVEDU,  NEMAM,  PUTHUCHATHIRAM,  METTUKANDIGAI,  MURUKKANCHERI,  ARANVOYAL KUPPAM,  ARANVOYAL,  VENKATHUR,  MANAVALAN NAGAR,  OIL MILL</td>
+              </tr>
+              <tr>
+                <th>155</th>
+                <td>153P</td>
+                <td>KOYAMBEDU SCHOOL,  NERKUNDRAM,  MADURAVOYAL,  VAANAGARAM,  VELAPPANCHAVADI,  KUMUNANCHAVADI,  POONAMALLEE,  NAZARATHPET,  CHEMBARAMBAKKAM,  PAPPANCHATRAM,  CHETTIMEDU,  THANDALAM RD JN.,  TSR RAJALAKSHMI NAGAR,  VALARPURAM,  MANNUR VILLAGE,  SOWBAKKIYA NAGAR,  KATTU ROAD JN,  VAYALUR CROSS ROAD,  MUDHUKUR CROSS ROAD,  POOVALLI KUPPAM,  MEPPEDU,  MEPPEDU ROAD JN,  KONDANCHERY CHRISTHUVA SABAI,  KOOVAM</td>
+              </tr>
+              <tr>
+                <th>157</th>
+                <td>153T</td>
+                <td>KOYAMBEDU SCHOOL,  NERKUNDRAM,  MADURAVOYAL,  VAANAGARAM,  VELAPPANCHAVADI,  KUMUNANCHAVADI,  POONAMALLEE,  NAZARATHPET,  CHEMBARAMBAKKAM,  PAPPANCHATRAM,  CHETTIMEDU,  THANDALAM RD JN.,  TSR RAJALAKSHMI NAGAR,  VALARPURAM,  MANNUR,  KALSAR ENG.COLLEGE,  KRS PALLAVAN PHARM COLLEGE,  VALASAI ELLUPAI RD JN,  PUDUVALLUR JN.,  KOPPUR SCHOOL,  SUNNAMBUKULAM,  ARANVOYAL KUPPAM,  ARANVOYAL,  VENKATHUR,  MANAVALAN NAGAR,  OIL MILL</td>
+              </tr>
+              <tr>
+                <th>159</th>
+                <td>154</td>
+                <td>SAIDAPET,  CONCORDE,  GUINDY TVK ESTATE,  BUTT ROAD,  RAMAPURAM,  MUGALIVAKKAM,  PORUR,  IYYAPPANTHANGAL,  KUMUNANCHAVADI</td>
+              </tr>
+              <tr>
+                <th>161</th>
+                <td>154B</td>
+                <td>CHIDAMBARAM STORES,  VANUVAMPET,  ST THOMAS MOUNT R.S,  BURIAL GROUND,  ST THOMAS MOUNT PO,  BUTT ROAD,  RAMAPURAM,  MUGALIVAKKAM,  PORUR,  IYYAPPANTHANGAL,  KUMUNANCHAVADI</td>
+              </tr>
+              <tr>
+                <th>163</th>
+                <td>154E</td>
+                <td>CIPET,  BUTT ROAD,  RAMAPURAM,  MUGALIVAKKAM,  PORUR,  IYYAPPANTHANGAL,  KUMUNANCHAVADI,  POONAMALLEE,  VARADARAJA PURAM,  THIRUMAZHISAI</td>
+              </tr>
+              <tr>
+                <th>165</th>
+                <td>155A</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  NAGALKENI,  THIRUNEERMALAI,  VAZHUTHALAMBEDU RD. JN,  THIRUMUDIVAKKAM</td>
+              </tr>
+              <tr>
+                <th>167</th>
+                <td>157</td>
+                <td>THIRUVOTRIYUR TEMPLE,  THANGAL,  TONDAIAYRPET,  KORUKKUPET,  SLUM CLEARANCE BOARD,  M.K.B.NAGAR EAST,  SARMA NAGAR,  MOOLAKADAI,  MADHAVARAM,  CYCLE SHOP,  KAVANGARAI,  AAYURVEDA ASHRAMAM</td>
+              </tr>
+              <tr>
+                <th>169</th>
+                <td>157E</td>
+                <td>THAZHANKUPPAM,  KOTHARI,  ASHOK LEYLAND MARK.DIV.,  I.C.I.,  LIFT GATE,  SATHYAMURTHY NAGAR,  JN. OF PONNERI RD &amp; ERANOOR,  CPCL,  MANALI RD JN.,  MANALI SEKADU,  MADHAVARAM MILLK COLONY,  MADHAVARAM POST BOX,  MOOLAKADAI,  KALPANA LAMPS/MADHAVARAM,  CYCLE SHOP,  KAVANGARAI,  AAYURVEDA ASHRAMAM</td>
+              </tr>
+              <tr>
+                <th>171</th>
+                <td>159</td>
+                <td>THIRUVOTRIYUR TEMPLE,  THANGAL,  TONDAIAYRPET,  THEAGARAYA COLLEGE,  VALLALAR NAGAR,  REGAL,  CHOOLAI P.O,  LADY MCTM SCHOOL/MILLERS RD,  TAYLORS ROAD,  AMINJIKARAI,  NADUVANKARAI,  ARUMBAKKAM,  NERKUNDRAM,  MADURAVOYAL,  VAANAGARAM,  VELAPPANCHAVADI</td>
+              </tr>
+              <tr>
+                <th>173</th>
+                <td>159A</td>
+                <td>THRUVOTRIYUR TEMPLE,  THANGAL,  TONDAIAYRPET,  THEAGARAYA COLLEGE,  VALLALAR NAGAR,  REGAL,  CHOOLAI P.O,  LADY MCTM SCHOOL/MILLERS RD,  TAYLORS ROAD,  AMINJIKARAI,  NADUVANKARAI,  ARUMBAKKAM</td>
+              </tr>
+              <tr>
+                <th>175</th>
+                <td>159B</td>
+                <td>TONDAIAYRPET,  THEAGARAYA COLLEGE,  VALLALAR NAGAR,  REGAL,  CHOOLAI P.O,  MILLERS ROAD,  TAYLORS ROAD,  AMINJIKARAI,  NADUVANKARAI,  ARUMBAKKAM</td>
+              </tr>
+              <tr>
+                <th>177</th>
+                <td>159E</td>
+                <td>THAZHANKUPPAM,  KOTHARI,  ASHOK LEYLAND MARK.DIV.,  I.C.I.,  THIRUVOTRIYUR,  THRUVOTRIYUR TEMPLE,  THANGAL,  TONDAIAYRPET,  THEAGARAYA COLLEGE,  VALLALAR NAGAR,  REGAL,  CHOOLAI P.O,  LADY MCTM SCHOOL/MILLERS RD,  TAYLORS ROAD,  AMINJIKARAI,  NADUVANKARAI,  ARUMBAKKAM</td>
+              </tr>
+              <tr>
+                <th>179</th>
+                <td>159K</td>
+                <td>SATHIYAMOORTHY NAGAR,  ERNAVOOR GATE,  THIRUVOTRIYUR,  THRUVOTRIYUR TEMPLE,  THANGAL,  TONDAIAYRPET,  THEAGARAYA COLLEGE,  VALLALAR NAGAR,  REGAL,  CHOOLAI P.O,  LADY MCTM SCHOOL/MILLERS RD,  TAYLORS ROAD,  AMINJIKARAI,  NADUVANKARAI,  ARUMBAKKAM</td>
+              </tr>
+              <tr>
+                <th>181</th>
+                <td>15BET</td>
+                <td>ARUMBAKKAM,  NADUVANKARAI,  AMINJIKARAI,  TAYLORS ROAD,  DASAPRAKASH,  M.G.R.CENTRAL,  PARRYS,  CLIVE BATTERY,  ROYAPURAM P.S,  TONDAIAYRPET,  THANGAL,  ELLAIAMMAN KOIL</td>
+              </tr>
+              <tr>
+                <th>183</th>
+                <td>15C</td>
+                <td>M.G.R.CENTRAL,  EGMORE,  MATERNITY HOSPITAL,  D.P.I,  STERLING RD./METROLOG. DEPT.,  NUNGAMBAKKAM R.S.,  HOTEL ARUN,  ANNA NAGAR CIRCLE,  THIRUMANGALAM</td>
+              </tr>
+              <tr>
+                <th>185</th>
+                <td>15F</td>
+                <td>M.G.R.CENTRAL,  DASAPRAKASH,  TAYLORS ROAD,  AMINJIKARAI,  NADUVANKARAI,  ARUMBAKKAM,  M.G.R.KOYAMBEDU,  KOYAMBEDU P.S,  CHINMAYA NAGAR,  VIRUGAMBAKKAM</td>
+              </tr>
+              <tr>
+                <th>187</th>
+                <td>15G</td>
+                <td>M.G.R.CENTRAL,  DASAPRAKASH,  TAYLORS ROAD,  AMINJIKARAI,  JN. OF R.GARDEN &amp; PEVR H.RD.,</td>
+              </tr>
+              <tr>
+                <th>189</th>
+                <td>164</td>
+                <td>MOOLAKADAI,  MADHAVARAM POST BOX,  MADHAVARAM MILLK COLONY,  MANALI SEKADU,  MANALI RD JN.,  JN. OF PONNERI RD &amp; ERANOOR,  ANDARKUPPAM,  ECHANKUZHI /MANALI NEW TOWN RD,  NAPALAYAM,  KONDAKKARAI,  PATTAMANDIRI,  MINJUR B.D.O</td>
+              </tr>
+              <tr>
+                <th>191</th>
+                <td>166</td>
+                <td>PORUR,  MOULIVAKKAM,  PERIYAPANICHERI,  THANDALAM RD JN.,  KUNDRATHUR B.S.,  ANDARKUPPAM,  ANAKAPUTHUR,  PAMMAL,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM</td>
+              </tr>
+              <tr>
+                <th>193</th>
+                <td>16J</td>
+                <td>KUMUNANCHAVADI,  IYYAPPANTHANGAL,  PORUR,  VALASARAVAKKAM,  VIRUGAMBAKKAM,  CHINMAYA NAGAR,  KOYAMBEDU P.S</td>
+              </tr>
+              <tr>
+                <th>195</th>
+                <td>16K</td>
+                <td>KOYAMBEDU P.S,  M.M.D.A.COLONY RD.JN.,  CHINMAYA NAGAR,  VIRUGAMBAKKAM,  VALASARAVAKKAM,  PORUR,  MOULIVAKKAM,  PERIYAPANICHERI,  THANDALAM RD JN.</td>
+              </tr>
+              <tr>
+                <th>197</th>
+                <td>170C</td>
+                <td>S.R.P. COLONY,  KOLATHUR/NEHRU RD JN,  MALLIGAI NAGAR AVE,  WATER PIPE THATHANKUPPAM,  WEELS INDIA RD.JN.,  THIRUMANGALAM,  KOYAMBEDU SCHOOL,  M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET</td>
+              </tr>
+              <tr>
+                <th>199</th>
+                <td>170CE</td>
+                <td>MANALAI SEEKADU,  MADHAVARAM MILLK COLONY,  MADHAVARAM POST BOX,  MOOLAKADAI,  THIRU.VI.KA.NAGAR,  S.R.P. COLONY,  KOLATHUR/NEHRU RD JN,  MALLIGAI NAGAR AVE,  WATER PIPE THATHANKUPPAM,  WEELS INDIA RD.JN.,  THIRUMANGALAM,  KOYAMBEDU SCHOOL,  M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET</td>
+              </tr>
+              <tr>
+                <th>201</th>
+                <td>170K</td>
+                <td>S.R.P. COLONY,  KOLATHUR,  MALLIGAI NAGAR AVE,  WATER PIPE THATHANKUPPAM,  WEELS INDIA RD.JN.,  THIRUMANGALAM,  KOYAMBEDU SCHOOL,  M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET</td>
+              </tr>
+              <tr>
+                <th>203</th>
+                <td>17D</td>
+                <td>M.G.R.CENTRAL,  EGMORE,  MATERNITY HOSPITAL,  D.P.I,  STERLING RD./METROLOG. DEPT.,  VETERINARY HOSPITAL,  TRUSTPURAM,  PUDUR HIGH SCHOOL,  Jn.OF P.T.R Rd/KAMARAJ Rd,  MUTHUMARIAMMAN KOIL</td>
+              </tr>
+              <tr>
+                <th>205</th>
+                <td>17E</td>
+                <td>M.G.R.CENTRAL,  PERIYAR BRIDGE,  EGMORE,  MATERNITY HOSPITAL,  D.P.I,  UTHAMAR GANDHISALAI (CORP.OFF),  VETERINARY HOSPITAL,  TRUSTPURAM,  VADAPALANI</td>
+              </tr>
+              <tr>
+                <th>207</th>
+                <td>17K</td>
+                <td>M.G.R.CENTRAL,  PERIYAR BRIDGE,  EGMORE,  MATERNITY HOSPITAL,  D.P.I,  UTHAMAR GANDHISALAI (CORP.OFF),  VETERINARY HOSPITAL,  TRUSTPURAM,  VADAPALANI</td>
+              </tr>
+              <tr>
+                <th>209</th>
+                <td>188A</td>
+                <td>SAIDAPET,  CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MUGALIVAKKAM,  MUGALIVAKKAM ARASAMARAM,  MOULIVAKKAM,  PERIYAPANICHERI,  THANDALAM RD JN.</td>
+              </tr>
+              <tr>
+                <th>211</th>
+                <td>188C</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MANAPAKKAM P.U.O,  MANAPAKKAM P.U.O,  MANAPAKKAM VILLAGE,  KOLAPAKKAM,  MURUGAN KOIL / GIRUGAMBAKKAM,  PERIYAPANICHERI,  THANDALAM RD JN.</td>
+              </tr>
+              <tr>
+                <th>213</th>
+                <td>188ET</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  BUTT ROAD,  VASANTHAM NAGAR,  MANAPAKKAM P.U.O,  MANAPAKKAM VILLAGE,  KOLAPAKKAM,  MURUGAN KOIL / GIRUGAMBAKKAM,  PERIYAPANICHERI,  THANDALAM RD JN.</td>
+              </tr>
+              <tr>
+                <th>215</th>
+                <td>188K</td>
+                <td>SAIDAPET,  CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MUGALIVAKKAM,  PORUR,  MOULIVAKKAM,  PERIYAPANICHERI,  MOONDRAM KATTALAI,  KUNDRATHUR B.S.,  SIRUKALATHUR,  AZHAKESAN NAGAR,  PUDUPEIR ROAD JN,  PUDUNALLUR</td>
+              </tr>
+              <tr>
+                <th>217</th>
+                <td>18A</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM</td>
+              </tr>
+              <tr>
+                <th>219</th>
+                <td>18B</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  ENG.COLLEGE</td>
+              </tr>
+              <tr>
+                <th>221</th>
+                <td>18D</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY RACE COURSE OFFICE,  SECRETARIAT COLONY,  ST THOMAS MOUNT PO,  VANUVAMPET,  PUZHITHIVAKKAM MRTS,  KAIVELI,  MADIPAKKAM RD. JN./POONIAMMAN</td>
+              </tr>
+              <tr>
+                <th>223</th>
+                <td>18E</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  ANGALAMMAN KOIL</td>
+              </tr>
+              <tr>
+                <th>225</th>
+                <td>18G</td>
+                <td>M.G.R.CENTRAL,  EGMORE,  MATERNITY HOSPITAL,  D.P.I,  STERLING RD./METROLOG. DEPT.,  VIDYODAYA,  PONDY BAZAAR,  THIAGARAYA NAGAR,  SAIDAPET,  CONCORDE,  GUINDY R.S,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM</td>
+              </tr>
+              <tr>
+                <th>227</th>
+                <td>18K</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SRINIVASA THEATER</td>
+              </tr>
+              <tr>
+                <th>229</th>
+                <td>18N</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  ST THOMAS MOUNT PO,  PAZHAVANTHANGAL ROAD JN.,  CHIDAMBARAM STORES,  NANGANALLUR,  MOOVARASANPET,  MADIPAKKAM RD. JN.</td>
+              </tr>
+              <tr>
+                <th>231</th>
+                <td>18P</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY RACE COURSE OFFICE,  SECRETARIAT COLONY,  ADAMBAKKAM P.S,  BRINDAVAN COLONY,  PUZHITHIVAKKAM RD JN.,  VANUVAMPET,  PUZHITHIVAKKAM MRTS,  KAIVELI,  MADIPAKKAM RD. JN./POONIAMMAN</td>
+              </tr>
+              <tr>
+                <th>233</th>
+                <td>18R</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  ST THOMAS MOUNT PO,  PAZHAVANTHANGAL ROAD JN.,  CHIDAMBARAM STORES</td>
+              </tr>
+              <tr>
+                <th>235</th>
+                <td>18X</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM,  TAMBARAM,  IRUMBULIYUR,  PERUNGALATHUR,  SADANANDAPURAM,  ALAPAKKAM,  NERKUNDRAM,  KOLAPAKKAM,  MANDAVELI (OONAMANCHERI)</td>
+              </tr>
+              <tr>
+                <th>237</th>
+                <td>19</td>
+                <td>SAIDAPET,  ENG.COLLEGE,  WOMEN'S POLYTECHNIC,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  CHURCH,  PALAVASTHIC CHEMICALS,  HINDUSTAN ENG. COLLEGE,  KELAMBAKKAM,  CHENGAMMAL RD. JN.,  KOMAN NAGAR RD JN.,  KALAVAKKAM TEA STALL</td>
+              </tr>
+              <tr>
+                <th>239</th>
+                <td>19A</td>
+                <td>SAIDAPET,  ENG.COLLEGE,  WOMEN'S POLYTECHNIC,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  NUCLEUS COMPANY</td>
+              </tr>
+              <tr>
+                <th>241</th>
+                <td>19B</td>
+                <td>CONCORDE,  ENG.COLLEGE,  WOMEN'S POLYTECHNIC,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  CHURCH,  PALAVASTHIC CHEMICALS,  HINDUSTAN ENG. COLLEGE</td>
+              </tr>
+              <tr>
+                <th>243</th>
+                <td>19BET</td>
+                <td>SAIDAPET,  CONCORDE,  ENG.COLLEGE,  WOMEN'S POLYTECHNIC,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  NAVALUR CHURCH,  PALAVASTHIC CHEMICALS,  HINDUSTAN ENG. COLLEGE,  KELAMBAKKAM,  PATTINATHAMMAN KOVIL,  KUPPAMMA NAGAR,  BALAMMA NAGAR</td>
+              </tr>
+              <tr>
+                <th>245</th>
+                <td>19C</td>
+                <td>SAIDAPET,  ENG.COLLEGE,  WOMEN'S POLYTECHNIC,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP</td>
+              </tr>
+              <tr>
+                <th>247</th>
+                <td>19D</td>
+                <td>ADYAR DEPOT,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  NUCLEUS COMPANY</td>
+              </tr>
+              <tr>
+                <th>249</th>
+                <td>19GCT</td>
+                <td>SRINIVASA THEATER,  SAIDAPET,  ENG.COLLEGE,  ADYAR B.S.,  ADYAR DEPOT,  THIRUVANMIYUR,  KOTTIVAKKAM,  PALAVAKKAM,  NEELANKARAI,  VETTUVANKENI,  CHOLA MANDAL,  INJAMBAKKAM,  PANAIYUR,  UTHANDI VILLAGE,  KANATHUR,  NATURE CARE HOSPITAL,  MUTTUKKADU,  MUTTUKKADU BOAT YARD</td>
+              </tr>
+              <tr>
+                <th>251</th>
+                <td>19P</td>
+                <td>ADYAR DEPOT,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  THALAMBUR,  SIRUCHERI,  SONALUR / PUDUR,  PUDUPAKKAM,  VANDALUR ROAD.JN.,  SATHANKUPPAM</td>
+              </tr>
+              <tr>
+                <th>253</th>
+                <td>19V</td>
+                <td>KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  SIPCOT,  SIRUSERI I.T.PARK,  PUDUPAKKAM,  PUDUPAKKAM RD JN,  CAMP ROAD,  MAMBAKKAM,  KANDIGAI,  VENGAMBAKKAM,  KOLAPAKKAM,  ANNA NAGAR</td>
+              </tr>
+              <tr>
+                <th>255</th>
+                <td>1B</td>
+                <td>THIRUVOTRIYUR TEMPLE,  THANGAL,  ANNA NAGAR,  ROYAPURAM P.S,  CLIVE BATTERY,  PARRYS,  M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM</td>
+              </tr>
+              <tr>
+                <th>257</th>
+                <td>1C</td>
+                <td>ASHOK LEYLAND,  ERNAVOOR GATE,  THIRUVOTRIYUR,  THIRUVOTRIYUR TEMPLE,  THANGAL,  ANNA NAGAR,  ROYAPURAM P.S,  CLIVE BATTERY,  PARRYS,  M.G.R.CENTRAL,  P.OR &amp; SONS,  WESLEY H.S,  Y.M.I.A,  MANDAVELI,  A.M.S.HOSPITAL,  ADYAR O.T.,  ADYAR DEPOT</td>
+              </tr>
+              <tr>
+                <th>259</th>
+                <td>1D</td>
+                <td>THAZHANKUPPAM,  KOTHARI,  ASHOK LEYLAND MARK.DIV.,  I.C.I.,  CORBORUNDUM UNIVERSAL,  BUILDERS INDUSTRY,  BURMAH SHELL PETROL BUNK,  ANNA NAGAR,  ROYAPURAM P.S,  CLIVE BATTERY,  PARRYS,  M.G.R.CENTRAL,  P.OR &amp; SONS,  WESLEY H.S,  Y.M.I.A,  MANDAVELI,  A.M.S.HOSPITAL,  ADYAR O.T.,  ADYAR DEPOT</td>
+              </tr>
+              <tr>
+                <th>261</th>
+                <td>2</td>
+                <td>TRIPLICANE OT.,  P.OR &amp; SONS,  M.G.R.CENTRAL,  CHOOLAI MILL,  P1.POLICE STATION,  VYASARPADI,  M.K.B.NAGAR,  SIDCO</td>
+              </tr>
+              <tr>
+                <th>263</th>
+                <td>20</td>
+                <td>M.G.R.CENTRAL,  DHARMAPRAKASH/PETROL BUNK,  KELLEYS,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM</td>
+              </tr>
+              <tr>
+                <th>265</th>
+                <td>202</td>
+                <td>TAMBARAM TOWN LIMIT,  OLD PERUNGALATHUR,  MUDICHUR,  ERUMAIYUR-II,  TRAFFIC AID POST,  THIRUMUDIVAKKAM SIDCO-I,  CHEMBARAMBAKKAM,  MALAYAMBAKKAM EAST,  THIDEERKUPPAM(THOPPU),  PETTAI,  DUKKANAMPATTU,  KANNACHERY,  THIRUMANAN,  AMUTHAMBEDU-II,  KARUNAKARACHERY,  PATTABIRAM,  KAVARAIPALAYAM</td>
+              </tr>
+              <tr>
+                <th>267</th>
+                <td>206</td>
+                <td>PALAKKA COMPANY,  URAPAKKAM,  VANDALUR ZOO,  VANDALUR GATE,  PERUNGALATHUR,  IRUMBULIYUR,  TAMBARAM,  TAMBARAM TOWN LIMIT,  OLD PERUNGALATHUR,  MUDICHUR,  ERUMAIYUR-II,  TRAFFIC AID POST,  THIRUMUDIVAKKAM SIDCO-I,  CHEMBARAMBAKKAM,  MALAYAMBAKKAM EAST,  THIDEERKUPPAM(THOPPU),  POONAMALLEE,  KARAYANCAHVADI,  SENNEERKUPPAM,  MELPAKKAM,  GOVARDANAGIRI,  AVADI MOSQUE</td>
+              </tr>
+              <tr>
+                <th>269</th>
+                <td>20A</td>
+                <td>M.G.R.CENTRAL,  DHARMAPRAKASH/PETROL BUNK,  KELLEYS,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM,  NATHAMUNI TALKIES,  LUCAS TVS,  AMBATTUR I.E.,  MOGAIPAIR ROAD JN.</td>
+              </tr>
+              <tr>
+                <th>271</th>
+                <td>20D</td>
+                <td>M.G.R.CENTRAL,  DASAPRAKASH,  KELLEYS,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM,  NATHAMUNI TALKIES</td>
+              </tr>
+              <tr>
+                <th>273</th>
+                <td>21</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  WESLEY H.S,  Y.M.I.A</td>
+              </tr>
+              <tr>
+                <th>275</th>
+                <td>21C</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  WESLEY H.S,  Y.M.I.A,  MANDAVELI,  A.M.S.HOSPITAL,  ADYAR O.T.,  ADYAR DEPOT,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  EASWARAN TEMPLE/PTC QRTS.</td>
+              </tr>
+              <tr>
+                <th>277</th>
+                <td>21EET</td>
+                <td>SECRETARIAT,  CHEPAUK,  Q.M.C,  FORESHORE ESTATE,  A.M.S.HOSPITAL,  ADYAR B.S.,  ENG.COLLEGE,  CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MOGALIVAKKAM / MARI AMMN KOIL,  PORUR</td>
+              </tr>
+              <tr>
+                <th>279</th>
+                <td>21G</td>
+                <td>SECRETARIAT,  CHEPAUK,  Q.M.C,  Y.M.I.A,  MANDAVELI,  ADYAR GATE,  KOTTURPURAM,  ENG.COLLEGE,  CONCORDE,  GUINDY R.S,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM,  TAMBARAM,  IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE</td>
+              </tr>
+              <tr>
+                <th>281</th>
+                <td>21GCT</td>
+                <td>SECRETARIAT,  CHEPAUK,  Q.M.C,  Y.M.I.A,  MANDAVELI,  ADYAR GATE,  KOTTURPURAM,  ENG.COLLEGE,  CONCORDE</td>
+              </tr>
+              <tr>
+                <th>283</th>
+                <td>21L</td>
+                <td>SECRETARIAT,  CHEPAUK,  Q.M.C,  FORESHORE ESTATE,  A.M.S.HOSPITAL,  ADYAR B.S.,  ENG.COLLEGE,  CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE</td>
+              </tr>
+              <tr>
+                <th>285</th>
+                <td>22</td>
+                <td>KAMABAR ARANGAM,  SAYANI/AYNAVARAM,  KELLEYS,  DHARMAPRAKASH/PETROL BUNK,  EGMORE,  D1 POLICE STATION/DAMS ROAD,  TRIPLICANE,  Q.M.C,  ANNA SQUARE</td>
+              </tr>
+              <tr>
+                <th>287</th>
+                <td>221</td>
+                <td>P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  ENG.COLLEGE,  WOMEN'S POLYTECHNIC,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  CHURCH,  PALAVASTHIC CHEMICALS,  HINDUSTAN ENG. COLLEGE,  KELAMBAKKAM,  CHENGAMMAL RD. JN.,  KOMAN NAGAR RD JN.,  KALAVAKKAM TEA STALL</td>
+              </tr>
+              <tr>
+                <th>289</th>
+                <td>221CT</td>
+                <td>NUCLEUS COMPANY,  KUMARAN NAGAR,  SHOZHANGANALLUR P.U.OFFICE,  KARAPAKKAM,  MOOTAKARAN CHAVADI,  THORAPPAKKAM TEA SHOP,  KANDANCHAVADI,  SRP TOOLS,  WOMEN'S POLYTECHNIC,  ENG.COLLEGE,  SAIDAPET,  S.H.B,  D.M.S,  T.V.S,  ANNA ROAD P.O./DAMS ROAD,  P.OR &amp; SONS,  M.G.R.CENTRAL</td>
+              </tr>
+              <tr>
+                <th>291</th>
+                <td>23C</td>
+                <td>ADYAR DEPOT,  ADYAR B.S.,  ENG.COLLEGE,  CONCORDE,  SAIDAPET,  S.H.B,  D.M.S,  T.V.S,  ANNA ROAD P.O./DAMS ROAD,  EGMORE,  DHARMAPRAKASH/PETROL BUNK,  KELLEYS</td>
+              </tr>
+              <tr>
+                <th>293</th>
+                <td>23C#</td>
+                <td>ADYAR DEPOT,  ADYAR B.S.,  ENG.COLLEGE,  CONCORDE,  SAIDAPET,  S.H.B,  D.M.S,  T.V.S,  ANNA ROAD P.O./DAMS ROAD,  EGMORE,  DHARMAPRAKASH/PETROL BUNK,  KELLEYS</td>
+              </tr>
+              <tr>
+                <th>295</th>
+                <td>23V</td>
+                <td>GURUNANAK COLLEGE,  JN.OF RACE COURSE RD,  CONCORDE,  SAIDAPET,  S.H.B,  D.M.S,  T.V.S,  SHANTHI/DAMS RD.,  EGMORE,  DASAPRAKASH,  KELLEYS,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM</td>
+              </tr>
+              <tr>
+                <th>297</th>
+                <td>242</td>
+                <td>M.G.R.CENTRAL,  DOVETON,  P1.POLICE STATION,  JAMALAYA,  VEENUS,  S.R.P. COLONY,  KOLATHUR/NEHRU RD JN,  VINAYAGAPURAM,  KATHIRVEDU,  KAVANGARAI,  AAYURVEDA ASHRAMAM</td>
+              </tr>
+              <tr>
+                <th>299</th>
+                <td>24A</td>
+                <td>MAHARANI,  BRINDAVAN COLONY,  AMINJIKARAI,  TAYLORS ROAD,  STERLING RD./METROLOG. DEPT.,  GEMINI P.H,  ROYAPETTA HOSPITAL</td>
+              </tr>
+              <tr>
+                <th>301</th>
+                <td>25</td>
+                <td>VIVEKANANDA HOUSE,  ROYAPETTA HOSPITAL,  GEMINI P.H,  VETERINARY HOSPITAL,  TRUSTPURAM,  VADAPALANI,  VIRUGAMBAKKAM,  VALASARAVAKKAM,  PORUR,  IYYAPPANTHANGAL,  KUMUNANCHAVADI</td>
+              </tr>
+              <tr>
+                <th>303</th>
+                <td>26</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  GEMINI P.H,  VETERINARY HOSPITAL,  TRUSTPURAM,  VADAPALANI,  VIRUGAMBAKKAM,  VALASARAVAKKAM,  PORUR</td>
+              </tr>
+              <tr>
+                <th>305</th>
+                <td>266</td>
+                <td>AVADI MOSQUE,  GOVARDANAGIRI,  MELPAKKAM,  SENNEERKUPPAM,  KARAYANCAHVADI,  KUMUNANCHAVADI,  MANGADU,  SIKKARAYAPURAM,  KOLLAICHERI,  KUNDRATHUR B.S.,  ANDARKUPPAM,  ANAKAPUTHUR,  PAMMAL,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM</td>
+              </tr>
+              <tr>
+                <th>307</th>
+                <td>26B</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  GEMINI P.H,  VETERINARY HOSPITAL,  TRUSTPURAM,  VADAPALANI,  VIRUGAMBAKKAM,  VALASARAVAKKAM,  PORUR,  MOULIVAKKAM,  BHARANIPUTHUR</td>
+              </tr>
+              <tr>
+                <th>309</th>
+                <td>26J</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  GEMINI P.H,  VETERINARY HOSPITAL,  TRUSTPURAM,  VADAPALANI</td>
+              </tr>
+              <tr>
+                <th>311</th>
+                <td>26M</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  GEMINI P.H,  VETERINARY HOSPITAL,  TRUSTPURAM,  VADAPALANI,  VIRUGAMBAKKAM,  VALASARAVAKKAM,  PORUR,  MUGALIVAKKAM RD. JN.</td>
+              </tr>
+              <tr>
+                <th>313</th>
+                <td>26R</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  GEMINI P.H,  VETERINARY HOSPITAL,  TRUSTPURAM,  VADAPALANI,  VIRUGAMBAKKAM,  ALWAR THIRUNAGAR,  ANGALAMMAN KOIL,  RAMAPURAM,  MUGALIVAKKAM RD. JN.</td>
+              </tr>
+              <tr>
+                <th>315</th>
+                <td>27B</td>
+                <td>ARUMBAKKAM,  NADUVANKARAI,  AMINJIKARAI,  TAYLORS ROAD,  T.B.INSTITUTE,  EGMORE,  PERIYAR BRIDGE,  TRIPLICANE</td>
+              </tr>
+              <tr>
+                <th>317</th>
+                <td>27D</td>
+                <td>Q.M.C,  V.M.STREET,  U.S.I.S.,  T.V.S,  ANNA ROAD P.O./DAMS ROAD,  EGMORE,  DHARMAPRAKASH/PETROL BUNK,  KELLEYS,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM</td>
+              </tr>
+              <tr>
+                <th>319</th>
+                <td>28</td>
+                <td>THIRUVOTRIYUR TEMPLE,  THANGAL,  TONDAIAYRPET,  THEAGARAYA COLLEGE,  VALLALAR NAGAR,  REGAL,  M.G.R.CENTRAL,  PERIYAR BRIDGE,  EGMORE</td>
+              </tr>
+              <tr>
+                <th>321</th>
+                <td>28A</td>
+                <td>PERIYAR BRIDGE,  M.G.R.CENTRAL,  REGAL,  VALLALAR NAGAR,  THEAGARAYA COLLEGE,  TONDAIAYRPET,  THANGAL,  THIRUVOTRIYUR TEMPLE,  THIRUVOTRIYUR,  ERNAVOOR GATE,  SATHIYAMOORTHY NAGAR,  JN. OF PONNERI RD &amp; ERANOOR,  ANDARKUPPAM,  ECHANKUZHI</td>
+              </tr>
+              <tr>
+                <th>323</th>
+                <td>28B</td>
+                <td>ASHOK LEYLAND,  ERNAVOOR GATE,  THIRUVOTRIYUR,  THRUVOTRIYUR TEMPLE,  THANGAL,  TONDAIAYRPET,  THEAGARAYA COLLEGE,  VALLALAR NAGAR,  REGAL,  M.G.R.CENTRAL,  PERIYAR BRIDGE</td>
+              </tr>
+              <tr>
+                <th>325</th>
+                <td>28C</td>
+                <td>TONDAIAYRPET,  THEAGARAYA COLLEGE,  VALLALAR NAGAR,  REGAL,  M.G.R.CENTRAL,  P.OR &amp; SONS</td>
+              </tr>
+              <tr>
+                <th>327</th>
+                <td>29A</td>
+                <td>JAMALAYA,  DASAMAHAN,  DOVETON,  DHARMAPRAKASH/PETROL BUNK,  EGMORE,  ANNA POORNA HOTEL/DAMS RD,  TRIPLICANE</td>
+              </tr>
+              <tr>
+                <th>329</th>
+                <td>29AET</td>
+                <td>AGARAM,  VEENUS,  JAMALAYA,  DASAMAHAN,  DOVETON,  DASAPRAKASH,  EGMORE,  ANNA ROAD P.O./DAMS ROAD,  TRIPLICANE</td>
+              </tr>
+              <tr>
+                <th>331</th>
+                <td>29AEX</td>
+                <td>S.R.P. COLONY,  VEENUS,  JAMALAYA,  SHIVASHANMUGAPURAM,  DHARMAPRAKASH/PETROL BUNK,  EGMORE,  ANNA POORNA HOTEL/DAMS RD,  TRIPLICANE</td>
+              </tr>
+              <tr>
+                <th>333</th>
+                <td>29B</td>
+                <td>JAMALAYA,  DASAMAHAN,  DOVETON,  LADY MCTM SCHOOL/MILLERS RD,  K.M.C.,  STERLING RD./METROLOG. DEPT.,  D.M.S,  PONDY BAZAAR,  THIAGARAYA NAGAR</td>
+              </tr>
+              <tr>
+                <th>335</th>
+                <td>29C</td>
+                <td>JAMALAYA,  SHIVASHANMUGAPURAM,  LADY MCTM SCHOOL/MILLERS RD,  K.M.C.,  STERLING RD./METROLOG. DEPT.,  U.S.I.S.,  Y.M.I.A,  MANDAVELI,  A.M.S.HOSPITAL,  ADYAR B.S.,  ADYAR DEPOT</td>
+              </tr>
+              <tr>
+                <th>337</th>
+                <td>29C#</td>
+                <td>JAMALAYA,  SHIVASHANMUGAPURAM,  LADY MCTM SCHOOL/MILLERS RD,  K.M.C.,  STERLING RD./METROLOG. DEPT.,  U.S.I.S.,  Y.M.I.A,  MANDAVELI,  A.M.S.HOSPITAL,  ADYAR B.S.,  ADYAR DEPOT</td>
+              </tr>
+              <tr>
+                <th>339</th>
+                <td>29CET</td>
+                <td>AGARAM,  VEENUS,  JAMALAYA,  SHIVASHANMUGAPURAM,  LADY MCTM SCHOOL/MILLERS RD,  K.M.C.,  STERLING RD./METROLOG. DEPT.,  U.S.I.S.,  Y.M.I.A,  MANDAVELI,  A.M.S.HOSPITAL,  ADYAR O.T.,  ADYAR DEPOT</td>
+              </tr>
+              <tr>
+                <th>341</th>
+                <td>29CEX</td>
+                <td>POOMPUHAR,  KOLATHUR,  S.R.P. COLONY,  VEENUS,  JAMALAYA,  SHIVASHANMUGAPURAM,  LADY MCTM SCHOOL/MILLERS RD,  K.M.C.,  STERLING RD./METROLOG. DEPT.,  U.S.I.S.,  Y.M.I.A,  MANDAVELI,  A.M.S.HOSPITAL,  ADYAR O.T.,  ADYAR DEPOT</td>
+              </tr>
+              <tr>
+                <th>343</th>
+                <td>29CX</td>
+                <td>M.M.C,  MADHAVARAM POST BOX,  PERAMBUR,  JAMALAYA,  SHIVASHANMUGAPURAM,  LADY MCTM SCHOOL/MILLERS RD,  K.M.C.,  STERLING RD./METROLOG. DEPT.,  U.S.I.S.,  Y.M.I.A,  MANDAVELI,  A.M.S.HOSPITAL,  ADYAR O.T.,  ADYAR DEPOT</td>
+              </tr>
+              <tr>
+                <th>345</th>
+                <td>29D</td>
+                <td>M.M.C,  MADHAVARAM POST BOX,  MOOLAKADAI,  PERAMBUR,  JAMALAYA,  DASAMAHAN,  DOVETON,  DHARMAPRAKASH/PETROL BUNK,  EGMORE,  ANNA POORNA HOTEL/DAMS RD</td>
+              </tr>
+              <tr>
+                <th>347</th>
+                <td>29E</td>
+                <td>JAMALAYA,  SHIVASHANMUGAPURAM,  KELLEYS,  KILPAUK GARDEN,  AMINJIKARAI,  NADUVANKARAI,  ARUMBAKKAM,  NERKUNDRAM,  MADURAVOYAL,  VAANAGARAM,  VELAPPANCHAVADI</td>
+              </tr>
+              <tr>
+                <th>349</th>
+                <td>29ET</td>
+                <td>KOLATHUR,  S.R.P. COLONY,  VEENUS,  JAMALAYA,  DASAMAHAN,  DOVETON,  DHARMAPRAKASH/PETROL BUNK,  EGMORE,  ANNA ROAD P.O./DAMS ROAD,  WESLEY H.S,  Y.M.I.A</td>
+              </tr>
+              <tr>
+                <th>351</th>
+                <td>29NET</td>
+                <td>GURUNANAK COLLEGE,  JN.OF RACE COURSE RD,  CONCORDE,  SAIDAPET,  THIAGARAYA NAGAR,  PONDY BAZAAR,  D.M.S,  STERLING RD./METROLOG. DEPT.,  K.M.C.,  LADY MCTM SCHOOL/MILLERS RD,  DOVETON,  P1.POLICE STATION,  GANESH PURAM,  PERAMBUR,  VEENUS,  S.R.P. COLONY</td>
+              </tr>
+              <tr>
+                <th>353</th>
+                <td>2A</td>
+                <td>TRIPLICANE,  P.OR &amp; SONS,  M.G.R.CENTRAL,  REGAL,  VYASARPADI,  M.K.B.NAGAR,  SIDCO</td>
+              </tr>
+              <tr>
+                <th>355</th>
+                <td>3</td>
+                <td>SAIDAPET,  CONCORDE,  GUINDY RACE COURSE OFFICE,  PADAVATTAMMAN SCHOOL,  GURUNANAK COLLEGE,  VELACHERY,  I.R.T. RD.JN.,  SRP TOOLS</td>
+              </tr>
+              <tr>
+                <th>357</th>
+                <td>31P</td>
+                <td>CONVENT,  CAMP ROAD,  BALAJI NAGAR (BHARATH ENG COL),  MEPPADU HOSPITAL,  AGARAMTHEN,  KOVILAMCHERRY VILLAGE,  MADURAPAKKAM RD.JN.</td>
+              </tr>
+              <tr>
+                <th>359</th>
+                <td>32A</td>
+                <td>TONDAIAYRPET,  THEAGARAYA COLLEGE,  VALLALAR NAGAR,  UNIVESITY CLUB/ MINERVA,  M.G.R.CENTRAL,  P.OR &amp; SONS,  VIVEKANANDA HOUSE,  DR.AMBEDHAR BRIDGE,  SANTHOME P.O</td>
+              </tr>
+              <tr>
+                <th>361</th>
+                <td>32B</td>
+                <td>VALLALAR NAGAR,  UNIVESITY CLUB/ MINERVA,  M.G.R.CENTRAL,  P.OR &amp; SONS</td>
+              </tr>
+              <tr>
+                <th>363</th>
+                <td>33C</td>
+                <td>PARRYS,  CLIVE BATTERY,  VALLALAR NAGAR,  SATHIYAMOORTHY NAGAR,  M.K.B.NAGAR,  SIDCO,  MUTHAMIL NAGAR</td>
+              </tr>
+              <tr>
+                <th>365</th>
+                <td>33L</td>
+                <td>PARRYS,  CLIVE BATTERY,  VALLALAR NAGAR,  SATHIYAMOORTHY NAGAR,  M.K.B.NAGAR,  SIDCO,  JN.OF MANALI RD.CHINNA KODUNR</td>
+              </tr>
+              <tr>
+                <th>367</th>
+                <td>34</td>
+                <td>MOGAIPAIR ROAD JN.,  THIRUMANGALAM,  ANNA NAGAR CIRCLE,  KILPAUK GARDEN,  KELLEYS,  CHOOLAI P.O,  REGAL,  VALLALAR NAGAR,  THEAGARAYA COLLEGE,  TONDAIAYRPET,  THANGAL,  THRUVOTRIYUR TEMPLE</td>
+              </tr>
+              <tr>
+                <th>369</th>
+                <td>35</td>
+                <td>M.G.R.CENTRAL,  DOVETON,  DASAMAHAN,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM,  NATHAMUNI TALKIES,  LUCAS TVS</td>
+              </tr>
+              <tr>
+                <th>371</th>
+                <td>35C</td>
+                <td>M.G.R.CENTRAL,  DOVETON,  CHOOLAI P.O,  DASAMAHAN,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM,  NATHAMUNI TALKIES,  LUCAS TVS</td>
+              </tr>
+              <tr>
+                <th>373</th>
+                <td>36K</td>
+                <td>THANGAL,  THIRUVOTRIYUR TEMPLE,  THIRUVOTRIYUR,  ERNAVOOR GATE,  SATHIYAMOORTHY NAGAR,  JN. OF PONNERI RD &amp; ERANOOR,  ANDARKUPPAM,  ARIYALUR,  THEYAMPAKKAM,  VELANGADUPAKKAM,  CHETTIMEDU,  VADAPERUMBAKKAM,  GRAND LINE</td>
+              </tr>
+              <tr>
+                <th>375</th>
+                <td>36M</td>
+                <td>THEAGARAYA COLLEGE,  TONDAIAYRPET,  THANGAL,  THIRUVOTRIYUR TEMPLE,  THIRUVOTRIYUR,  ERNAVOOR GATE,  SATHIYAMOORTHY NAGAR,  JN. OF PONNERI RD &amp; ERANOOR,  ANDARKUPPAM,  ECHANKUZHI,  AMMAN KULAM</td>
+              </tr>
+              <tr>
+                <th>377</th>
+                <td>36V</td>
+                <td>LIFT GATE,  SATHIYAMOORTHY NAGAR,  M.F.L.,  MRL/CPCL,  MANALI MARKET,  MATHUR ROAD,  KOSAPPUR ROAD,  KOSAPALAYAM,  KOSAPPUR,  PERIMAL KOIL,  CHETTIMEDU,  PILLI LINE,  VADAPERUMBAKKAM,  GRAND LINE</td>
+              </tr>
+              <tr>
+                <th>379</th>
+                <td>37</td>
+                <td>REGAL,  CHOOLAI P.O,  LADY MCTM SCHOOL/MILLERS RD,  K.M.C.,  COLLEGE ROAD/METROLOG. DEPT.,  STERLING ROAD,  VETERINARY HOSPITAL,  TRUSTPURAM,  VADAPALANI,  VIRUGAMBAKKAM,  VALASARAVAKKAM,  PORUR,  IYYAPPANTHANGAL,  KUMANANCHAVADI,  POONAMALLEE</td>
+              </tr>
+              <tr>
+                <th>381</th>
+                <td>37C</td>
+                <td>TRUSTPURAM,  VETERINARY HOSPITAL,  STERLING RD./METROLOG. DEPT.,  MATERNITY HOSPITAL,  DHARMAPRAKASH/PETROL BUNK,  KELLEYS,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM</td>
+              </tr>
+              <tr>
+                <th>383</th>
+                <td>37CT</td>
+                <td>REGAL,  CHOOLAI P.O,  LADY MCTM SCHOOL/MILLERS RD,  K.M.C.,  STERLING RD./METROLOG. DEPT.,  UTHAMAR GANDHISALAI (CORP.OFF),  MAHALINGAPURAM,  TRUSTPURAM,  VADAPALANI</td>
+              </tr>
+              <tr>
+                <th>385</th>
+                <td>37E</td>
+                <td>SIDCO,  SARMA NAGAR,  VYASARPADI,  P1.POLICE STATION,  DOVETON,  EGMORE,  MATERNITY HOSPITAL,  D.P.I,  STERLING RD./METROLOG. DEPT.,  VETERINARY HOSPITAL,  BHARATHI NAGAR(PERIYAR PATAHI),  TRUSTPURAM,  VADAPALANI,  VIRUGAMBAKKAM,  VALASARAVAKKAM,  PORUR</td>
+              </tr>
+              <tr>
+                <th>387</th>
+                <td>37ECT</td>
+                <td>VYASARPADI,  P1.POLICE STATION,  DOVETON,  EGMORE,  MATERNITY HOSPITAL,  D.P.I,  UTHAMAR GANDHISALAI (CORP.OFF),  VETERINARY HOSPITAL,  TRUSTPURAM</td>
+              </tr>
+              <tr>
+                <th>389</th>
+                <td>37G</td>
+                <td>REGAL,  CHOOLAI P.O,  LADY MCTM SCHOOL/MILLERS RD,  K.M.C.,  COLLEGE ROAD/METROLOG. DEPT.,  STERLING ROAD,  VETERINARY HOSPITAL,  TRUSTPURAM,  VADAPALANI,  VIRUGAMBAKKAM,  VALASARAVAKKAM,  PORUR</td>
+              </tr>
+              <tr>
+                <th>391</th>
+                <td>38A</td>
+                <td>PARRYS,  CLIVE BATTERY,  VALLALAR NAGAR,  VYASARPADI,  SARMA NAGAR,  MOOLAKADAI,  MADHAVARAM POST BOX,  MADHAVARAM MILLK COLONY,  MATHUR M.M.D.A.</td>
+              </tr>
+              <tr>
+                <th>393</th>
+                <td>38C</td>
+                <td>VEENUS,  JAMALAYA,  DASAMAHAN,  CHOOLAI P.O,  M.G.R.CENTRAL,  P.OR &amp; SONS</td>
+              </tr>
+              <tr>
+                <th>395</th>
+                <td>38D</td>
+                <td>THIRUVOTRIYUR TEMPLE,  THANGAL,  TONDAIAYRPET,  THEAGARAYA COLLEGE,  VALLALAR NAGAR,  VYASARPADI,  SARMA NAGAR,  MOOLAKADAI,  KODUNGAIYUR O.T.,  CHINNA KODUNGAIYUR</td>
+              </tr>
+              <tr>
+                <th>397</th>
+                <td>38G</td>
+                <td>PARRYS,  CLIVE BATTERY,  VALLALAR NAGAR,  VYASARPADI,  SARMA NAGAR,  MOOLAKADAI,  MADHAVARAM POST BOX,  MADHAVARAM,  MATHUR RD. JN.,,  VADAPERUMBAKKAM,  SETTIMEDU,  VELANGADUPAKKAM,  SRIUNGAVOOR,  PERUNGAVOOR,  ARUMANDAI RD.JN.,  THIRUNILLAI RD.JN.,  PERIAMULLAIVOYAL</td>
+              </tr>
+              <tr>
+                <th>399</th>
+                <td>38H</td>
+                <td>PARRYS,  CLIVE BATTERY,  VALLALAR NAGAR,  VYASARPADI,  SARMA NAGAR,  MOOLAKADAI,  MADHAVARAM POST BOX</td>
+              </tr>
+              <tr>
+                <th>401</th>
+                <td>4</td>
+                <td>PARRYS,  CLIVE BATTERY,  ROYAPURAM P.S,  ANNA NAGAR,  BURMAH SHELL PETROL BUNK,  BUILDERS INDUSTRY,  CORBORUNDUM UNIVERSAL,  I.C.I.,  ASHOK LEYLAND MARK.DIV.,  KOTHARI,  THAZHANKUPPAM</td>
+              </tr>
+              <tr>
+                <th>403</th>
+                <td>40A</td>
+                <td>TRIPLICANE,  ANNA POORNA HOTEL/DAMS RD,  EGMORE,  DASAPRAKASH,  TAYLORS ROAD,  AMINJIKARAI,  ANNA NAGAR CIRCLE,  THIRUMANGALAM,  MOGAIPAIR ROAD JN.,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  THIRUMULLAIVOYAL,  POLYTECHNIC,  AVADI,  KAVARAIPALAYAM</td>
+              </tr>
+              <tr>
+                <th>405</th>
+                <td>40H</td>
+                <td>TRIPLICANE,  ANNA ROAD P.O./DAMS ROAD,  POSTAL AUDIT OFFICE,  STERLING RD./METROLOG. DEPT.,  NUNGAMBAKKAM R.S.,  HOTEL ARUN,  ANNA NAGAR CIRCLE,  THIRUMANGALAM,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  THIRUMULLAIVOYAL,  POLYTECHNIC,  AVADI,  KAVARAIPALAYAM</td>
+              </tr>
+              <tr>
+                <th>407</th>
+                <td>40L</td>
+                <td>TRIPLICANE,  ANNA ROAD P.O./DAMS ROAD,  POSTAL AUDIT OFFICE,  STERLING RD./METROLOG. DEPT.,  NUNGAMBAKKAM R.S.,  HOTEL ARUN,  ANNA NAGAR CIRCLE,  THIRUMANGALAM,  MOGAIPAIR ROAD JN.</td>
+              </tr>
+              <tr>
+                <th>409</th>
+                <td>40N</td>
+                <td>TRIPLICANE,  ANNA ROAD P.O./DAMS ROAD,  POSTAL AUDIT OFFICE,  STERLING RD./METROLOG. DEPT.,  NUNGAMBAKKAM R.S.,  HOTEL ARUN,  ANNA NAGAR CIRCLE,  THIRUMANGALAM,  FIRE STATION</td>
+              </tr>
+              <tr>
+                <th>411</th>
+                <td>41D</td>
+                <td>ADYAR GATE,  DEFENCE QUARTERS,  D.M.S,  STERLING RD./METROLOG. DEPT.,  TAYLORS ROAD,  AMINJIKARAI,  ANNA NAGAR CIRCLE,  THIRUMANGALAM,  LUCAS TVS,  JN.OF CENTRAL AVENUE&amp;ERIKARAI,  VINAYAGAR KOIL,  DUNLOP</td>
+              </tr>
+              <tr>
+                <th>413</th>
+                <td>42</td>
+                <td>M.G.R.CENTRAL,  CHOOLAI MILL,  P1.POLICE STATION,  GANESH PURAM,  PERAMBUR,  VEENUS,  AGARAM</td>
+              </tr>
+              <tr>
+                <th>415</th>
+                <td>42B</td>
+                <td>M.G.R.CENTRAL,  CHOOLAI P.O,  DASAMAHAN,  JAMALAYA,  VEENUS,  S.R.P. COLONY,  KOLATHUR/NEHRU RD JN</td>
+              </tr>
+              <tr>
+                <th>417</th>
+                <td>42C</td>
+                <td>M.G.R.CENTRAL,  CHOOLAI MILL,  P1.POLICE STATION,  GANESH PURAM,  PERAMBUR,  VEENUS,  S.R.P. COLONY,  KOLATHUR/NEHRU RD JN,  VINAYAGAPURAM</td>
+              </tr>
+              <tr>
+                <th>419</th>
+                <td>42D</td>
+                <td>M.G.R.CENTRAL,  DOVETON,  DASAMAHAN,  JAMALAYA,  VEENUS,  S.R.P. COLONY,  KOLATHUR,  POOMPUHAR</td>
+              </tr>
+              <tr>
+                <th>421</th>
+                <td>42M</td>
+                <td>M.G.R.CENTRAL,  CHOOLAI MILL,  P1.POLICE STATION,  GANESH PURAM,  PERAMBUR,  VEENUS,  S.R.P. COLONY,  KOLATHUR,  RETTERI,  BUS BAY-17TH KM</td>
+              </tr>
+              <tr>
+                <th>423</th>
+                <td>44</td>
+                <td>PARRYS,  CLIVE BATTERY,  VALLALAR NAGAR,  THEAGARAYA COLLEGE,  TONDAIAYRPET,  I.O.C.,  THIRUVOTRIYUR RAILWAY QUARTERS,  MANALAI SEEKADU</td>
+              </tr>
+              <tr>
+                <th>425</th>
+                <td>44C</td>
+                <td>PARRYS,  CLIVE BATTERY,  VALLALAR NAGAR,  AMBEDKAR NAGAR,  KORUKKUPET,  I.O.C.,  THIRUVOTRIYUR RAILWAY QUARTERS,  KARGIL NAGAR(JUMPING STG),  M.F.L. NAGAR(JUMPING STG),  MANALAI SEEKADU</td>
+              </tr>
+              <tr>
+                <th>427</th>
+                <td>44CT</td>
+                <td>PARRYS,  CLIVE BATTERY,  VALLALAR NAGAR,  THEAGARAYA COLLEGE,  TONDAIAYRPET</td>
+              </tr>
+              <tr>
+                <th>429</th>
+                <td>45A</td>
+                <td>ROYAPETTA HOSPITAL,  C.I.T.COLONY,  ADYAR GATE,  S.H.B,  SAIDAPET,  CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE,  VELACHERY,  A.V.CONSTRUCTION,  PONNIAMMAN KOIL RD. JN.</td>
+              </tr>
+              <tr>
+                <th>431</th>
+                <td>45B</td>
+                <td>SECRETARIAT,  CHEPAUK,  TRIPLICANE,  V.HOUSE P.S,  Y.M.I.A,  LUZ,  F.C.I OLD,  S.H.B,  SAIDAPET,  CONCORDE</td>
+              </tr>
+              <tr>
+                <th>433</th>
+                <td>45BET</td>
+                <td>TRIPLICANE,  V.HOUSE P.S,  Y.M.I.A,  LUZ,  F.C.I OLD,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY TVK ESTATE,  BUTT ROAD,  RAMAPURAM,  MUGALIVAKKAM RD. JN.</td>
+              </tr>
+              <tr>
+                <th>435</th>
+                <td>46</td>
+                <td>VEENUS,  JAMALAYA,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM,  ANNA NAGAR,  NADUVANKARAI,  ARUMBAKKAM</td>
+              </tr>
+              <tr>
+                <th>437</th>
+                <td>46ET</td>
+                <td>AGARAM,  VEENUS,  JAMALAYA,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM,  ANNA NAGAR EAST,  NADUVANKARAI,  ARUMBAKKAM</td>
+              </tr>
+              <tr>
+                <th>439</th>
+                <td>46G</td>
+                <td>VYASARPADI,  P1.POLICE STATION,  DASAMAHAN,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM,  ANNA NAGAR,  NADUVANKARAI,  ARUMBAKKAM</td>
+              </tr>
+              <tr>
+                <th>441</th>
+                <td>47</td>
+                <td>ADYAR DEPOT,  ADYAR B.S.,  ENG.COLLEGE,  CONCORDE,  SAIDAPET,  THIAGARAYA NAGAR,  PONDY BAZAAR,  VIDYODAYA,  STERLING RD./METROLOG. DEPT.,  NUNGAMBAKKAM R.S.,  HOTEL ARUN,  ANNA NAGAR,  I.C.F</td>
+              </tr>
+              <tr>
+                <th>443</th>
+                <td>47A</td>
+                <td>KILPAUK GARDEN,  TAYLORS ROAD,  STERLING RD./METROLOG. DEPT.,  VIDYODAYA,  PONDY BAZAAR,  THIAGARAYA NAGAR,  SAIDAPET,  CONCORDE,  ENG.COLLEGE,  ADYAR B.S.,  ADYAR DEPOT</td>
+              </tr>
+              <tr>
+                <th>445</th>
+                <td>47C</td>
+                <td>ENG.COLLEGE,  CONCORDE,  SAIDAPET,  THIAGARAYA NAGAR,  PONDY BAZAAR/VIVEK &amp; CO,  VIDYODAYA,  STERLING RD./METROLOG. DEPT.,  NUNGAMBAKKAM R.S.,  HOTEL ARUN,  ANNA NAGAR CIRCLE,  THIRUMANGALAM,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP</td>
+              </tr>
+              <tr>
+                <th>447</th>
+                <td>47CX</td>
+                <td>PONDY BAZAAR,  VIDYODAYA,  UTHAMAR GANDHISALAI (CORP.OFF),  STERLING RD./METROLOG. DEPT.,  NUNGAMBAKKAM R.S.,  HOTEL ARUN,  ANNA NAGAR CIRCLE,  THIRUMANGALAM,  MOGAIPAIR ROAD JN.,  AMBATTUR I.E.,  DUNLOP,  AYYAPPA NAGAR,  2ND WATER TANK ON SECOND AVE.</td>
+              </tr>
+              <tr>
+                <th>449</th>
+                <td>47D</td>
+                <td>ADYAR DEPOT,  ADYAR B.S.,  ENG.COLLEGE,  CONCORDE,  SAIDAPET,  THIAGARAYA NAGAR,  VIVEK &amp; CO (KRISHNAN KOIL),  VIDYODAYA,  STERLING RD./METROLOG. DEPT.,  NUNGAMBAKKAM R.S.,  HOTEL ARUN,  ANNA NAGAR CIRCLE,  THIRUMANGALAM,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  THIRUMULLAIVOYAL,  POLYTECHNIC</td>
+              </tr>
+              <tr>
+                <th>451</th>
+                <td>47DCT</td>
+                <td>KRISHNAN TEMPLE/PONDY BAZAR,  VIDYODAYA,  STERLING RD./METROLOG. DEPT.,  TAYLORS ROAD,  AMINJIKARAI,  BRINDAVAN COLONY,  ICF ANNEXE,  NATHAMUNI TALKIES,  LUCAS TVS</td>
+              </tr>
+              <tr>
+                <th>453</th>
+                <td>48</td>
+                <td>P1.POLICE STATION,  DASAMAHAN,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM</td>
+              </tr>
+              <tr>
+                <th>455</th>
+                <td>48A</td>
+                <td>MADHAVARAM POST BOX,  MOOLAKADAI,  PERAMBUR,  JAMALAYA,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM,  NATHAMUNI TALKIES,  LUCAS TVS</td>
+              </tr>
+              <tr>
+                <th>457</th>
+                <td>48AET</td>
+                <td>MADHAVARAM POST BOX,  MOOLAKADAI,  PERAMBUR,  JAMALAYA,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM,  NATHAMUNI TALKIES,  LUCAS TVS,  AMBATTUR I.E.</td>
+              </tr>
+              <tr>
+                <th>459</th>
+                <td>48B</td>
+                <td>P1.POLICE STATION,  DASAMAHAN,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM,  NATHAMUNI TALKIES,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.</td>
+              </tr>
+              <tr>
+                <th>461</th>
+                <td>48BX</td>
+                <td>P1.POLICE STATION,  DASAMAHAN,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM,  NATHAMUNI TALKIES,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  ORAGADAM O.T.</td>
+              </tr>
+              <tr>
+                <th>463</th>
+                <td>48C</td>
+                <td>P1.POLICE STATION,  DASAMAHAN,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM,  NATHAMUNI TALKIES,  WEELS INDIA RD.JN.,  THIRUMANGALAM,  KOYAMBEDU SCHOOL</td>
+              </tr>
+              <tr>
+                <th>465</th>
+                <td>48K</td>
+                <td>P1.POLICE STATION,  DASAMAHAN,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM,  NATHAMUNI TALKIES,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  PUDUR</td>
+              </tr>
+              <tr>
+                <th>467</th>
+                <td>48P</td>
+                <td>P1.POLICE STATION,  DASAMAHAN,  SAYANI/AYNAVARAM,  KAMABAR ARANGAM,  NATHAMUNI TALKIES,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  PUDUR,  KALLIKUPPAM,  SURAPEDU</td>
+              </tr>
+              <tr>
+                <th>469</th>
+                <td>49</td>
+                <td>ADYAR DEPOT,  ADYAR B.S.,  ENG.COLLEGE,  CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MUGALIVAKKAM RD. JN.,  PORUR</td>
+              </tr>
+              <tr>
+                <th>471</th>
+                <td>49A</td>
+                <td>ANJUGAM SCHOOL,  GOVT. GIRLS H.SC,  MUTHUMARIAMMAN KOIL,  VIRUGAMBAKKAM,  VALASARAVAKKAM,  PORUR,  IYYAPPANTHANGAL,  KUMUNANCHAVADI,  POONAMALLEE</td>
+              </tr>
+              <tr>
+                <th>473</th>
+                <td>49F</td>
+                <td>A.M.S.HOSPITAL,  ADYAR B.S.,  ENG.COLLEGE,  CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MOGALIVAKKAM / MARI AMMN KOIL,  PORUR,  IYYAPPANTHANGAL,  KUMUNANCHAVADI</td>
+              </tr>
+              <tr>
+                <th>475</th>
+                <td>4M</td>
+                <td>PARRYS,  CLIVE BATTERY,  ROYAPURAM P.S,  ANNA NAGAR,  BURMAH SHELL PETROL BUNK,  BUILDERS INDUSTRY,  CORBORUNDUM UNIVERSAL,  I.C.I.,  ASHOK LEYLAND MARK.DIV.,  ENNORE,  KATHIVAKKAM J.J.NAGAR,  NCTPS,  ATHIPATTU PUDU NAGAR,  VALLUR,  PATAMANTHIR,  BDO OFFICE</td>
+              </tr>
+              <tr>
+                <th>477</th>
+                <td>50</td>
+                <td>M.G.R.CENTRAL,  DASAPRAKASH,  TAYLORS ROAD,  AMINJIKARAI,  NADUVANKARAI,  ARUMBAKKAM,  NERKUNDRAM,  MADURAVOYAL,  VAANAGARAM,  VELAPPANCHAVADI</td>
+              </tr>
+              <tr>
+                <th>479</th>
+                <td>500</td>
+                <td>IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  URAPAKKAM,  PALAKKA COMPANY,  GUDUVANCHERY,  THAILAPURAM,  MARAIMALAI NAGAR,  FORD,  MALROSAPURAM,  SINGAPERUMALL KOIL,  MAHENDRA CITY(CHETTY PUNNIYAM),  PULIPAKKAM,  CHENGALPET O.T.</td>
+              </tr>
+              <tr>
+                <th>481</th>
+                <td>500A</td>
+                <td>KUMARAN KUNDRAM,  VARADHARAJA THEATER,  T.B.SANATORIUM,  TAMBARAM,  IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  URAPAKKAM,  PALAKKA COMPANY,  GUDUVANCHERY,  THAILAPURAM,  MARAIMALAI NAGAR,  FORD,  MALROSAPURAM,  SINGAPERUMALL KOIL,  MAHENDRA CITY(CHETTY PUNNIYAM),  PULIPAKKAM,  CHENGALPET O.T.</td>
+              </tr>
+              <tr>
+                <th>483</th>
+                <td>500D</td>
+                <td>T.B.SANATORIUM,  MEPZ,  TAMBARAM,  IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  URAPAKKAM,  PALAKKA COMPANY,  GUDUVANCHERY,  THAILAPURAM,  MARAIMALAI NAGAR,  FORD,  MALROSAPURAM,  SINGAPERUMALL KOIL,  MAHENDRA CITY(CHETTY PUNNIYAM),  PULIPAKKAM,  CHENGALPET O.T.</td>
+              </tr>
+              <tr>
+                <th>485</th>
+                <td>500E</td>
+                <td>IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  URAPAKKAM,  PALAKKA COMPANY,  GUDUVANCHERY,  THAILAPURAM,  MARAIMALAI NAGAR,  FORD,  MALROSAPURAM,  SINGAPERUMALL KOIL,  MAHENDRA CITY(CHETTY PUNNIYAM),  MAHENDRA CITY MAIN GATE,  DHARGAS/KOLLAMEDU JN.,  E.B.STATION 500E</td>
+              </tr>
+              <tr>
+                <th>487</th>
+                <td>500ET</td>
+                <td>VARADHARAJA THEATER,  T.B.SANATORIUM,  TAMBARAM,  IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  URAPAKKAM,  PALAKKA COMPANY,  GUDUVANCHERY,  THAILAPURAM,  MARAIMALAI NAGAR,  FORD,  MALROSAPURAM,  SINGAPERUMALL KOIL,  MAHENDRA CITY(CHETTY PUNNIYAM),  PULIPAKKAM,  CHENGALPET O.T.</td>
+              </tr>
+              <tr>
+                <th>489</th>
+                <td>500R</td>
+                <td>IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  URAPAKKAM,  PALAKKA COMPANY,  GUDUVANCHERY,  RAJESWARI NAGAR,  JN.OF BAJANAI KOIL ST.,  POTHERI EAST,  RAIL NAGAR/SRIDEVI KARUMARIAMM</td>
+              </tr>
+              <tr>
+                <th>491</th>
+                <td>500W</td>
+                <td>SRINIVASA THEATER,  SAIDAPET,  CONCORDE,  GUINDY R.S,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM,  TAMBARAM,  IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  URAPAKKAM,  PALAKKA COMPANY,  GUDUVANCHERY,  THAILAPURAM,  MARAIMALAI NAGAR,  FORD,  MALROSAPURAM,  SINGAPERUMALL KOIL,  MAHENDRA CITY(CHETTY PUNNIYAM),  PULIPAKKAM,  CHENGALPET O.T.</td>
+              </tr>
+              <tr>
+                <th>493</th>
+                <td>505</td>
+                <td>PAMMADU KULAM RD.JN.,  JN.OF RACE COURSE RD,  ALAMADHI OLD,  DRY CATTLLE FORM,  ALAMADHI,  AMBEDKAR NAGAR,  POOCHIATHIPEDU,  GURUVOYAL KARANIBATTAI,  MAGARAL KANDIGAI,  TAMARAIPAKKAM,  ADI DRAVIDAR HOSTEL,  VALLIYUR SCHOOL,  VADHATTUR JN.,  VISHNUVAKKAM,  KIZHANOOR,  MOOLAKADAI,  NAZARATHPET,  EKKADU KANDIGAI,  EKKADU CSI HOSPITAL,  EKKADU WATER TANK(TEACHERS COL</td>
+              </tr>
+              <tr>
+                <th>495</th>
+                <td>505K</td>
+                <td>PAMMADU KULAM RD.JN.,  JN.OF RACE COURSE RD,  ALAMADHI OLD,  DRY CATTLLE FORM,  ALAMADHI,  AMBEDKAR NAGAR,  POOCHIATHIPEDU,  GURUVOYAL KARANIBATTAI,  MAGARAL KANDIGAI,  TAMARAIPAKKAM,  ADI DRAVIDAR HOSTEL,  VALLIYUR SCHOOL,  VADHATTUR JN.,  VISHNUVAKKAM,  KIZHANOOR,  PARATHUR,  CHITHATHUR COLONY,  KALAYANAKUPPAM RD JN.,  KALAYANAKUPPAM VILLAGE,  VENKATESAPURAM,  EKKADU CSI HOSPITAL,  EKKADU WATER TANK(TEACHERS COL</td>
+              </tr>
+              <tr>
+                <th>497</th>
+                <td>50ET</td>
+                <td>M.G.R.CENTRAL,  DASAPRAKASH,  TAYLORS ROAD,  AMINJIKARAI,  NADUVANKARAI,  ARUMBAKKAM,  NERKUNDRAM,  MADURAVOYAL,  VAANAGARAM,  VELAPPANCHAVADI,  THIRUVERKADU</td>
+              </tr>
+              <tr>
+                <th>499</th>
+                <td>51</td>
+                <td>MADIPAKKAM RD. JN.,  NARAYANAPURAM,  MEDAVAKKAM COLONY,  MEDAVAKKAM RD.JN.,  S.I.V.E.T,  MAHALAKSHMI NAGAR,  CONVENT,  TAMBARAM EAST</td>
+              </tr>
+              <tr>
+                <th>501</th>
+                <td>512</td>
+                <td>PADIYANALLUR,  SEMILIVARAM,  SHOLAVARAM,  KARANODAI,  PERIYAPALAYAM RD JN.,  PANJETTI,  THATCHUR ROAD JN,  NEW ROAD,  PUDUVOYAL,  PERUVOYAL,  KAVARAPED,  JN.OF MAMBAKKAM RD &amp; ATANOORRD,  THANDALACHERI,  PALAVAKKAM CROSS ROAD,  G.R.KANDIKAI,  THIDEER NAGAR,  POOVALAMBEDU,  THANI POONDI,  AMARAMBEDU,  PANCHALAI,  MADARAPAKKAM CROSS ROAD</td>
+              </tr>
+              <tr>
+                <th>503</th>
+                <td>514</td>
+                <td>AVADI,  JEYAPURAM,  DHARMAPURAM KANDIGAI,  KANNIGAIPEIR,  MANCHANKARANAI,  PANDY KAVANOOR JN.,  SAKTHI VINAYAGAR KOIL,  PERIYAPALAYAM RD JN.,  KARANODAI,  SHOLAVARAM,  SEMILIVARAM,  PADIYANALLUR,  REDHILLS,  AAYURVEDA ASHRAMAM,  KAVANGARAI,  CYCLE SHOP,  BUS BAY-17TH KM,  MALLIGAI NAGAR AVE,  WATER PIPE THATHANKUPPAM,  WEELS INDIA RD.JN.,  THIRUMANGALAM,  KOYAMBEDU SCHOOL</td>
+              </tr>
+              <tr>
+                <th>505</th>
+                <td>514ET</td>
+                <td>MELMALLIKAIPATTU,  NEW NAGAR,  VENKATHAKULAM,  PERIYAPALAYAM,  AVADI ROAD JN.,  JEYAPURAM,  DHARMAPURAM KANDIGAI,  KANNIGAIPEIR,  MANCHANKARANAI,  PANDY KAVANOOR JN.,  SAKTHI VINAYAGAR KOIL,  PERIYAPALAYAM RD JN.,  KARANODAI,  SHOLAVARAM,  SEMILIVARAM,  PADIYANALLUR,  REDHILLS,  AAYURVEDA ASHRAMAM,  KAVANGARAI,  CYCLE SHOP,  BUS BAY-17TH KM,  MALLIGAI NAGAR AVE,  WATER PIPE THATHANKUPPAM,  WEELS INDIA RD.JN.,  THIRUMANGALAM,  KOYAMBEDU SCHOOL</td>
+              </tr>
+              <tr>
+                <th>507</th>
+                <td>515</td>
+                <td>IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  ANNA NAGAR,  KOLAPAKKAM,  VENGAMBAKKAM RD JN.,  KANDIGAI,  MAMBAKKAM,  CAMP ROAD,  PUDUPAKKAM,  SAMIYAR PANNAI,  KELAMBAKKAM,  CHENGAMMAL RD. JN.,  KOMAN NAGAR RD JN.,  KALAVAKKAM TEA STALL,  THIRUPORUR,  THANDALAM VILLAGE,  KARUNGUDI PALLAM,  PANDITHAMEDU,  PAYYANOOR,  KOOTHAVAKKAM SCHOOL,  POONCHERY ROAD JN,  GOVERNMENT SCHOOL / HOSPITAL</td>
+              </tr>
+              <tr>
+                <th>509</th>
+                <td>515A</td>
+                <td>IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  ANNA NAGAR,  KOLAPAKKAM,  VENGAMBAKKAM,  KANDIGAI,  MAMBAKKAM,  CAMP ROAD,  PUDUPAKKAM,  SAMIYAR PANNAI,  KELAMBAKKAM,  SALT OFFICE</td>
+              </tr>
+              <tr>
+                <th>511</th>
+                <td>515B</td>
+                <td>IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  ANNA NAGAR,  KOLAPAKKAM,  VENGAMBAKKAM,  KANDIGAI,  MAMBAKKAM,  CAMP ROAD,  PUDUPAKKAM,  SAMIYAR PANNAI,  KELAMBAKKAM,  CHENGAMMAL RD. JN.,  KOMAN NAGAR RD JN.,  KALAVAKKAM TEA STALL</td>
+              </tr>
+              <tr>
+                <th>513</th>
+                <td>517K</td>
+                <td>CHROMEPET,  T.B.SANATORIUM,  TAMBARAM,  IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  ANNA NAGAR,  KOLAPAKKAM,  VENGAMBAKKAM,  KANDIGAI,  MAMBAKKAM,  CAMP ROAD,  PUDUPAKKAM,  SAMIYAR PANNAI,  KELAMBAKKAM,  SALT OFFICE</td>
+              </tr>
+              <tr>
+                <th>515</th>
+                <td>519T</td>
+                <td>ADYAR DEPOT,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  NAVALUR CHURCH,  PALAVASTHIC CHEMICALS,  HINDUSTAN ENG. COLLEGE,  KELAMBAKKAM,  PATTINATHAMMAN KOVIL,  KUPPAMMA NAGAR,  BALAMMA NAGAR</td>
+              </tr>
+              <tr>
+                <th>517</th>
+                <td>51A</td>
+                <td>SAIDAPET,  CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE,  VELACHERY,  MADIPAKKAM RD. JN.,  NARAYANAPURAM,  MEDAVAKKAM COLONY,  JN.OF.VLY-TBM RD&amp;MVKM-K.K,  S.I.V.E.T,  MAHALAKSHMI NAGAR,  CONVENT</td>
+              </tr>
+              <tr>
+                <th>519</th>
+                <td>51B</td>
+                <td>CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE,  VELACHERY,  MADIPAKKAM RD. JN.,  NARAYANAPURAM,  MEDAVAKKAM COLONY,  VEERABADRA NAGAR,  JN.OF MAMBAKKAM &amp; O.BAKKAM RD.,  CHITHALAPAKKAM,  ARASANKAZHANI,  OTTIAMBAKKAM</td>
+              </tr>
+              <tr>
+                <th>521</th>
+                <td>51BET</td>
+                <td>SAIDAPET,  CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE,  VELACHERY,  MADIPAKKAM RD. JN.,  NARAYANAPURAM,  MEDAVAKKAM COLONY,  VEERABADRA NAGAR,  JN.OF MAMBAKKAM &amp; O.BAKKAM RD.,  CHITHALAPAKKAM,  ARASANKAZHANI</td>
+              </tr>
+              <tr>
+                <th>523</th>
+                <td>51D</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE,  VELACHERY,  MADIPAKKAM RD. JN.,  NARAYANAPURAM,  MEDAVAKKAM COLONY,  JN.OF.VLY-TBM RD&amp;MVKM-K.K,  VENGAIVASAL RD.JN.,  VENGAIVASAL P.H.CENTRE,  NOOTHANCHERI CROSS RD.,  MADAMBAKKAM KOIL,  BALAJI NAGAR (BHARATH ENG COL),  CAMP ROAD,  CONVENT</td>
+              </tr>
+              <tr>
+                <th>525</th>
+                <td>51J</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE,  VELACHERY,  MADIPAKKAM RD. JN.,  NARAYANAPURAM,  MEDAVAKKAM COLONY,  VEERABADRA NAGAR,  JN.OF MAMBAKKAM &amp; O.BAKKAM RD.,  NOOTHANCHERI CROSS RD.,  MADURAPAKKAM RD.JN.,  PONMAR,  MAMBAKKAM RICE MILL</td>
+              </tr>
+              <tr>
+                <th>527</th>
+                <td>51M</td>
+                <td>SAIDAPET,  CONCORDE,  GUINDY RACE COURSE OFFICE,  SECRETARIAT COLONY,  ST THOMAS MOUNT R.S,  VANUVAMPET,  MADIPAKKAM RD. JN.</td>
+              </tr>
+              <tr>
+                <th>529</th>
+                <td>523</td>
+                <td>SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  CHURCH,  PALAVASTHIC CHEMICALS,  HINDUSTAN ENG. COLLEGE,  KELAMBAKKAM,  CHENGAMMAL RD. JN.,  KOMAN NAGAR RD JN.,  KALAVAKKAM TEA STALL,  THIRUPORUR,  MANAMATHI JN.,  ILLALUR JUNCTION,  SUNNAMBU KALVOY,  CHEMBAKKAM JUNCTION,  MYLAI ROAD JN,  VENGOOR JUNCTION,  KARUMBAKKAM,  SIRUKUNDRAM ROAD JN,  PERUNTHANDALAM JN,  PUDU COLONY</td>
+              </tr>
+              <tr>
+                <th>531</th>
+                <td>523A</td>
+                <td>SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  CHURCH,  PALAVASTHIC CHEMICALS,  HINDUSTAN ENG. COLLEGE,  KELAMBAKKAM,  CHENGAMMAL RD. JN.,  KOMAN NAGAR RD JN.,  KALAVAKKAM TEA STALL,  THIRUPORUR,  MANAMATHI JN.,  ILLALUR JUNCTION,  SUNNAMBU KALVOY,  CHEMBAKKAM JUNCTION,  CHEMBAKKAM VILLAGE,  MYLAI ROAD JN,  VENGOOR JUNCTION</td>
+              </tr>
+              <tr>
+                <th>533</th>
+                <td>525</td>
+                <td>VIRUGAMBAKKAM,  VALASARAVAKKAM,  PORUR,  IYYAPPANTHANGAL,  KUMUNANCHAVADI,  POONAMALLEE,  NAZARATHPET,  CHEMBARAMBAKKAM,  PAPPANCHATRAM,  CHETTIMEDU,  THANDALAM RD JN.,  SIPCOT,  IRUNKATTUKOTTAI,  PENNALUR E.B.,  BEEMANTHANGAL,  SRIPERUMBUDUR,  TRAVELLERS BANGALOW,  VADAMANGALAM ROAD JN,  MAMBAKKAM,  THIRUMANGALAM</td>
+              </tr>
+              <tr>
+                <th>535</th>
+                <td>52B</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  CHROMEPET,  KUMARAN KUNDRAM</td>
+              </tr>
+              <tr>
+                <th>537</th>
+                <td>52C</td>
+                <td>SAIDAPET,  CONCORDE,  GUINDY R.S,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  CHROMEPET,  KUMARAN KUNDRAM</td>
+              </tr>
+              <tr>
+                <th>539</th>
+                <td>52K</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  SECRETARIAT COLONY,  ST THOMAS MOUNT PO,  VANUVAMPET,  CHIDAMBARAM STORES</td>
+              </tr>
+              <tr>
+                <th>541</th>
+                <td>53</td>
+                <td>M.G.R.CENTRAL,  DASAPRAKASH,  TAYLORS ROAD,  AMINJIKARAI,  NADUVANKARAI,  ARUMBAKKAM,  NERKUNDRAM,  MADURAVOYAL,  VAANAGARAM,  VELAPPANCHAVADI,  KUMUNANCHAVADI,  POONAMALLEE</td>
+              </tr>
+              <tr>
+                <th>543</th>
+                <td>53A</td>
+                <td>M.G.R.CENTRAL,  DASAPRAKASH,  TAYLORS ROAD,  AMINJIKARAI,  NADUVANKARAI,  ARUMBAKKAM,  NERKUNDRAM,  MADURAVOYAL,  VAANAGARAM,  VELAPPANCHAVADI,  KUMUNANCHAVADI,  POONAMALLEE,  VARADARAJA PURAM</td>
+              </tr>
+              <tr>
+                <th>545</th>
+                <td>53E</td>
+                <td>M.G.R.CENTRAL,  DASAPRAKASH,  TAYLORS ROAD,  AMINJIKARAI,  NADUVANKARAI,  ARUMBAKKAM,  NERKUNDRAM,  MADURAVOYAL,  VAANAGARAM,  VELAPPANCHAVADI,  KUMUNANCHAVADI,  MANGADU,  SIKKARAYAPURAM,  KOLLAICHERI</td>
+              </tr>
+              <tr>
+                <th>547</th>
+                <td>53G</td>
+                <td>VARADARAJA PURAM,  CHEMBARAMBAKKAM,  IRULAPALAYAM RD JN.,  IRULAPALAYAM</td>
+              </tr>
+              <tr>
+                <th>549</th>
+                <td>53P</td>
+                <td>M.G.R.CENTRAL,  DASAPRAKASH,  TAYLORS ROAD,  AMINJIKARAI,  NADUVANKARAI,  ARUMBAKKAM,  NERKUNDRAM,  MADURAVOYAL,  VAANAGARAM,  VELAPPANCHAVADI,  KUMUNANCHAVADI,  MANGADU</td>
+              </tr>
+              <tr>
+                <th>551</th>
+                <td>53S</td>
+                <td>KOYAMBEDU P.S,  KOYAMBEDU MARKET,  NERKUNDRAM,  MADURAVOYAL,  VAANAGARAM,  VELAPPANCHAVADI,  THIRUVERKADU,  SUNDARASOZHAPURAM,  PARUTHIPATTU RD. JN.,  METTUPALAYAM,  AYALCHERY,  ANAICUTCHERYE,  THANDARAI</td>
+              </tr>
+              <tr>
+                <th>553</th>
+                <td>54</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MUGALIVAKKAM,  PORUR,  IYYAPPANTHANGAL,  KUMUNANCHAVADI</td>
+              </tr>
+              <tr>
+                <th>555</th>
+                <td>547</td>
+                <td>PADIYANALLUR,  SEMILIVARAM,  SHOLAVARAM,  KARANODAI,  PERIYAPALAYAM RD JN.,  PANJETTI,  THATCHUR ROAD JN,  NEW ROAD,  PUDUVOYAL,  PANAPAKKAM,  AGARAM,  ARANI,  KOSAVAMPETTAI,  ANJATHAMMAN KOIL</td>
+              </tr>
+              <tr>
+                <th>557</th>
+                <td>547A</td>
+                <td>VYASARPADI,  SARMA NAGAR,  MOOLAKADAI,  MADHAVARAM,  CYCLE SHOP,  KAVANGARAI,  AAYURVEDA ASHRAMAM,  REDHILLS,  PADIYANALLUR,  SEMILIVARAM,  SHOLAVARAM,  KARANODAI,  PERIYAPALAYAM RD JN.,  PANJETTI,  THATCHUR ROAD JN,  JAIHIND INDUSTRIES,  KEELMANI,  AMIRTHANALLUR,  AKARAMBAKKAM,  THIRUNILAI,  NEW AVENUE,  ARANI,  KOSAVAMPETTAI,  ANJATHAMMAN KOIL</td>
+              </tr>
+              <tr>
+                <th>559</th>
+                <td>549</td>
+                <td>ADYAR DEPOT,  ADYAR B.S.,  ENG.COLLEGE,  CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MUGALIVAKKAM,  PORUR,  IYYAPPANTHANGAL,  KUMUNANCHAVADI,  POONAMALLEE,  NAZARATHPET,  CHEMBARAMBAKKAM,  PAPPANCHATRAM,  CHETTIMEDU,  THANDALAM RD JN.,  SIPCOT,  IRUNKATTUKOTTAI,  PENNALUR E.B.,  BEEMANTHANGAL</td>
+              </tr>
+              <tr>
+                <th>561</th>
+                <td>54B</td>
+                <td>CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MANAPAKKAM P.U.O,  MANAPAKKAM VILLAGE,  KOLAPAKKAM,  MURUGAN KOIL / GIRUGAMBAKKAM,  PERIYAPANICHERI,  MOULIVAKKAM,  PORUR</td>
+              </tr>
+              <tr>
+                <th>563</th>
+                <td>54C</td>
+                <td>PARIVAKKAM,  KOLAPPANCHERY,  CHITTUKADU,  ANNAMBEDU,  THANDARAI</td>
+              </tr>
+              <tr>
+                <th>565</th>
+                <td>54E</td>
+                <td>CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MUGALIVAKKAM,  PORUR,  IYYAPPANTHANGAL,  KUMUNANCHAVADI,  POONAMALLEE,  VARADARAJA PURAM</td>
+              </tr>
+              <tr>
+                <th>567</th>
+                <td>54FET</td>
+                <td>MANDAVELI,  A.M.S.HOSPITAL,  ADYAR B.S.,  ENG.COLLEGE,  CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MOGALIVAKKAM / MARI AMMN KOIL,  PORUR,  IYYAPPANTHANGAL,  KUMUNANCHAVADI,  POONAMALLEE,  VARADARAJA PURAM</td>
+              </tr>
+              <tr>
+                <th>569</th>
+                <td>54G</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MUGALIVAKKAM,  PORUR,  IYYAPPANTHANGAL,  KUMUNANCHAVADI,  POONAMALLEE,  VARADARAJA PURAM,  THIRUMAZHISAI,  VELLAVEDU</td>
+              </tr>
+              <tr>
+                <th>571</th>
+                <td>54K</td>
+                <td>CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MOGALIVAKKAM / MARI AMMN KOIL,  PORUR,  IYYAPPANTHANGAL,  KUMUNANCHAVADI,  POONAMALLEE,  VARADARAJA PURAM,  THIRUMAZHISAI,  VELLAVEDU,  ANDERSONPET</td>
+              </tr>
+              <tr>
+                <th>573</th>
+                <td>54L</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MUGALIVAKKAM,  PORUR,  IYYAPPANTHANGAL,  KUMUNANCHAVADI,  POONAMALLEE,  VARADARAJA PURAM,  THIRUMAZHISAI</td>
+              </tr>
+              <tr>
+                <th>575</th>
+                <td>54P</td>
+                <td>SAIDAPET,  CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MUGALIVAKKAM RD. JN.,  PORUR,  MOULIVAKKAM</td>
+              </tr>
+              <tr>
+                <th>577</th>
+                <td>54S</td>
+                <td>SAIDAPET,  CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MUGALIVAKKAM,  PORUR,  IYYAPPANTHANGAL,  KUMUNANCHAVADI,  POONAMALLEE,  LAKSHMIPURAM JN./AROBINDO SCHL,  THANGAL ERIKKARAI</td>
+              </tr>
+              <tr>
+                <th>579</th>
+                <td>54V</td>
+                <td>SAIDAPET,  CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MUGALIVAKKAM,  PORUR,  IYYAPPANTHANGAL,  KUMUNANCHAVADI,  POONAMALLEE,  VARADARAJA PURAM,  THIRUMAZHISAI,  VELLAVEDU,  ANDERSONPET,  PUTHUCHATHIRAM,  PERIYA KOTTAMEDU,  RAMASAMY NAGAR,  PERUMALPATTU,  SRI RAM ENGG.COLLEGE</td>
+              </tr>
+              <tr>
+                <th>581</th>
+                <td>552K</td>
+                <td>VELLAIKAL,  JN.OF.VLY-TBM RD&amp;MVKM-K.K,  PALLAVAN NAGAR,  PERUMBAKKAM LIMIT,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  CHURCH,  PALAVASTHIC CHEMICALS,  HINDUSTAN ENG. COLLEGE,  KELAMBAKKAM,  CHENGAMMAL RD. JN.,  KOMAN NAGAR RD JN.,  KALAVAKKAM TEA STALL</td>
+              </tr>
+              <tr>
+                <th>583</th>
+                <td>553K</td>
+                <td>NAZARATHPET,  CHEMBARAMBAKKAM,  PAPPANCHATRAM,  CHETTIMEDU,  THANDALAM,  SIPCOT</td>
+              </tr>
+              <tr>
+                <th>585</th>
+                <td>553W</td>
+                <td>JAFFARKHAN PET,  M.M.D.A.COLONY RD.JN.,  KOYAMBEDU SCHOOL,  NERKUNDRAM,  MADURAVOYAL,  VAANAGARAM,  VELAPPANCHAVADI,  KUMUNANCHAVADI,  POONAMALLEE,  NAZARATHPET,  CHEMBARAMBAKKAM,  PAPPANCHATRAM,  CHETTIMEDU,  THANDALAM RD JN.,  SIPCOT,  IRUNKATTUKOTTAI,  PENNALUR E.B.,  BEEMANTHANGAL</td>
+              </tr>
+              <tr>
+                <th>587</th>
+                <td>554B</td>
+                <td>CIPET,  BUTT ROAD,  RAMAPURAM,  MUGALIVAKKAM,  PORUR,  IYYAPPANTHANGAL,  KUMUNANCHAVADI,  POONAMALLEE,  NAZARATHPET,  CHEMBARAMBAKKAM,  PAPPANCHATRAM,  CHETTIMEDU,  THANDALAM RD JN.,  SIPCOT,  IRUNKATTUKOTTAI,  PENNALUR E.B.,  BEEMANTHANGAL,  SRIPERUMBUDUR,  TRAVELLERS BANGALOW,  VADAMANGALAM ROAD JN,  MAMBAKKAM,  THIRUMANGALAM</td>
+              </tr>
+              <tr>
+                <th>589</th>
+                <td>555G</td>
+                <td>KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  CHURCH,  PALAVASTHIC CHEMICALS,  HINDUSTAN ENG. COLLEGE,  KELAMBAKKAM RD.JN.,  SAMIYAR PANNAI,  PUDUPAKKAM,  CAMP ROAD,  MAMBAKKAM,  KANDIGAI,  VENGAMBAKKAM,  KOLAPAKKAM,  ANNA NAGAR,  VANDALUR ZOO,  URAPAKKAM,  PALAKKA COMPANY</td>
+              </tr>
+              <tr>
+                <th>591</th>
+                <td>555M</td>
+                <td>IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  ANNA NAGAR COLONY,  KOLAPAKKAM,  VEMBAKKAM,  KANDIGAI,  MAMBAKKAM,  M.G.R.NAGAR,  VASANTHI AMMAN KOIL,  POONGERI JN.,  ECHANKADU,  GASSGI RATE COMPANY,  KAYAAR,  VEMBEDU,  KATTUR,  ILLALUR JUNCTION,  PERUMAL NAGAR JN.</td>
+              </tr>
+              <tr>
+                <th>593</th>
+                <td>555N</td>
+                <td>PERUMATTU NALLUR,  KANNIVAKKAM,  ASTHINAPURAM,  MELKALVOY,  KIZHKALVOY,  NELLIKUPPAM,  GEEYEE HOUSING,  KATTUR,  ILLALUR JUNCTION,  PERUMAL NAGAR JN.</td>
+              </tr>
+              <tr>
+                <th>595</th>
+                <td>555P</td>
+                <td>M.G.R.NAGAR,  KARASANGAL,  MANNIVAKKAM,  MUDICHUR VILLAGE,  PERUNGALATHUR,  VANDALUR ZOO,  ANNA NAGAR,  KOLAPAKKAM,  VENGAMBAKKAM,  KANDIGAI,  MAMBAKKAM,  CAMP ROAD,  PUDUPAKKAM,  SAMIYAR PANNAI,  KELAMBAKKAM RD.JN.,  HINDUSTAN ENG. COLLEGE,  PALAVASTHIC CHEMICALS,  CHURCH,  NAVALUR,  SEMMANCHERI,  KUMARAN NAGAR</td>
+              </tr>
+              <tr>
+                <th>597</th>
+                <td>556</td>
+                <td>ERNAVOOR GATE,  SATHIYAMOORTHY NAGAR,  JN. OF PONNERI RD &amp; ERANOOR,  ANDARKUPPAM,  ECHANKUZHI,  NAPALAYAM,  KONDAKKARAI,  PATTAMANDIRI,  INDIA CEMENT,  ATHIPATTU PUDU NAGAR,  ATHIPEDU CAMP ROAD,  ENNORE E.B. MAIN GATE,  ENNORE THERMAL POWER,  ENNORE PORT MAIN GATE,  BACK WATER BRIDGE,  L&amp;T HARBOUR,  KATTUPALLIVILLA,  L&amp;T CORNER</td>
+              </tr>
+              <tr>
+                <th>599</th>
+                <td>557</td>
+                <td>PADIYANALLUR,  SEMILIVARAM,  SHOLAVARAM,  KARANODAI,  PERIYAPALAYAM RD JN.,  PANJETTI,  THATCHUR ROAD JN,  NEW ROAD,  PUDUVOYAL,  PERUVOYAL,  KAVARAPED,  VERKADU,  AYANALLUR</td>
+              </tr>
+              <tr>
+                <th>601</th>
+                <td>557AE</td>
+                <td>PADIYANALLUR,  SEMILIVARAM,  SHOLAVARAM,  KARANODAI,  PERIYAPALAYAM RD JN.,  PANJETTI,  THATCHUR ROAD JN,  NEW ROAD,  PUDUVOYAL,  PERUVOYAL,  KAVARAPED,  VERKADU,  AYANALLUR,  GUMMIDIPOONDI,  POLICE QUARTERS,  VAZHUTHALAMBEDU,  RETTAMBEDU,  KURUVIAGARAM JN,  SEKANYAM,  METTU SEKANYAM,  DEVAMBEDU,  MEDURAMALAICHERYJN,  VEPPATHUR,  EB TRANSFORMER</td>
+              </tr>
+              <tr>
+                <th>603</th>
+                <td>557C</td>
+                <td>PADIYANALLUR,  SEMILIVARAM,  SHOLAVARAM,  KARANODAI,  PERIYAPALAYAM RD JN.,  PANJETTI,  THATCHUR ROAD JN,  NEW ROAD,  PUDUVOYAL,  PERUVOYAL,  KAVARAPED,  VENKADU,  AYANALLUR,  GUMMIDIPOONDI,  GOVT.HOSTEL,  S.R.GATE,  ELAVUR,  THALAYARIPALAYM,  MOOLAI ROAD,  SUNNAMBUKULAM,  SALAIYANKANDIGI,  POONGULAM COLONY,  KUPPAM,  CHINNA MANGODU</td>
+              </tr>
+              <tr>
+                <th>605</th>
+                <td>557M</td>
+                <td>PADIYANALLUR,  SEMILIVARAM,  SHOLAVARAM,  KARANODAI,  PERIYAPALAYAM RD JN.,  PANJETTI,  THATCHUR ROAD JN,  NEW ROAD,  PUDUVOYAL,  PERUVOYAL,  KAVARAPED,  GUMMUDIPOONDI R.S.,  GOVT.HARJNHOSTL,  S.R.KANDIGAI,  KAYALARMEDU,  NAGARAJKANDIGAI,  MELPAKKAM RD. JN.,  PETAI/PALAYAPAL,  EQUVARPALAYAM,  SORPONDERIKARAI,  SANAPUTHUR,  ALLIKULAM,  MANALLUR,  PATHIRIVEDU</td>
+              </tr>
+              <tr>
+                <th>607</th>
+                <td>558</td>
+                <td>KOYAMBEDU SCHOOL,  THIRUMANGALAM,  WEELS INDIA RD.JN.,  WATER PIPE THATHANKUPPAM,  MALLIGAI NAGAR AVE,  BUS BAY-17TH KM,  CYCLE SHOP,  KAVANGARAI,  AAYURVEDA ASHRAMAM,  REDHILLS,  PADIYANALLUR,  SEMILIVARAM,  SHOLAVARAM,  KARANODAI,  PERIYAPALAYAM RD JN.,  PANJETTI,  THATCHUR ROAD JN,  ANDARKUPPAM,  MADHAVARAM,  KRISHNAPURAM</td>
+              </tr>
+              <tr>
+                <th>609</th>
+                <td>558A</td>
+                <td>PADIYANALLUR,  SEMILIVARAM,  SHOLAVARAM,  KARANODAI,  PERIYAPALAYAM RD JN.,  AZHINJIVAKKAM VILLAGE,  CHATHIRAM,  INAM AGARAM,  GANGAI ADI KUPPAM,  METTUPALAYAM,  PULIKULAM,  ELAVAMBEDU,  NALLUR</td>
+              </tr>
+              <tr>
+                <th>611</th>
+                <td>558B</td>
+                <td>PADIYANALLUR,  SEMILIVARAM,  SHOLAVARAM,  KARANODAI,  PERIYAPALAYAM RD JN.,  PANJETTI,  THATCHUR ROAD JN,  ANDARKUPPAM,  MADHAVARAM,  KRISHNAPURAM,  PONNERI,  CHINNAKUVANAM,  UPPALAYAM,  KAVALPATHY,  MEDHUR,  KANCHIVOYAL,  THIRUPALAIVANAM,  KATTUR CROSS ROAD,  PERLIYAMBAKKAM,  POLLACHIAMMANKULAM,  PULICUT PANCHAYAT LIMIT</td>
+              </tr>
+              <tr>
+                <th>613</th>
+                <td>558C</td>
+                <td>PADIYANALLUR,  SEMILIVARAM,  SHOLAVARAM,  KARANODAI,  PERIYAPALAYAM RD JN.,  PANJETTI,  THATCHUR ROAD JN,  ANDARKUPPAM,  MADHAVARAM,  KRISHNAPURAM,  PONNERI,  CHINNAKUVANAM,  UPPALAYAM,  KAVALPATHY,  MEDHUR,  AVOOR,  AAR COLONY,  KOLUR,  KOLUR KALVOY</td>
+              </tr>
+              <tr>
+                <th>615</th>
+                <td>558L</td>
+                <td>KOYAMBEDU SCHOOL,  THIRUMANGALAM,  WEELS INDIA RD.JN.,  WATER PIPE THATHANKUPPAM,  MALLIGAI NAGAR AVE,  BUS BAY-17TH KM,  CYCLE SHOP,  KAVANGARAI,  AAYURVEDA ASHRAMAM,  REDHILLS,  PADIYANALLUR,  SEMILIVARAM,  SHOLAVARAM,  KARANODAI,  PERIYAPALAYAM RD JN.,  AZHINJIVAKKAM VILLAGE,  CHATHIRAM,  INAM AGARAM,  GANGAI ADI KUPPAM,  METTUPALAYAM,  PULIKULAM,  ELAVAMBEDU,  NALLUR</td>
+              </tr>
+              <tr>
+                <th>617</th>
+                <td>558P</td>
+                <td>PADIYANALLUR,  SEMILIVARAM,  SHOLAVARAM,  KARANODAI,  PERIYAPALAYAM RD JN.,  PANJETTI,  THATCHUR ROAD JN,  ANDARKUPPAM,  MADHAVARAM,  KRISHNAPURAM,  PONNERI,  CHINNAKUVANAM,  LAKSHMIPURAM,  LINGAPPAN PETTAI,  PERUMBEDU</td>
+              </tr>
+              <tr>
+                <th>619</th>
+                <td>55A</td>
+                <td>NAGALKENI,  THIRUNEERMALAI,  VAZHUTHALAMBEDU RD. JN,  THIRUMUDIVAKKAM</td>
+              </tr>
+              <tr>
+                <th>621</th>
+                <td>55C</td>
+                <td>IRUMBULIYUR,  PERUNGALATHUR,  SADANANDAPURAM,  ALAPAKKAM,  NEDUGUNDRAM,  KOLAPAKKAM,  VENGAMBAKKAM RD JN.,  KANDIGAI,  MELKOTTIYUR</td>
+              </tr>
+              <tr>
+                <th>623</th>
+                <td>55D</td>
+                <td>IRUMBULIYUR,  PERUNGALATHUR,  SADANANDAPURAM,  ALAPAKKAM,  NEDUGUNDRAM,  KOLAPAKKAM,  VENGAMBAKKAM RD JN.,  KANDIGAI,  MALROSAPURAM</td>
+              </tr>
+              <tr>
+                <th>625</th>
+                <td>55DET</td>
+                <td>IRUMBULIYUR,  PERUNGALATHUR,  SADANANDAPURAM,  ALAPAKKAM,  NEDUGUNDRAM,  KOLAPAKKAM,  VENGAMBAKKAM RD JN.,  KANDIGAI,  MALROSAPURAM,  KEERAPAKKAM,  AMANAMBAKKAM</td>
+              </tr>
+              <tr>
+                <th>627</th>
+                <td>55G</td>
+                <td>IRUMBULIYUR,  PERUNGALATHUR,  SADANANDAPURAM,  ALAPAKKAM,  NEDUGUNDRAM,  KOLAPAKKAM,  VENGAMBAKKAM RD JN.</td>
+              </tr>
+              <tr>
+                <th>629</th>
+                <td>55K</td>
+                <td>PALAKKA COMPANY,  MAYLAIMA NAGAR,  KATTUR,  PERIYA ARUNGAL,  ARUNGAL,  VENKATESAPERUMAL KOIL,  KEERAPAKKAM,  AMMANAMBAKKAM</td>
+              </tr>
+              <tr>
+                <th>631</th>
+                <td>55M</td>
+                <td>IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  ANNA NAGAR,  KOLAPAKKAM,  VENKAMBAKKAM,  KANDIGAI,  MELKOTTIYUR</td>
+              </tr>
+              <tr>
+                <th>633</th>
+                <td>55X</td>
+                <td>TAMBARAM TOWN LIMIT,  OLD PERUNGALATHUR,  MUDICHUR VILLAGE,  MANNIVAKKAM</td>
+              </tr>
+              <tr>
+                <th>635</th>
+                <td>565</td>
+                <td>AVADI MOSQUE,  GOVARDANAGIRI,  MELPAKKAM,  SENNEERKUPPAM,  KARAYANCAHVADI,  POONAMALLEE,  NAZARATHPET,  CHEMBARAMBAKKAM,  PAPPANCHATRAM,  CHETTIMEDU,  THANDALAM RD JN.,  SIPCOT,  IRUNKATTUKOTTAI,  PENNALUR E.B.,  BEEMANTHANGAL</td>
+              </tr>
+              <tr>
+                <th>637</th>
+                <td>566</td>
+                <td>ANDARKUPPAM,  ANAKAPUTHUR,  PAMMAL,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM,  TAMBARAM,  IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  ANNA NAGAR,  KOLAPAKKAM,  VENGAMBAKKAM RD JN.,  KANDIGAI,  MAMBAKKAM,  CAMP ROAD,  PUDUPAKKAM,  SAMIYAR PANNAI,  KELAMBAKKAM,  CHENGAMMAL RD. JN.,  KOMAN NAGAR RD JN.,  KALAVAKKAM TEA STALL</td>
+              </tr>
+              <tr>
+                <th>639</th>
+                <td>566B</td>
+                <td>MANGADU RD JN,  SIKKARAYAPURAM,  KOLLAICHERI,  KUNDRATHUR B.S.,  ANDARKUPPAM,  ANAKAPUTHUR,  PAMMAL,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM,  TAMBARAM,  IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  ANNA NAGAR,  KOLAPAKKAM,  VENGAMBAKKAM,  KANDIGAI,  MAMBAKKAM,  CAMP ROAD,  PUDUPAKKAM,  SAMIYAR PANNAI,  KELAMBAKKAM,  SALT OFFICE</td>
+              </tr>
+              <tr>
+                <th>641</th>
+                <td>568B</td>
+                <td>I.R.T. RD.JN.,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  CHURCH,  PALAVASTHIC CHEMICALS,  HINDUSTAN ENG. COLLEGE,  KELAMBAKKAM,  CHENGAMMAL RD. JN.,  KOMAN NAGAR RD JN.,  KALAVAKKAM TEA STALL</td>
+              </tr>
+              <tr>
+                <th>643</th>
+                <td>56A</td>
+                <td>THEAGARAYA COLLEGE,  TONDAIAYRPET,  THANGAL,  THIRUVOTRIYUR TEMPLE,  THIRUVOTRIYUR,  I.C.I.,  ASHOK LEYLAND MARK.DIV.,  KOTHARI,  THAZHANKUPPAM</td>
+              </tr>
+              <tr>
+                <th>645</th>
+                <td>56C</td>
+                <td>UNIVESITY CLUB/ MINERVA,  THAMBUCHETTY ST,  ROYAPURAM P.S,  TONDAIAYRPET,  THANGAL,  THIRUVOTRIYUR TEMPLE</td>
+              </tr>
+              <tr>
+                <th>647</th>
+                <td>56D</td>
+                <td>PARRYS,  CLIVE BATTERY,  ROYAPURAM P.S,  TONDAIAYRPET,  THANGAL,  ELLAIAMMAN KOIL,  T.V.T RLY GATE,  MANALI RD JN.</td>
+              </tr>
+              <tr>
+                <th>649</th>
+                <td>56DET</td>
+                <td>PARRYS,  CLIVE BATTERY,  ROYAPURAM P.S,  TONDAIAYRPET,  THANGAL,  ELLAIAMMAN KOIL,  T.V.T RLY GATE,  MANALI RD JN.,  MANALAI SEEKADU</td>
+              </tr>
+              <tr>
+                <th>651</th>
+                <td>56F</td>
+                <td>UNIVESITY CLUB/ MINERVA,  VALLALAR NAGAR,  THEAGARAYA COLLEGE,  TONDAIAYRPET,  THANGAL,  THIRUVOTRIYUR TEMPLE,  THIRUVOTRIYUR</td>
+              </tr>
+              <tr>
+                <th>653</th>
+                <td>56J</td>
+                <td>PARRYS,  CLIVE BATTERY,  ROYAPURAM P.S,  TONDAIAYRPET,  THANGAL,  THRUVOTRIYUR TEMPLE,  THIRUVOTRIYUR,  ERNAVOOR GATE,  SATHIYAMOORTHY NAGAR,  JN. OF PONNERI RD &amp; ERANOOR,  ANDARKUPPAM,  ECHANKUZHI</td>
+              </tr>
+              <tr>
+                <th>655</th>
+                <td>56P</td>
+                <td>PARRYS,  CLIVE BATTERY,  VALLALAR NAGAR,  THEAGARAYA COLLEGE,  TONDAIAYRPET,  THANGAL,  THRUVOTRIYUR TEMPLE,  THIRUVOTRIYUR,  ERNAVOOR GATE,  SATHIYAMOORTHY NAGAR,  JN. OF PONNERI RD &amp; ERANOOR,  ANDARKUPPAM,  ECHANKUZHI,  NAPALAYAM,  KONDAKKARAI,  PATTAMANDIRI,  MINJUR B.D.O</td>
+              </tr>
+              <tr>
+                <th>657</th>
+                <td>56T</td>
+                <td>PARRYS,  CLIVE BATTERY,  ROYAPURAM P.S,  TONDAIAYRPET,  THANGAL,  THIRUVOTRIYUR TEMPLE,  THIRUVOTRIYUR,  ERNAVOOR GATE,  SATHIYAMOORTHY NAGAR,  JN. OF PONNERI RD &amp; ERANOOR,  ANDARKUPPAM,  ECHANKUZHI,  NAPALAYAM,  KONDAKKARAI,  PATTAMANDIRI,  VALLUR SCHOOL</td>
+              </tr>
+              <tr>
+                <th>659</th>
+                <td>57</td>
+                <td>VYASARPADI,  SARMA NAGAR,  MOOLAKADAI,  MADHAVARAM,  CYCLE SHOP,  KAVANGARAI,  AAYURVEDA ASHRAMAM</td>
+              </tr>
+              <tr>
+                <th>661</th>
+                <td>570</td>
+                <td>M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET,  GUINDY R.S,  CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE,  VELACHERY,  I.R.T. RD.JN.,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  CHURCH,  PALAVASTHIC CHEMICALS,  HINDUSTAN ENG. COLLEGE</td>
+              </tr>
+              <tr>
+                <th>663</th>
+                <td>570B</td>
+                <td>M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET,  GUINDY R.S,  CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE,  VELACHERY,  I.R.T. RD.JN.,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP</td>
+              </tr>
+              <tr>
+                <th>665</th>
+                <td>570C</td>
+                <td>M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET,  GUINDY R.S,  CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE,  VELACHERY,  I.R.T. RD.JN.,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  THORAPPAKKAM P.T.C COLONY</td>
+              </tr>
+              <tr>
+                <th>667</th>
+                <td>570ET</td>
+                <td>M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET,  GUINDY R.S,  CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE,  VELACHERY,  I.R.T. RD.JN.,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  SEMMANCHERI S.C.B.,  NAVALUR,  CHURCH,  PALAVASTHIC CHEMICALS,  HINDUSTAN ENG. COLLEGE,  KELAMBAKKAM,  CHENGAMMAL RD. JN.,  KOMAN NAGAR RD JN.,  KALAVAKKAM TEA STALL</td>
+              </tr>
+              <tr>
+                <th>669</th>
+                <td>570T</td>
+                <td>M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET,  GUINDY R.S,  CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE,  VIJAYA NAGAR,  I.R.T. RD.JN.,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  THALAMBUR</td>
+              </tr>
+              <tr>
+                <th>671</th>
+                <td>570V</td>
+                <td>JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET,  GUINDY R.S,  CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE,  VELACHERY,  I.R.T. RD.JN.,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  CHURCH,  PALAVASTHIC CHEMICALS,  HINDUSTAN ENG. COLLEGE</td>
+              </tr>
+              <tr>
+                <th>673</th>
+                <td>572</td>
+                <td>KAVARAIPALAYAM,  PATTABIRAM,  NEMILICHERI,  THIRUNINDRAVOOR,  VEPPUMPATTU PULIYAMARAM,  PERUMALPATTU,  KANDAN KOLLAI,  CHEVVAIPETTAI R.S.,  THOZHUDUR,  RAMAPURAM,  KAKKALUR</td>
+              </tr>
+              <tr>
+                <th>675</th>
+                <td>572A</td>
+                <td>KAVARAIPALAYAM,  PATTABIRAM,  NEMILICHERI,  THIRUNINDRAVOOR,  VEPPUMPATTU PULIYAMARAM,  VEPPAMPATTU E.WARAN NAGAR,  AYATHUR CHATHIRAM,  THOTTIKALAI JN.,  KILAMBAKKAM JN.,  KILAMBAKKAM WATER TANK,  VELLAKULAM JN.,  RAMAPURAM,  KAKKALUR</td>
+              </tr>
+              <tr>
+                <th>677</th>
+                <td>572K</td>
+                <td>DUNLOP,  AMBATTUR O.T.,  THIRUMULLAIVOYAL,  POLYTECHNIC,  AVADI,  KAVARAIPALAYAM,  PATTABIRAM,  NEMILICHERI,  THIRUNINDRAVOOR,  VEPPUMPATTU PULIYAMARAM,  PERUMALPATTU,  KANDAN KOLLAI,  CHEVVAIPETTAI R.S.,  VELLAKULAM JN.,  THANDALAM,  KALYANAKUPPAM,  CHITHATHUR COLONY,  PERATHUR,  PERATHUR COLONY,  VISHNUVAKKAM</td>
+              </tr>
+              <tr>
+                <th>679</th>
+                <td>578</td>
+                <td>NAZARATHPET,  CHEMBARAMBAKKAM,  PAPPANCHATRAM,  CHETTIMEDU,  THANDALAM RD JN.,  SIPCOT,  IRUNKATTUKOTTAI,  PENNALUR E.B.,  BEEMANTHANGAL,  SRIPERUMBUDUR,  TRAVELLERS BANGALOW,  VADAMANGALAM ROAD JN,  MAMBAKKAM,  THIRUMANGALAM</td>
+              </tr>
+              <tr>
+                <th>681</th>
+                <td>578A</td>
+                <td>SIRUKALATHUR,  ALAGESAN NAGAR,  SOMANGALAM RD /AMARAMBEDU RDJN,  POONTHANDALAM RD.JN.,  SOMANGALAM,  NALLUR,  AMARAMBEDU ROAD,  SUMENTHIRAMEDU ROAD JN,  VENGADU ROAD JN,  PILLAIPAKKAM,  PATTUNOOL CHATRAM</td>
+              </tr>
+              <tr>
+                <th>683</th>
+                <td>578ET</td>
+                <td>NAZARATHPET,  CHEMBARAMBAKKAM,  PAPPANCHATRAM,  CHETTIMEDU,  THANDALAM RD JN.,  SIPCOT,  IRUNKATTUKOTTAI,  PENNALUR E.B.,  BEEMANTHANGAL,  SRIPERUMBUDUR,  TRAVELLERS BANGALOW,  VADAMANGALAM ROAD JN,  MAMBAKKAM,  THIRUMANGALAM,  SUNGUVARCHATHIRAM,  SAMSUNG ELECTRIC CO,  ECHUR JN.,  KUNNAM VILLAGE</td>
+              </tr>
+              <tr>
+                <th>685</th>
+                <td>578PC</td>
+                <td>NAZARATHPET,  CHEMBARAMBAKKAM,  PAPPANCHATRAM,  CHETTIMEDU,  THANDALAM,  SIPCOT,  IRUNKATTUKOTTAI,  PENNALUR E.B.,  BEEMANTHANGAL,  SRIPERUMBUDUR,  TRAVELLERS BANGALOW,  VADAMANGALAM ROAD JN,  MAMBAKKAM,  THIRUMANGALAM,  SUNGUVARCHATHIRAM,  SOKANDI,  VADAMANGALAM ROAD JN,  MADHURAMANGALAM ROAD JN,  PUDUPATTU ROAD JN,  PUDUPATTU VILLAGE,  ELAMBAKKAM COLONY</td>
+              </tr>
+              <tr>
+                <th>687</th>
+                <td>579A</td>
+                <td>TAMBARAM,  TAMBARAM TOWN LIMIT,  OLD PERUNGALATHUR,  MUDICHUR VILLAGE,  MANNIVAKKAM,  KARASANGAL,  M.G.R.NAGAR,  PADAPPAI,  SALAMANGALAM ROAD JN,  VANJIVANCHERY,  SARAPANCHERY,  PANAPAKKAMEDU,  VATTAMBAKKAM,  ORAGADAM RD JN,  EZHICHUR ROAD JN,  PANRUTTI,  KUNNAVAKKAM,  VARANAVASI,  THAZHAMBEDU,  DEVARIYAMBAKKAM,  NATHANALLUR,  OOTHUKADU CROSS RD</td>
+              </tr>
+              <tr>
+                <th>689</th>
+                <td>579C</td>
+                <td>TAMBARAM,  IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  MANNIVAKKAM ROAD JN.,  KARASANGAL,  M.G.R.NAGAR,  PADAPPAI,  SALAMANGALAM ROAD JN,  VANJIVANCHERY,  SARAPANCHERY,  PANAPAKKAMEDU,  VATTAMBAKKAM,  ORAGADAM RD JN,  EZHICHUR ROAD JN,  PANRUTTI,  KUNNAVAKKAM,  VARANAVASI,  THAZHAMBEDU,  DEVARIYAMBAKKAM,  NATHANALLUR,  OOTHUKADU CROSS RD</td>
+              </tr>
+              <tr>
+                <th>691</th>
+                <td>57A</td>
+                <td>VYASARPADI,  SARMA NAGAR,  MOOLAKADAI,  MADHAVARAM,  CYCLE SHOP,  KAVANGARAI,  AAYURVEDA ASHRAMAM,  REDHILLS,  PADIYANALLUR,  SIRUNIAM RD.JN.</td>
+              </tr>
+              <tr>
+                <th>693</th>
+                <td>57B</td>
+                <td>PAMMADUKULAM COLONY,  KARIMEDU,  PAMMADU KULAM RD.JN.,  IRANKUPPAM,  PAMMADUKULAM</td>
+              </tr>
+              <tr>
+                <th>695</th>
+                <td>57C</td>
+                <td>VYASARPADI,  SARMA NAGAR,  MOOLAKADAI,  MADHAVARAM,  CYCLE SHOP,  KAVANGARAI,  AAYURVEDA ASHRAMAM,  REDHILLS,  AZHINJIVAKKAM RD.JN.,  KUMMANUR,  BUDUR</td>
+              </tr>
+              <tr>
+                <th>697</th>
+                <td>57CCT</td>
+                <td>AZHINJIVAKKAM RD.JN.,  KUMMANUR,  BUDUR,  ARUMANDAI RD.JN.,  PUDUKUPPAM</td>
+              </tr>
+              <tr>
+                <th>699</th>
+                <td>57D</td>
+                <td>PARRYS,  CLIVE BATTERY,  VALLALAR NAGAR,  VYASARPADI,  SARMA NAGAR,  MOOLAKADAI,  MADHAVARAM,  CYCLE SHOP,  KAVANGARAI,  AAYURVEDA ASHRAMAM,  REDHILLS,  PAMMADU KULAM RD.JN.,  JN.OF RACE COURSE RD,  ALAMADHI OLD,  DRY CATTLLE FORM,  ALAMADHI,  AMBEDKAR NAGAR</td>
+              </tr>
+              <tr>
+                <th>701</th>
+                <td>57E</td>
+                <td>PADIYANALLUR,  SEMILIVARAM,  JN.OF.ORAKADU RD &amp; S/VARAM RD,  SOZHIPALAYAM,  ORAKKADU,  BUDUR,  ARUMANDAI RD.JN.,  THIRUNILLAI RD.JN.,  THIRUNILLAI WATER TANK</td>
+              </tr>
+              <tr>
+                <th>703</th>
+                <td>57F</td>
+                <td>PARRYS,  CLIVE BATTERY,  VALLALAR NAGAR,  VYASARPADI,  SARMA NAGAR,  MOOLAKADAI,  MADHAVARAM,  CYCLE SHOP,  KAVANGARAI,  AAYURVEDA ASHRAMAM,  REDHILLS,  PADIYANALLUR,  SEMILIVARAM,  SHOLAVARAM</td>
+              </tr>
+              <tr>
+                <th>705</th>
+                <td>57G</td>
+                <td>PADIYANALLUR,  SEMILIVARAM,  JN.OF.ORAKADU RD &amp; S/VARAM RD,  SOZHIPALAYAM,  ORAKKADU,  BUDUR,  ARUMANDAI RD.JN.,  THIRUNILLAI RD.JN.,  PERIAMULLAIVOYAL</td>
+              </tr>
+              <tr>
+                <th>707</th>
+                <td>57H</td>
+                <td>PARRYS,  CLIVE BATTERY,  VALLALAR NAGAR,  VYASARPADI,  SARMA NAGAR,  MOOLAKADAI,  MADHAVARAM,  CYCLE SHOP,  KAVANGARAI,  AAYURVEDA ASHRAMAM,  REDHILLS,  PADIYANALLUR,  SEMILIVARAM,  SHOLAVARAM,  KARANODAI,  ATHUR,  OLD&amp;NEW ERUMAI VETTI PALAYAM,  OLD ERUMAI VETTI PALAYAM</td>
+              </tr>
+              <tr>
+                <th>709</th>
+                <td>57J</td>
+                <td>PARRYS,  CLIVE BATTERY,  VALLALAR NAGAR,  VYASARPADI,  SARMA NAGAR,  MOOLAKADAI,  MADHAVARAM,  CYCLE SHOP,  KAVANGARAI,  AAYURVEDA ASHRAMAM,  REDHILLS,  PADIYANALLUR,  SEMILIVARAM,  SHOLAVARAM P.S.,  KARANODAI SCHOOL,  SOTHUPERMEDU,  NERKUNDRAM,  PUDUKUPPAM,  KANNADAPALAYAM</td>
+              </tr>
+              <tr>
+                <th>711</th>
+                <td>57M</td>
+                <td>PARRYS,  CLIVE BATTERY,  VALLALAR NAGAR,  VYASARPADI,  SARMA NAGAR,  MOOLAKADAI,  MADHAVARAM,  CYCLE SHOP,  KAVANGARAI,  AAYURVEDA ASHRAMAM,  REDHILLS,  PAMMADU KULAM RD.JN.,  JN.OF RACE COURSE RD,  ALAMADHI OLD,  DRY CATTLLE FORM</td>
+              </tr>
+              <tr>
+                <th>713</th>
+                <td>57X</td>
+                <td>VYASARPADI,  SARMA NAGAR,  MOOLAKADAI,  MADHAVARAM,  CYCLE SHOP,  KAVANGARAI,  AAYURVEDA ASHRAMAM,  REDHILLS,  PADIYANALLUR,  SEMILIVARAM,  SHOLAVARAM,  KARANODAI,  PERIYAPALAYAM RD JN.,  SAKTHI VINAYAGAR KOIL,  PANDY KAVANOOR JN.,  MANCHANKARANAI,  KANNIGAIPEIR,  DHARMAPURAM KANDIGAI,  JEYAPURAM,  AVADI ROAD JN.</td>
+              </tr>
+              <tr>
+                <th>715</th>
+                <td>580</td>
+                <td>KAVARAIPALAYAM,  PATTABIRAM,  NEMILICHERI,  THIRUNINDRAVOOR,  N.S.K NAGAR,  PAKKAM,  KESAVA CROSS ROAD,  KASANOOR,  TAMARAIPAKKAM,  POGALMEDU,  VENGAL,  ERANKUPPAM,  VADAMADURAI,  VADAMADURAI KANDIGAI,  PERIYAPALAYAM,  ANJATHAMMAN KOIL,  KOSAVAMPETTAI</td>
+              </tr>
+              <tr>
+                <th>717</th>
+                <td>580M</td>
+                <td>KAVARAIPALAYAM,  PATTABIRAM,  NEMILICHERI,  THIRUNINDRAVOOR,  NASIC NAGAR,  PAKKAM,  KESAVA CROSS ROAD,  KAVANOOR,  TAMARAIPAKKAM RD.JN.,  PAGALMEDU,  VENGAL,  PREETHI NAGAR,  VENGAL CROSS ROAD,  AVENJIPETTAI</td>
+              </tr>
+              <tr>
+                <th>719</th>
+                <td>580S</td>
+                <td>KAVARAIPALAYAM,  PATTABIRAM,  ANNAIKATTUCHERY,  SITHUKADU,  NEMILICHERI,  THIRUNINDRAVOOR,  NASIC NAGAR,  PAKKAM,  KESAVA CROSS ROAD,  KAVANOOR,  TAMARAIPAKKAM RD.JN.,  PAGALMEDU,  VENGAL,  ERANKUPPAM,  VADAMADURAI,  VADAMADURAI KANDIGAI,  PERIYAPALAYAM,  ANJATHAMMAN KOIL,  KOSAVAMPETTAI,  ARANI,  AGARAM</td>
+              </tr>
+              <tr>
+                <th>721</th>
+                <td>583</td>
+                <td>TAMBARAM,  TAMBARAM TOWN LIMIT,  OLD PERUNGALATHUR,  MUDICHUR VILLAGE,  MANNIVAKKAM,  KARASANGAL,  M.G.R.NAGAR,  PADAPPAI,  SALAMANGALAM ROAD JN,  VANJIVANCHERY,  SARAPANCHERY,  PANAPAKKAMEDU,  VATTAMBAKKAM,  ORAGADAM RD JN,  MATHUR,  VALLAKKOTTAI,  VALLAM,  THERASAPURAM,  BHONDHUR,  PATTUNOOL CHATRAM</td>
+              </tr>
+              <tr>
+                <th>723</th>
+                <td>583A</td>
+                <td>OIL MILL,  MANAVALAN NAGAR,  MELNALLATHUR,  KIZH NALLATHUR,  POLIVAKKAM,  VICTORIA TEACHERS COLONY,  SENKADU,  KATTU ROAD JN,  AAYA KOLATHUR,  THANTHONI AMMAN NAGAR</td>
+              </tr>
+              <tr>
+                <th>725</th>
+                <td>583C</td>
+                <td>TAMBARAM,  TAMBARAM TOWN LIMIT,  OLD PERUNGALATHUR,  MUDICHUR,  MANNIVAKKAM ROAD JN.,  KARASANGAL,  MANIMANGALAM,  PUSHPAGIRI RD. JN.,  CHETPET,  MALAI PATTU,  KOLATHUR,  NAVALUR,  PILLAIPAKKAM ROAD JN,  PATTUNOOL CHATRAM</td>
+              </tr>
+              <tr>
+                <th>727</th>
+                <td>583D</td>
+                <td>TAMBARAM,  TAMBARAM TOWN LIMIT,  OLD PERUNGALATHUR,  MANIMANGALAM RD. JN.,  MULLAI NAGAR,  MANIMANGALAM VILLAGE,  PUSHPAGIRI,  CHETPET,  MALAI PATTU,  KOLATHUR,  NAVALUR,  PILLAIPAKKAM ROAD JN,  PATTUNOOL CHATRAM</td>
+              </tr>
+              <tr>
+                <th>729</th>
+                <td>588</td>
+                <td>KOTTIVAKKAM,  PALAVAKKAM,  NEELANKARAI,  VETTUVANKENI,  CHOLA MANDAL,  INJAMBAKKAM,  PANAIYUR,  UTHANDI VILLAGE,  KANATHUR,  NATURE CARE HOSPITAL,  MUTTUKKADU,  MUTTUKKADU BOAT YARD,  KOVALAM,  SEMMANCHERI KUPPAM,  THIRUVEDANTHAI,  VADANEMILI,  PERIYAL NEMBILI VILLAGE,  SULERIKADU,  KRISHNA KARANAI,  PATTIKULAM COLONY,  ILLANTHOPE,  SALAVANKUPPAM/DEVANORI,  SCULPTURE ARTS COLLEGE</td>
+              </tr>
+              <tr>
+                <th>731</th>
+                <td>58V</td>
+                <td>KOYAMBEDU SCHOOL,  THIRUMANGALAM,  WEELS INDIA RD.JN.,  WATER PIPE THATHANKUPPAM,  MALLIGAI NAGAR AVE,  BUS BAY-17TH KM,  MADHAVARAM,  MOOLAKADAI,  MADHAVARAM POST BOX,  MADHAVARAM VILLAGE,  MATHUR RD. JN.,,  VADAPERUMBAKKAM,  GRAND LINE</td>
+              </tr>
+              <tr>
+                <th>733</th>
+                <td>59</td>
+                <td>REGAL,  CHOOLAI P.O,  LADY MCTM SCHOOL/MILLERS RD,  TAYLORS ROAD,  AMINJIKARAI,  NADUVANKARAI,  ARUMBAKKAM,  NERKUNDRAM,  MADURAVOYAL,  VAANAGARAM,  VELAPPANCHAVADI</td>
+              </tr>
+              <tr>
+                <th>735</th>
+                <td>591</td>
+                <td>NAZARATHPET,  CHEMBARAMBAKKAM,  PAPPANCHATRAM,  CHETTIMEDU,  THANDALAM RD JN.,  TSR RAJALAKSHMI NAGAR,  VALARPURAM,  MANNUR VILLAGE,  SOWBAKKIYA NAGAR,  KATTU ROAD JN,  VAYALUR CROSS ROAD,  MUDHUKUR CROSS ROAD,  POOVALLI KUPPAM,  MEPPEDU,  MEPPEDU ROAD JN,  KONDANCHERY CHRISTHUVA SABAI,  KOOVAM</td>
+              </tr>
+              <tr>
+                <th>737</th>
+                <td>591C</td>
+                <td>NAZARATHPET,  CHEMBARAMBAKKAM,  PAPPANCHATRAM,  CHETTIMEDU,  THANDALAM RD JN.,  TSR RAJALAKSHMI NAGAR,  VALARPURAM,  MANNUR VILLAGE,  SOWBAKKIYA NAGAR,  KATTU ROAD JN,  VAYALUR CROSS ROAD,  MUDHUKUR CROSS ROAD,  POOVALLI KUPPAM,  MEPPEDU,  MEPPEDU ROAD JN,  KONDANCHERY CHRISTHUVA SABAI,  KOOVAM,  PERAMBAKKAM,  PALACE GARDEN</td>
+              </tr>
+              <tr>
+                <th>739</th>
+                <td>592</td>
+                <td>PADIYANALLUR,  SEMILIVARAM,  SHOLAVARAM,  KARANODAI,  PERIYAPALAYAM RD JN.,  SAKTHI VINAYAGAR KOIL,  PANDY KAVANOOR JN.,  MANCHANKARANAI,  KANNIGAIPEIR,  DHARMAPURAM KANDIGAI,  JEYAPURAM,  AVADI ROAD JN.,  PERIYAPALAYAM,  ARIYAPAKKAM,  ATHUPAKKAM,  THANDALAM,  KARUMANOOR KANDIGAI,  PERUMBUR,  PALAVAKKAM,  ELLAMPETTAI,  THARATCHI COLONY,  THOMMARAM BEDU</td>
+              </tr>
+              <tr>
+                <th>741</th>
+                <td>592V</td>
+                <td>VYASARPADI,  SARMA NAGAR,  MOOLAKADAI,  MADHAVARAM,  CYCLE SHOP,  KAVANGARAI,  AAYURVEDA ASHRAMAM,  REDHILLS,  PADIYANALLUR,  SEMILIVARAM,  SHOLAVARAM,  KARANODAI,  PERIYAPALAYAM RD JN.,  SAKTHI VINAYAGAR KOIL,  PANDY KAVANOOR JN.,  MANCHANKARANAI,  KANNIGAIPEIR,  NEYVELI,  BOORIVAKKAM SCHOOL,  CHENGALIAMMAN KOVIL KANDIGAI,  KELAMBAKKAM,  PAGALMEDU,  VENGALKUPPAM,  MAMPALLAM</td>
+              </tr>
+              <tr>
+                <th>743</th>
+                <td>593CT</td>
+                <td>PADIYANALLUR,  SEMILIVARAM,  SHOLAVARAM,  KARANODAI,  PERIYAPALAYAM RD JN.,  SAKTHI VINAYAGAR KOIL,  PANDY KAVANOOR JN.,  MANCHANKARANAI,  KANNIGAIPEIR,  DHARMAPURAM KANDIGAI,  JEYAPURAM,  AVADI ROAD JN.,  PERIYAPALAYAM,  ARIYAPAKKAM,  THUMBAKKAM,  THANDALAM,  CHOOLAIMENI,  PALLAKANDIGAI</td>
+              </tr>
+              <tr>
+                <th>745</th>
+                <td>595</td>
+                <td>THIRUVOTRIYUR TEMPLE,  THIRUVOTRIYUR,  ERNAVOOR GATE,  SATHIYAMOORTHY NAGAR,  JN. OF PONNERI RD &amp; ERANOOR,  ANDARKUPPAM,  ECHANKUZHI,  NAPALAYAM,  KONDAKKARAI,  PATTAMANDIRI,  MINJUR B.D.O,  MINJUR,  NEITHAVOYAL,  VAYALUR,  KATTUR,  ABIRAMI MADAM,  KADAPAKKAM,  THATHANMANJI,  KATTUR ROAD JN.,  PERLIYAMBAKKAM,  POLLACHIAMMANKULAM,  PULICUT PANCHAYAT LIMIT</td>
+              </tr>
+              <tr>
+                <th>747</th>
+                <td>597</td>
+                <td>SAIDAPET,  CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MUGALIVAKKAM,  PORUR,  IYYAPPANTHANGAL,  KUMUNANCHAVADI,  POONAMALLEE,  VARADARAJA PURAM,  THIRUMAZHISAI,  VELLAVEDU,  NEMAM,  PUTHUCHATHIRAM,  METTUKANDIGAI,  MURUKKANCHERI,  ARANVOYAL KUPPAM,  ARANVOYAL,  VENKATHUR,  MANAVALAN NAGAR,  OIL MILL</td>
+              </tr>
+              <tr>
+                <th>749</th>
+                <td>597A</td>
+                <td>VARADARAJA PURAM,  THIRUMAZHISAI,  VELLAVEDU,  NEMAM,  PUTHUCHATHIRAM,  METTUKANDIGAI,  MURUKKANCHERI,  ARANVOYAL KUPPAM,  ARANVOYAL,  VENKATHUR,  MANAVALAN NAGAR,  OIL MILL</td>
+              </tr>
+              <tr>
+                <th>751</th>
+                <td>597C</td>
+                <td>VARADARAJA PURAM,  THIRUMAZHISAI,  VELLAVEDU,  ANDERSONPET,  PUTHUCHATHIRAM,  KOTYAMEDU,  KOSAPALAYAM,  THIRUNINDRAVOOR</td>
+              </tr>
+              <tr>
+                <th>753</th>
+                <td>5B</td>
+                <td>MANDAVELI,  A.M.S.HOSPITAL,  ADYAR B.S.,  ENG.COLLEGE,  CONCORDE,  SAIDAPET</td>
+              </tr>
+              <tr>
+                <th>755</th>
+                <td>5C</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  WESLEY H.S,  C.I.T.COLONY,  ADYAR GATE,  KOTTURPURAM,  KOTTUR NSK STATUE,  WOMEN'S POLYTECHNIC</td>
+              </tr>
+              <tr>
+                <th>757</th>
+                <td>5E</td>
+                <td>ADYAR DEPOT,  ADYAR B.S.,  ENG.COLLEGE,  CONCORDE,  SAIDAPET,  SRINIVASA THEATER,  JAFFARKHAN PET,  K.K.NAGAR,  MUTHUMARIAMMAN KOIL,  Jn.OF P.T.R Rd/KAMARAJ Rd</td>
+              </tr>
+              <tr>
+                <th>759</th>
+                <td>5G</td>
+                <td>SAIDAPET,  CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE,  VELACHERY,  I.R.T. RD.JN.,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  THORAPPAKKAM P.T.C COLONY</td>
+              </tr>
+              <tr>
+                <th>761</th>
+                <td>5S</td>
+                <td>CONCORDE,  JN.OF RACE COURSE RD,  PADAVATTAMMAN KOIL,  GURUNANAK COLLEGE,  VELACHERY,  I.R.T. RD.JN.,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  PTC QUARTER / ESWARANTEMPLE</td>
+              </tr>
+              <tr>
+                <th>763</th>
+                <td>6</td>
+                <td>SECRETARIAT,  CHEPAUK,  Q.M.C,  FORESHORE ESTATE,  A.M.S.HOSPITAL,  AVVAI HOME,  BESANT NAGAR,  INDIRA NAGAR WATER TANK</td>
+              </tr>
+              <tr>
+                <th>765</th>
+                <td>60</td>
+                <td>T.N.C.F,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  PAMMAL</td>
+              </tr>
+              <tr>
+                <th>767</th>
+                <td>60A</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  PAMMAL,  ANAKAPUTHUR,  ANDARKUPPAM</td>
+              </tr>
+              <tr>
+                <th>769</th>
+                <td>60D</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  PAMMAL</td>
+              </tr>
+              <tr>
+                <th>771</th>
+                <td>60H</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  PAMMAL,  PAMMAL SANKAR NAGAR</td>
+              </tr>
+              <tr>
+                <th>773</th>
+                <td>61C</td>
+                <td>KOILPATHAGAI RD.JN.,  H.V.F.MAIN GATE,  CRP TRUNING,  AIRFORCE STATION</td>
+              </tr>
+              <tr>
+                <th>775</th>
+                <td>61E</td>
+                <td>KOILPATHAGAI RD.JN.,  H.V.F.MAIN GATE,  AAFS CROSS ROAD,  VENGAL CROSS ROAD,  VEERAPURAM RD JN.,  ARAKKAMBAKKAM,  PANDESWARAM,  KADHAVOOR RD.JN.</td>
+              </tr>
+              <tr>
+                <th>777</th>
+                <td>61K</td>
+                <td>KOILPATHAGAI RD.JN.,  H.V.F.MAIN GATE,  C.R.P.F,  VENGAL CROSS ROAD,  VEERAPURAM</td>
+              </tr>
+              <tr>
+                <th>779</th>
+                <td>61R</td>
+                <td>KOILPATHAGAI RD.JN.,  KOILPATHAGAI(BHARATHI NAGAR),  VALLANUR P.U.O,  KOLLUMEDU,  ARIKAMBEDU,  KATTUR ROAD JN.,  II ND MAIN ROAD,  SIDCO ESTATE PHASE II,  LAKSHMIPURAM SCHOOL,  KONIMEDU,  PAMMADUKULAM COLONY</td>
+              </tr>
+              <tr>
+                <th>781</th>
+                <td>62</td>
+                <td>KARAYANCAHVADI,  SENNEERKUPPAM,  MELPAKKAM,  GOVARDANAGIRI,  AVADI MOSQUE,  AVADI CIRCLE,  POLYTECHNIC,  THIRUMULLAIVOYAL,  AMBATTUR O.T.,  PUDUR,  KALLIKUPPAM,  SURAPEDU,  SCREW FACTORY,  KAVANGARAI,  AAYURVEDA ASHRAMAM</td>
+              </tr>
+              <tr>
+                <th>783</th>
+                <td>62A</td>
+                <td>AAYURVEDA ASHRAMAM,  KAVANGARAI,  SCREW FACTORY,  SURAPEDU,  KALLIKUPPAM,  PUDUR,  AMBATTUR O.T.,  DUNLOP</td>
+              </tr>
+              <tr>
+                <th>785</th>
+                <td>62B</td>
+                <td>AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  THIRUMULLAIVOYAL,  TEMPLE JN.,  KARISHMA NAGAR WATER BRG,  UPPARA PALAYAM,  POTHUR,  PAMMADUKULAM,  IRANKUPPAM,  PAMMADUKULAM COLONY,  KARIMEDU,  PAMMADUKULAM COLONY</td>
+              </tr>
+              <tr>
+                <th>787</th>
+                <td>62M</td>
+                <td>KARAYANCAHVADI,  SENNEERKUPPAM,  MELPAKKAM,  GOVARDANAGIRI,  AVADI MOSQUE,  AVADI CIRCLE,  POLYTECHNIC,  THIRUMULLAIVOYAL,  AMBATTUR O.T.,  PUDUR,  KALLIKUPPAM,  SURAPEDU,  SCREW FACTORY,  CYCLE SHOP</td>
+              </tr>
+              <tr>
+                <th>789</th>
+                <td>63</td>
+                <td>NATHAMUNI TALKIES,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP,  AYYAPPA NAGAR,  2ND WATER TANK ON SECOND AVE.,  KONIMEDU RD. JN.,  KOLADI SCHOOL</td>
+              </tr>
+              <tr>
+                <th>791</th>
+                <td>63CT</td>
+                <td>DUNLOP,  AYYAPPA NAGAR,  2ND WATER TANK ON SECOND AVE.,  KONEMEDU JN.,  KOLADI SCHOOL</td>
+              </tr>
+              <tr>
+                <th>793</th>
+                <td>64C</td>
+                <td>M.G.R.CENTRAL,  DOVETON,  P1.POLICE STATION,  VYASARPADI,  SARMA NAGAR,  MOOLAKADAI,  MADHAVARAM POST BOX,  MADHAVARAM MILLK COLONY,  MANALAI SEEKADU</td>
+              </tr>
+              <tr>
+                <th>795</th>
+                <td>64D</td>
+                <td>M.G.R.CENTRAL,  DOVETON,  P1.POLICE STATION,  VYASARPADI,  SARMA NAGAR,  MOOLAKADAI,  MADHAVARAM POST BOX,  MADHAVARAM MILLK COLONY,  MANALAI SEEKADU,  KOSAPUR RD. JN.,</td>
+              </tr>
+              <tr>
+                <th>797</th>
+                <td>64K</td>
+                <td>M.G.R.CENTRAL,  DOVETON,  P1.POLICE STATION,  VYASARPADI,  PERAMBUR MARKET,  MOOLAKADAI,  SIDCO</td>
+              </tr>
+              <tr>
+                <th>799</th>
+                <td>64KET</td>
+                <td>M.G.R.CENTRAL,  DOVETON,  P1.POLICE STATION,  VYASARPADI,  PERAMBUR MARKET,  MOOLAKADAI,  SIDCO,  JN.OF MANALI RD.CHINNA KODUNR</td>
+              </tr>
+              <tr>
+                <th>801</th>
+                <td>65A</td>
+                <td>CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MOGALIVAKKAM / MARI AMMN KOIL,  PORUR,  IYYAPPANTHANGAL,  KUMUNANCHAVADI,  SENNEERKUPPAM,  MELPAKKAM,  GOVARDANAGIRI,  AVADI MOSQUE,  AVADI CIRCLE,  KOILPATHAGAI RD.JN.,  H.V.F.MAIN GATE,  VEERAPURAM RD JN.,  AIRFORCE STATION</td>
+              </tr>
+              <tr>
+                <th>803</th>
+                <td>65B</td>
+                <td>KARAYANCAHVADI,  SENNEERKUPPAM,  MELPAKKAM,  GOVARDANAGIRI,  AVADI MOSQUE,  AVADI CIRCLE,  KOILPATHAGAI RD.JN.,  POLYTECHNIC,  THIRUMULLAIVOYAL,  AMBATTUR O.T.,  DUNLOP</td>
+              </tr>
+              <tr>
+                <th>805</th>
+                <td>65CCT</td>
+                <td>DUNLOP,  AMBATTUR O.T.,  THIRUMULLAIVOYAL,  POLYTECHNIC,  AVADI CIRCLE,  KAVARAIPALAYAM,  PATTABIRAM,  NEMILICHERI,  THIRUNINDRAVOOR,  NASIC NAGAR</td>
+              </tr>
+              <tr>
+                <th>807</th>
+                <td>65G</td>
+                <td>KAVARAIPALAYAM,  PATTABIRAM,  NEMILICHERI,  THIRUNINDRAVOOR,  NASIC NAGAR,  PAKKAM,  KESAVA CROSS ROAD,  KASANOOR,  TAMARAIPAKKAM,  ADI DRAVIDAR HOSTEL,  VALLIYUR SCHOOL,  R.R.KANDIGAI,  VILAMBAKKAM,  ARUMBAKKAM,  ERAIYUR JUNCTION,  RAJAPALAYAM</td>
+              </tr>
+              <tr>
+                <th>809</th>
+                <td>65H</td>
+                <td>PAMMADUKULAM,  JN.OF RACE COURSE RD,  ALAMADHI OLD,  DRY CATTLLE FORM,  ALAMADHI,  AMBEDKAR NAGAR,  POOCHIATHIPEDU,  GURUVOYAL VILLAGE,  SETHUPAKKAM,  AGARAM KANDIGAI,  TAMARAIPAKKAM RD.JN.,  KAVANOOR,  KESAVA CROSS ROAD,  PAKKAM RD.JN.,  NASIC NAGAR</td>
+              </tr>
+              <tr>
+                <th>811</th>
+                <td>65K</td>
+                <td>KARAYANCAHVADI,  SENNEERKUPPAM,  PARIVAKKAM ROAD JN.,  METTUPALAYAM ROAD JN.,  KANNAPALAYAM AYALCHERY JN.,  PARUTHIPATTU RD. JN.,  GOVARDANAGIRI,  VILINJAMBAKKAM AMMAN KOIL</td>
+              </tr>
+              <tr>
+                <th>813</th>
+                <td>66</td>
+                <td>T.B.SANATORIUM,  CHROMEPET,  PALLAVARAM,  PAMMAL,  ANAKAPUTHUR,  ANDARKUPPAM,  KUNDRATHUR B.S.,  KOLLAICHERI,  SIKKARAYAPURAM,  MANGADU,  KUMUNANCHAVADI</td>
+              </tr>
+              <tr>
+                <th>815</th>
+                <td>66A</td>
+                <td>KUMARAN KUNDRAM,  CHROMEPET,  PALLAVARAM,  PAMMAL,  ANAKAPUTHUR,  ANDARKUPPAM</td>
+              </tr>
+              <tr>
+                <th>817</th>
+                <td>66G</td>
+                <td>PAMMAL,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM,  TAMBARAM,  IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  URAPAKKAM,  PALAKKA COMPANY</td>
+              </tr>
+              <tr>
+                <th>819</th>
+                <td>66J</td>
+                <td>T.B.SANATORIUM,  CHROMEPET,  PAMMAL,  ANAKAPUTHUR,  ANDARKUPPAM,  KUNDRATHUR B.S.,  KOLLAICHERI,  SIKKARAYAPURAM,  MANGADU,  KUMUNANCHAVADI</td>
+              </tr>
+              <tr>
+                <th>821</th>
+                <td>66X</td>
+                <td>PALAKKA COMPANY,  URAPAKKAM,  VANDALUR ZOO,  VANDALUR GATE,  PERUNGALATHUR,  IRUMBULIYUR,  TAMBARAM,  T.B.SANATORIUM,  CHROMEPET,  PALLAVARAM,  PAMMAL,  ANAKAPUTHUR,  ANDARKUPPAM,  KUNDRATHUR B.S.,  KOLLAICHERI,  SIKKARAYAPURAM,  MANGADU,  KUMUNANCHAVADI</td>
+              </tr>
+              <tr>
+                <th>823</th>
+                <td>6D</td>
+                <td>TONDAIAYRPET,  THEAGARAYA COLLEGE,  CLIVE BATTERY,  PARRYS,  SECRETARIAT,  CHEPAUK,  Q.M.C,  FORESHORE ESTATE,  A.M.S.HOSPITAL,  AVVAI HOME,  BESANT NAGAR,  INDIRA NAGAR</td>
+              </tr>
+              <tr>
+                <th>825</th>
+                <td>6DET</td>
+                <td>TOLLGATE,  TONDAIAYRPET,  THEAGARAYA COLLEGE,  CLIVE BATTERY,  PARRYS,  SECRETARIAT,  CHEPAUK,  Q.M.C,  FORESHORE ESTATE,  A.M.S.HOSPITAL,  AVVAI HOME,  BESANT NAGAR,  INDIRA NAGAR</td>
+              </tr>
+              <tr>
+                <th>827</th>
+                <td>70</td>
+                <td>POLYTECHNIC,  THIRUMULLAIVOYAL,  AMBATTUR O.T.,  DUNLOP,  AMBATTUR I.E.,  LUCAS TVS,  THIRUMANGALAM,  KOYAMBEDU,  M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM</td>
+              </tr>
+              <tr>
+                <th>829</th>
+                <td>70A</td>
+                <td>POLYTECHNIC,  THIRUMULLAIVOYAL,  AMBATTUR O.T.,  DUNLOP,  AMBATTUR I.E.,  LUCAS TVS,  THIRUMANGALAM,  KOYAMBEDU SCHOOL</td>
+              </tr>
+              <tr>
+                <th>831</th>
+                <td>70ACT</td>
+                <td>POLYTECHNIC,  THIRUMULLAIVOYAL,  AMBATTUR O.T.,  DUNLOP,  AMBATTUR I.E.,  LUCAS TVS,  THIRUMANGALAM,  KOYAMBEDU SCHOOL</td>
+              </tr>
+              <tr>
+                <th>833</th>
+                <td>70C</td>
+                <td>CHINMAYA NAGAR,  VIRUGAMBAKKAM MARKET,  K.K.NAGAR WEST,  K.K.NAGAR DEPOT,  K.K.NAGAR B.S.,  JAFFARKHAN PET,  CIPET,  GUINDY TVK ESTATE,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM</td>
+              </tr>
+              <tr>
+                <th>835</th>
+                <td>70G</td>
+                <td>Jn.OF P.T.R Rd/KAMARAJ Rd,  JAFFARKHAN PET,  CIPET,  GUINDY TVK ESTATE,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM,  TAMBARAM,  IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  URAPAKKAM,  PALAKKA COMPANY</td>
+              </tr>
+              <tr>
+                <th>837</th>
+                <td>70H</td>
+                <td>M.M.D.A.COLONY,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  CHROMEPET,  KUMARAN KUNDRAM</td>
+              </tr>
+              <tr>
+                <th>839</th>
+                <td>70J</td>
+                <td>J.J.NAGAR EAST,  FIRE STATION,  THIRUMANGALAM,  KOYAMBEDU SCHOOL,  M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM</td>
+              </tr>
+              <tr>
+                <th>841</th>
+                <td>70LCT</td>
+                <td>LUCAS TVS,  THIRUMANGALAM,  KOYAMBEDU SCHOOL,  M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET</td>
+              </tr>
+              <tr>
+                <th>843</th>
+                <td>70N</td>
+                <td>M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET,  ST THOMAS MOUNT PO,  THILLAI GANGA NAGAR SUBWAY,  VANUVAMPET,  CHIDAMBARAM STORES</td>
+              </tr>
+              <tr>
+                <th>845</th>
+                <td>70V</td>
+                <td>M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM,  TAMBARAM,  IRUMBULIYUR</td>
+              </tr>
+              <tr>
+                <th>847</th>
+                <td>71D</td>
+                <td>M.G.R.CENTRAL,  DASAPRAKASH,  TAYLORS ROAD,  KILPAUK GARDEN,  ICF ANNEXE,  NATHAMUNI TALKIES,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.</td>
+              </tr>
+              <tr>
+                <th>849</th>
+                <td>71E</td>
+                <td>M.G.R.CENTRAL,  DASAPRAKASH,  TAYLORS ROAD,  KILPAUK GARDEN,  ICF ANNEXE,  NATHAMUNI TALKIES,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  THIRUMULLAIVOYAL,  POLYTECHNIC,  AVADI,  KAVARAIPALAYAM</td>
+              </tr>
+              <tr>
+                <th>851</th>
+                <td>71EX</td>
+                <td>M.G.R.CENTRAL,  DASAPRAKASH,  TAYLORS ROAD,  KILPAUK GARDEN,  ICF ANNEXE,  NATHAMUNI TALKIES,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  THIRUMULLAIVOYAL,  POLYTECHNIC,  AVADI,  KAVARAIPALAYAM,  PATTABIRAM,  ANAIKATTUCHERY(DIV STAGE),  CHITHAKADU (DIV STAGE),  NEMILICHERI</td>
+              </tr>
+              <tr>
+                <th>853</th>
+                <td>71H</td>
+                <td>M.G.R.CENTRAL,  DASAPRAKASH,  TAYLORS ROAD,  KILPAUK GARDEN,  ICF ANNEXE,  NATHAMUNI TALKIES,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  THIRUMULLAIVOYAL,  POLYTECHNIC,  AVADI CIRCLE,  VILINJAMBAKKAM AMMAN KOIL</td>
+              </tr>
+              <tr>
+                <th>855</th>
+                <td>71V</td>
+                <td>M.G.R.CENTRAL,  DASAPRAKASH,  TAYLORS ROAD,  KILPAUK GARDEN,  ICF ANNEXE,  NATHAMUNI TALKIES,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  THIRUMULLAIVOYAL,  POLYTECHNIC,  AVADI,  KAVARAIPALAYAM,  PATTABIRAM,  NEMILICHERI,  THIRUNINDRAVOOR,  VEPPUMPATTU PULIYAMARAM</td>
+              </tr>
+              <tr>
+                <th>857</th>
+                <td>72</td>
+                <td>BHARATHI NAGAR(PERIYAR PATAHI),  TRUSTPURAM,  JN OF III AND 1ST AVE,  M.M.D.A.COLONY RD.JN.,  KOYAMBEDU P.S,  KOYAMBEDU MARKET,  NERKUNDRAM,  MADURAVOYAL,  VAANAGARAM,  VELAPPANCHAVADI</td>
+              </tr>
+              <tr>
+                <th>859</th>
+                <td>72CT</td>
+                <td>THIAGARAYA NAGAR,  BHARATHI NAGAR,  TRUSTPURAM,  JN OF III AND 1ST AVE,  M.M.D.A.COLONY RD.JN.</td>
+              </tr>
+              <tr>
+                <th>861</th>
+                <td>73</td>
+                <td>POLYTECHNIC,  THIRUMULLAIVOYAL,  AMBATTUR O.T.,  DUNLOP,  ATHIPATTU KRISHANER KOIL,  THREE STATUE (AYANAMBAKKAM),  VAANAGARAM,  MADURAVOYAL,  NERKUNDRAM</td>
+              </tr>
+              <tr>
+                <th>863</th>
+                <td>76</td>
+                <td>M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET,  ST THOMAS MOUNT PO,  THILAIGANGA SUBWAY,  VANUVAMPET,  PUZHITHIVAKKAM MRTS,  KAIVELI,  MADIPAKKAM RD. JN./POONIAMMAN,  KILKATTALAI,  VELLAIKAL</td>
+              </tr>
+              <tr>
+                <th>865</th>
+                <td>76B</td>
+                <td>M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET,  ST THOMAS MOUNT PO,  THILAIGANGA SUBWAY,  VANUVAMPET,  PUZHITHIVAKKAM MRTS,  KAIVELI,  MADIPAKKAM RD. JN./POONIAMMAN,  KILKATTALAI,  VELLAIKAL,  MEDAVAKKAM RD.JN.,  VEERABADRA NAGAR,  JN.OF MAMBAKKAM &amp; O.BAKKAM RD.,  CHITHALAPAKKAM,  ARASANKAZHANI</td>
+              </tr>
+              <tr>
+                <th>867</th>
+                <td>76V</td>
+                <td>M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET,  ST THOMAS MOUNT PO,  THILLAI GANGA NAGAR SUBWAY,  VANUVAMPET,  BALAJI NAGAR RD.JN.,  MADIPAKKAM RD. JN.,  KAMATCHI HOSPITAL, ,  K.V.TOWER,  THORAPAKKAM,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  SIPCOT</td>
+              </tr>
+              <tr>
+                <th>869</th>
+                <td>77</td>
+                <td>POLYTECHNIC,  THIRUMULLAIVOYAL,  AMBATTUR O.T.,  DUNLOP,  AMBATTUR I.E.,  MOGAIPAIR ROAD JN.,  THIRUMANGALAM,  KOYAMBEDU SCHOOL</td>
+              </tr>
+              <tr>
+                <th>871</th>
+                <td>77A</td>
+                <td>KOYAMBEDU SCHOOL,  THIRUMANGALAM,  MOGAIPAIR ROAD JN.,  AMBATTUR I.E.,  DUNLOP,  AYYAPPA NAGAR,  2ND WATER TANK ON SECOND AVE.</td>
+              </tr>
+              <tr>
+                <th>873</th>
+                <td>77B</td>
+                <td>KOYAMBEDU SCHOOL,  THIRUMANGALAM,  GOLDEN FLAT,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  ORAGADAM O.T.</td>
+              </tr>
+              <tr>
+                <th>875</th>
+                <td>77CT</td>
+                <td>KOYAMBEDU SCHOOL,  THIRUMANGALAM,  GOLDEN FLAT,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  THIRUMULLAIVOYAL,  VINAYAGAR KOIL</td>
+              </tr>
+              <tr>
+                <th>877</th>
+                <td>77E</td>
+                <td>KOYAMBEDU SCHOOL,  THIRUMANGALAM,  MOGAIPAIR ROAD JN.,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  THIRUMULLAIVOYAL,  POLYTECHNIC,  AVADI CIRCLE,  KOILPATHAGAI RD.JN.,  H.V.F.MAIN GATE,  C.R.P.CROSS RD.,  VENGAL CROSS ROAD,  VEERAPURAM</td>
+              </tr>
+              <tr>
+                <th>879</th>
+                <td>77K</td>
+                <td>KOYAMBEDU SCHOOL,  THIRUMANGALAM,  FIRE STATION,  J.J.NAGAR EAST,  J.J.NAGAR WEST,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  VENGATAPURAM</td>
+              </tr>
+              <tr>
+                <th>881</th>
+                <td>77M</td>
+                <td>KALLIKUPPAM,  PUDUR,  AMBATTUR O.T.,  DUNLOP,  AMBATTUR I.E.,  GOLDEN FLAT,  THIRUMANGALAM,  KOYAMBEDU SCHOOL,  KOYAMBEDU P.S</td>
+              </tr>
+              <tr>
+                <th>883</th>
+                <td>77P</td>
+                <td>KOYAMBEDU SCHOOL,  THIRUMANGALAM,  MOGAIPAIR ROAD JN.,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  THIRUMULLAIVOYAL,  POLYTECHNIC,  AVADI CIRCLE,  KOILPATHAGAI RD.JN.,  H.V.F.MAIN GATE,  AAFS CROSS ROAD,  VENGAL CROSS ROAD,  VEERAPURAM RD JN.,  BANGARUPET</td>
+              </tr>
+              <tr>
+                <th>885</th>
+                <td>77V</td>
+                <td>KOYAMBEDU SCHOOL,  THIRUMANGALAM,  GOLDEN FLAT,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  THIRUMULLAIVOYAL,  POLYTECHNIC,  AVADI,  KAVARAIPALAYAM,  PATTABIRAM,  NEMILICHERI,  THIRUNINDRAVOOR,  VEPPUMPATTU PULIYAMARAM</td>
+              </tr>
+              <tr>
+                <th>887</th>
+                <td>77VET</td>
+                <td>KOYAMBEDU SCHOOL,  THIRUMANGALAM,  GOLDEN FLAT,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  THIRUMULLAIVOYAL,  POLYTECHNIC,  AVADI,  KAVARAIPALAYAM,  PATTABIRAM,  NEMILICHERI,  THIRUNINDRAVOOR,  VEPPUMPATTU PULIYAMARAM,  VEPPAMPATTU E.WARAN NAGAR,  AYATHUR CHATHIRAM,  THOTTIKALAI JN.,  VELLAI KULAM AMBEDKAR STATUJN,  MUTHUMARIAMMAN KOIL,  AYANALLUR</td>
+              </tr>
+              <tr>
+                <th>889</th>
+                <td>78</td>
+                <td>M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET,  GUINDY TVK ESTATE,  ENG.COLLEGE,  ADYAR B.S.,  ADYAR DEPOT</td>
+              </tr>
+              <tr>
+                <th>891</th>
+                <td>79A</td>
+                <td>TAMBARAM TOWN LIMIT,  OLD PERUNGALATHUR,  MUDICHUR VILLAGE,  MANNIVAKKAM,  KARASANGAL,  M.G.R.NAGAR,  PADAPPAI,  SALAMANGALAM ROAD JN,  VANJIVANCHERY,  SARAPANCHERY,  VATTAMBAKKAM RD JN</td>
+              </tr>
+              <tr>
+                <th>893</th>
+                <td>79V</td>
+                <td>TAMBARAM TOWN LIMIT,  OLD PERUNGALATHUR,  MUDICHUR VILLAGE,  MEDAVAKKAM,  KARASANGAL,  M.G.R.NAGAR,  PADAPPAI,  SOLAMANGALAM RD JN,  VANJIVANCHERY,  SARAPANCHERY,  PANAPAKKAM,  VATTAMBAKKAM,  ORAGADAM RD JN,  ORAGADAM POLICE STATION,  TULUKATHAMMAN KOIL,  VIVEKANANDA NAGAR,  SELLIMEDU RD JN,  S.P. KOIL RAILWAY GATE,  KOLATHUR</td>
+              </tr>
+              <tr>
+                <th>895</th>
+                <td>7E</td>
+                <td>M.G.R.CENTRAL,  CHOOLAI P.O,  KELLEYS,  KILPAUK GARDEN,  ANNA NAGAR CIRCLE,  THIRUMANGALAM,  MOGAIPAIR ROAD JN.,  J.J.NAGAR WEST</td>
+              </tr>
+              <tr>
+                <th>897</th>
+                <td>7H</td>
+                <td>M.G.R.CENTRAL,  DOVETON,  KELLEYS,  KILPAUK GARDEN,  ANNA NAGAR CIRCLE,  THIRUMANGALAM,  FIRE STATION</td>
+              </tr>
+              <tr>
+                <th>899</th>
+                <td>7K</td>
+                <td>M.G.R.CENTRAL,  DOVETON,  KELLEYS,  KILPAUK GARDEN,  ANNA NAGAR CIRCLE,  THIRUMANGALAM</td>
+              </tr>
+              <tr>
+                <th>901</th>
+                <td>7M</td>
+                <td>M.G.R.CENTRAL,  DOVETON,  KELLEYS,  KILPAUK GARDEN,  ANNA NAGAR CIRCLE,  THIRUMANGALAM,  GOLDEN FLAT</td>
+              </tr>
+              <tr>
+                <th>903</th>
+                <td>7MET</td>
+                <td>M.G.R.CENTRAL,  DASAPRAKASH,  TAYLORS ROAD,  AMINJIKARAI,  ANNA NAGAR CIRCLE,  THIRUMANGALAM,  MOGAIPAIR ROAD JN.,  AMBATTUR I.E.,  ATHIPET JN</td>
+              </tr>
+              <tr>
+                <th>905</th>
+                <td>88C</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MUGALIVAKKAM,  PORUR,  MOULIVAKKAM,  PERIYAPANICHERI,  KOVOOR</td>
+              </tr>
+              <tr>
+                <th>907</th>
+                <td>88CET</td>
+                <td>PERIYAR NAGAR,  SIRUKALATHUR,  KUNDRATHUR B.S.,  THANDALAM RD JN.,  PERIYAPANICHERI,  MOULIVAKKAM,  PORUR,  MUGALIVAKKAM,  RAMAPURAM,  BUTT ROAD,  GUINDY R.S,  CONCORDE,  SAIDAPET</td>
+              </tr>
+              <tr>
+                <th>909</th>
+                <td>88D</td>
+                <td>SRINIVASA THEATER,  SAIDAPET,  CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MUGALIVAKKAM,  PERIYAPANICHERI,  THANDALAM RD JN.</td>
+              </tr>
+              <tr>
+                <th>911</th>
+                <td>88K</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MUGALIVAKKAM,  PORUR,  MOULIVAKKAM,  PERIYAPANICHERI,  THANDALAM RD JN.</td>
+              </tr>
+              <tr>
+                <th>913</th>
+                <td>88KET</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MUGALIVAKKAM,  PORUR,  MOULIVAKKAM,  PERIYAPANICHERI,  THANDALAM RD JN.,  KUNDRATHUR B.S.,  SIRUKALATHUR,  ALAGESAN NAGAR,  SOMANGALAM RD JN/N.V.R.D.JN.,  POONTHANDALAM,  SOMANGALAM</td>
+              </tr>
+              <tr>
+                <th>915</th>
+                <td>88L</td>
+                <td>VIRUGAMBAKKAM,  VALASARAVAKKAM,  PORUR,  MOULIVAKKAM,  PERIYAPANICHERI,  THANDALAM RD JN.,  KUNDRATHUR B.S.,  SIRUKALATHUR,  ALAGESAN NAGAR</td>
+              </tr>
+              <tr>
+                <th>917</th>
+                <td>88M</td>
+                <td>VIRUGAMBAKKAM,  VALASARAVAKKAM,  PORUR,  MOULIVAKKAM/MANGAU RD JN,  PERIYAPANICHERI,  THANDALAM RD JN.,  KUNDRATHUR B.S.,  SIRUKALATHUR,  ALAGESAN NAGAR,  PUDUPEDU RD.JN.,  PUDU NALLUR,  NALLUR</td>
+              </tr>
+              <tr>
+                <th>919</th>
+                <td>88R</td>
+                <td>GUINDY R.S,  BUTT ROAD,  RAMAPURAM,  MUGALIVAKKAM,  PORUR,  MOULIVAKKAM,  PERIYAPANICHERI,  THANDALAM RD JN.,  KUNDRATHUR B.S.,  SIRUKALATHUR,  ALAGESAN NAGAR,  SOMANGALAM RD JN/N.V.R.D.JN.,  POONTHANDALAM,  SOMANGALAM,  NALLUR,  AMARAMBEDU ROAD</td>
+              </tr>
+              <tr>
+                <th>921</th>
+                <td>89T</td>
+                <td>KANNADAPALAYAM,  PAZHANTHANDALAM ROAD JN.,  ETTAYAPURAM,  SOMANGALAM RD JN/N.V.R.D.JN.,  SOMANGALAM,  NALLUR,  PUDUNALLUR,  PUDUPEDU RD JN/SOMANGALAM,  ALAGESAN NAGAR,  ALAGESAN NAGAR,  SIRUKALATHUR</td>
+              </tr>
+              <tr>
+                <th>923</th>
+                <td>8ACT</td>
+                <td>ANNA NAGAR,  ROYAPURAM P.S</td>
+              </tr>
+              <tr>
+                <th>925</th>
+                <td>8B</td>
+                <td>PARRYS,  CLIVE BATTERY,  VALLALAR NAGAR,  P1.POLICE STATION,  JAMALAYA,  VEENUS</td>
+              </tr>
+              <tr>
+                <th>927</th>
+                <td>8BET</td>
+                <td>PARRYS,  CLIVE BATTERY,  VALLALAR NAGAR,  P1.POLICE STATION,  JAMALAYA,  VEENUS,  THIRU.VI.KA.NAGAR,  MOOLAKADAI,  KALPANA LAMPS/MADHAVARAM</td>
+              </tr>
+              <tr>
+                <th>929</th>
+                <td>91</td>
+                <td>T.B.SANATORIUM,  CHROMEPET,  PALLAVARAM NEW BRIDGE,  VELS UNIVERSITY,  D.J.MAT.SCHOOL,  ECHANKADU,  SUNNAMBU KOLATHUR,  KAMATCHI HOSPITAL, ,  K.V.TOWER,  THORAPAKKAM CHECKPOST,  THORAPPAKKAM TEA SHOP,  KANDANCHAVADI,  SRP TOOLS</td>
+              </tr>
+              <tr>
+                <th>931</th>
+                <td>91A</td>
+                <td>KUMARAN KUNDRAM,  CHROMEPET,  PALLAVARAM,  PALLAVARAM NEW BRIDGE,  VELS UNIVERSITY,  D.J.MAT.SCHOOL,  ECHANKADU,  SUNNAMBU KOLATHUR,  KAMATCHI HOSPITAL, ,  K.V.TOWER,  THORAPAKKAM CHECKPOST,  THORAPPAKKAM TEA SHOP,  KANDANCHAVADI,  SRP TOOLS</td>
+              </tr>
+              <tr>
+                <th>933</th>
+                <td>91ET</td>
+                <td>D.B.JAIN COLLEGE,  THORAPAKKAM CHECKPOST, ,  K.V.TOWER,  KAMATCHI HOSPITAL,  SUNNAMBU KOLATHUR,  ECHANKADU,  D.J.MAT.SCHOOL,  VELS UNIVERSITY,  PALLAVARAM NEW BRIDGE,  CHROMEPET,  T.B.SANATORIUM,  TAMBARAM,  IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  URAPAKKAM,  PALAKKA COMPANY</td>
+              </tr>
+              <tr>
+                <th>935</th>
+                <td>91V</td>
+                <td>PALAKKA COMPANY,  URAPAKKAM,  VANDALUR ZOO,  VANDALUR GATE,  PERUNGALATHUR,  IRUMBULIYUR,  TAMBARAM,  T.B.SANATORIUM,  CHROMEPET,  PALLAVARAM NEW BRIDGE,  VELS UNIVERSITY,  D.J.MAT.SCHOOL,  ECHANKADU,  SUNNAMBU KOLATHUR,  KAMATCHI HOSPITAL, ,  K.V.TOWER,  THORAPAKKAM CHECKPOST,  THORAPPAKKAM TEA SHOP,  KANDANCHAVADI,  SRP TOOLS</td>
+              </tr>
+              <tr>
+                <th>937</th>
+                <td>95</td>
+                <td>CONVENT,  MAHALAKSHMI NAGAR,  S.I.V.E.T,  JN.OF.VLY-TBM RD&amp;MVKM-K.K,  PALLAVAN NAGAR,  PERUMBAKKAM LIMIT,  SHOZHANGANALLUR P.U.OFFICE,  KARAPAKKAM,  MOOTAKARAN CHAVADI,  THORAPPAKKAM TEA SHOP,  KANDANCHAVADI,  SRP TOOLS</td>
+              </tr>
+              <tr>
+                <th>939</th>
+                <td>95G</td>
+                <td>THORAPPAKKAM TEA SHOP,  MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  PERUMBAKKAM LIMIT,  PALLAVAN NAGAR,  JN. OF VELACHERY &amp; TAMBARAM JN,  S.I.V.E.T,  MAHALAKSHMI NAGAR,  CONVENT,  TAMBARAM,  IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  URAPAKKAM,  PALAKKA COMPANY</td>
+              </tr>
+              <tr>
+                <th>941</th>
+                <td>95W</td>
+                <td>TAMBARAM EAST,  CONVENT,  MAHALAKSHMI NAGAR,  S.I.V.E.T,  JN.OF.VLY-TBM RD&amp;MVKM-K.K,  PALLAVAN NAGAR,  PERUMBAKKAM LIMIT,  SHOZHANGANALLUR P.U.OFFICE,  KARAPAKKAM,  MOOTAKARAN CHAVADI,  THORAPPAKKAM TEA SHOP,  KANDANCHAVADI,  SRP TOOLS</td>
+              </tr>
+              <tr>
+                <th>943</th>
+                <td>99</td>
+                <td>TAMBARAM EAST,  CONVENT,  MAHALAKSHMI NAGAR,  S.I.V.E.T,  Q.M ARTS (MEN),  PALLAVAN NAGAR,  PERUMBAKKAM LIMIT,  SHOZHANGANALLUR P.U.OFFICE,  WATER SUPPLY HEAD WORK,  INJAMBAKKAM,  CHOLA MANDAL,  VETTUVANKENI,  NEELANKARAI,  PALAVAKKAM,  KOTTIVAKKAM,  THIRUVANMIYUR,  ADYAR DEPOT</td>
+              </tr>
+              <tr>
+                <th>945</th>
+                <td>99A</td>
+                <td>TAMBARAM EAST,  CONVENT,  MAHALAKSHMI NAGAR,  S.I.V.E.T,  Q.M ARTS (MEN),  PALLAVAN NAGAR,  PERUMBAKKAM LIMIT</td>
+              </tr>
+              <tr>
+                <th>947</th>
+                <td>99C</td>
+                <td>CONVENT,  MAHALAKSHMI NAGAR,  S.I.V.E.T,  MEDAVAKKAM RD.JN.,  PUDHU NAGAR,  NESAMANI NAGAR,  BOLLINENI/NOOKAMPALAYAM RD JN,  PERUMBAKKAM HOUSING BOARD</td>
+              </tr>
+              <tr>
+                <th>949</th>
+                <td>9M</td>
+                <td>SAIDAPET,  CONCORDE,  GUINDY RACE COURSE OFFICE,  SECRETARIAT COLONY,  ADAMBAKKAM P.S,  HINDU VIDYALAYA</td>
+              </tr>
+              <tr>
+                <th>951</th>
+                <td>9MET</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  JN.OF RACE COURSE RD,  SECRETARIAT COLONY,  ADAMBAKKAM P.S,  HINDU VIDYALAYA</td>
+              </tr>
+              <tr>
+                <th>953</th>
+                <td>A1</td>
+                <td>P.OR &amp; SONS,  WESLEY H.S,  Y.M.I.A,  MANDAVELI,  A.M.S.HOSPITAL,  ADYAR O.T.,  ADYAR DEPOT</td>
+              </tr>
+              <tr>
+                <th>955</th>
+                <td>A1ET</td>
+                <td>P.OR &amp; SONS,  WESLEY H.S,  Y.M.I.A,  MANDAVELI,  A.M.S.HOSPITAL,  ADYAR DEPOT,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP</td>
+              </tr>
+              <tr>
+                <th>957</th>
+                <td>A45B</td>
+                <td>TRIPLICANE,  VIVEKANANDA HOUSE,  Y.M.I.A,  LUZ,  F.C.I OLD,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  BUTT ROAD</td>
+              </tr>
+              <tr>
+                <th>959</th>
+                <td>A47</td>
+                <td>ADYAR DEPOT,  ADYAR B.S.,  ENG.COLLEGE,  CONCORDE,  SAIDAPET,  THIAGARAYA NAGAR,  VIVEK &amp; CO (KRISHNAN KOIL),  VIDYODAYA,  PUSHPA NAGAR,  NUNGAMBAKKAM R.S.,  HOTEL ARUN,  ANNA NAGAR CIRCLE,  THIRUMANGALAM,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  THIRUMULLAIVOYAL,  POLYTECHNIC</td>
+              </tr>
+              <tr>
+                <th>961</th>
+                <td>A51</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY RACE COURSE OFFICE,  GURUNANAK COLLEGE,  VELACHERY,  MADIPAKKAM RD. JN.,  NARAYANAPURAM,  MEDAVAKKAM COLONY,  JN.OF.VLY-TBM RD&amp;MVKM-K.K,  S.I.V.E.T,  MAHALAKSHMI NAGAR,  CONVENT</td>
+              </tr>
+              <tr>
+                <th>963</th>
+                <td>B18</td>
+                <td>VALLALAR NAGAR,  CLIVE BATTERY,  PARRYS,  M.G.R.CENTRAL,  PERIYAR BRIDGE,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM</td>
+              </tr>
+              <tr>
+                <th>965</th>
+                <td>B19</td>
+                <td>KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  CHURCH,  PALAVASTHIC CHEMICALS,  HINDUSTAN ENG. COLLEGE</td>
+              </tr>
+              <tr>
+                <th>967</th>
+                <td>B19CT</td>
+                <td>KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  SIPCOT</td>
+              </tr>
+              <tr>
+                <th>969</th>
+                <td>B70CT</td>
+                <td>CIPET,  JAFFARKHAN PET,  JN OF III AND 1ST AVE,  M.M.D.A.COLONY RD.JN.,  KOYAMBEDU SCHOOL,  THIRUMANGALAM,  LUCAS TVS,  AMBATTUR I.E.,  DUNLOP,  AMBATTUR O.T.,  RATION SHOP</td>
+              </tr>
+              <tr>
+                <th>971</th>
+                <td>C56C</td>
+                <td>THIRUVOTRIYUR TEMPLE,  THANGAL,  TONDAIAYRPET,  ROYAPURAM P.S,  CLIVE BATTERY,  PARRYS</td>
+              </tr>
+              <tr>
+                <th>973</th>
+                <td>C56CET</td>
+                <td>THIRUVOTRIYUR,  THRUVOTRIYUR TEMPLE,  THANGAL,  TONDAIAYRPET,  ROYAPURAM P.S,  CLIVE BATTERY,  PARRYS</td>
+              </tr>
+              <tr>
+                <th>975</th>
+                <td>D51ET</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE,  VELACHERY,  MADIPAKKAM RD. JN.,  NARAYANAPURAM,  MEDAVAKKAM COLONY,  VEERABADRA NAGAR,  JN.OF MAMBAKKAM &amp; O.BAKKAM RD.</td>
+              </tr>
+              <tr>
+                <th>977</th>
+                <td>D70</td>
+                <td>MOGAIPAIR ROAD JN.,  THIRUMANGALAM,  KOYAMBEDU SCHOOL,  M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET,  GUINDY TVK ESTATE,  CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE</td>
+              </tr>
+              <tr>
+                <th>979</th>
+                <td>D70CT</td>
+                <td>COLLECTOR NAGAR,  THIRUMANGALAM,  KOYAMBEDU SCHOOL,  M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET,  GUINDY TVK ESTATE,  CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE</td>
+              </tr>
+              <tr>
+                <th>981</th>
+                <td>E18</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY R.S,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM,  TAMBARAM,  IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  URAPAKKAM,  PALAKKA COMPANY</td>
+              </tr>
+              <tr>
+                <th>983</th>
+                <td>E51</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE,  VELACHERY,  MADIPAKKAM RD. JN.,  NARAYANAPURAM,  MEDAVAKKAM COLONY,  VEERABADRA NAGAR,  JN.OF MAMBAKKAM &amp; O.BAKKAM RD.,  CHITHALAPAKKAM,  ARASANKAZHANI</td>
+              </tr>
+              <tr>
+                <th>985</th>
+                <td>F70</td>
+                <td>KAVARAIPALAYAM,  AVADI,  POLYTECHNIC,  THIRUMULLAIVOYAL,  AMBATTUR O.T.,  DUNLOP,  AMBATTUR I.E.,  LUCAS TVS,  THIRUMANGALAM,  KOYAMBEDU SCHOOL,  M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  KADUMBADIAMMAN KOIL</td>
+              </tr>
+              <tr>
+                <th>987</th>
+                <td>G18</td>
+                <td>SAIDAPET,  CONCORDE,  GUINDY R.S,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM,  TAMBARAM,  IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  URAPAKKAM,  PALAKKA COMPANY</td>
+              </tr>
+              <tr>
+                <th>989</th>
+                <td>J51</td>
+                <td>MADIPAKKAM RD. JN.,  NARAYANAPURAM,  MEDAVAKKAM COLONY,  VEERABADRA NAGAR,  JN.OF MAMBAKKAM &amp; O.BAKKAM RD.,  NOOTHANCHERI CROSS RD.,  MADURAPAKKAM RD.JN.,  PONMAR</td>
+              </tr>
+              <tr>
+                <th>991</th>
+                <td>J66</td>
+                <td>KADAPERI,  THIRUNEERMALAI MADHURAVOYAL JN,  THIRUNEERMALAI,  VAZHUTHALAMBEDU RD. JN,  KUNDRATHUR MURUGAN TEMPLE,  KUNDRATHUR B.S.,  KOLLAICHERI,  SIKKARAYAPURAM,  MANGADU,  KUMUNANCHAVADI</td>
+              </tr>
+              <tr>
+                <th>993</th>
+                <td>M1</td>
+                <td>SRP TOOLS,  I.R.T. RD.JN.,  VELACHERY,  A.V.CONSTRUCTION,  PONNIAMMAN KOIL RD. JN.,  MADIPAKKAM RD. JN.</td>
+              </tr>
+              <tr>
+                <th>995</th>
+                <td>M18C</td>
+                <td>SAIDAPET,  CONCORDE,  GUINDY R.S,  ST THOMAS MOUNT PO,  PAZHAVANTHANGAL ROAD JN.,  CHIDAMBARAM STORES,  NANGANALLUR,  MADIPAKKAM RD. JN.</td>
+              </tr>
+              <tr>
+                <th>997</th>
+                <td>M18G</td>
+                <td>KUMARAN KUNDRAM,  VARADHARAJA THEATER,  T.B.SANATORIUM,  TAMBARAM,  IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  URAPAKKAM,  PALAKKA COMPANY</td>
+              </tr>
+              <tr>
+                <th>999</th>
+                <td>M19B</td>
+                <td>SAIDAPET,  CONCORDE,  ENG.COLLEGE,  WOMEN'S POLYTECHNIC,  SRP TOOLS,  KANDANCHAVADI,  THORAPPAKKAM TEA SHOP,  THORAPPAKKAM P.T.C COLONY</td>
+              </tr>
+              <tr>
+                <th>1001</th>
+                <td>M27</td>
+                <td>BHARATHI NAGAR(PERIYAR PATAHI),  TRUSTPURAM,  VADAPALANI,  VIRUGAMBAKKAM,  CHINMAYA NAGAR,  KOYAMBEDU P.S</td>
+              </tr>
+              <tr>
+                <th>1003</th>
+                <td>M51</td>
+                <td>SAIDAPET,  CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE,  VELACHERY,  MADIPAKKAM RD. JN.,  NARAYANAPURAM,  MEDAVAKKAM COLONY,  PALLAVAN NAGAR,  PERUMBAKKAM LIMIT,  SHOZHANGANALLUR P.U.OFFICE</td>
+              </tr>
+              <tr>
+                <th>1005</th>
+                <td>M51D</td>
+                <td>CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE,  VELACHERY,  MADIPAKKAM RD. JN.,  NARAYANAPURAM,  MEDAVAKKAM COLONY,  VEERABADRA NAGAR,  JN.OF MAMBAKKAM &amp; O.BAKKAM RD.,  CHITHALAPAKKAM,  ARASANKAZHANI,  OTTIAMBAKKAM,  KARANAI,  SIRUCHERI,  SONALUR / PUDUR,  PUDUPAKKAM,  VANDALUR ROAD.JN.,  SATHANKUPPAM</td>
+              </tr>
+              <tr>
+                <th>1007</th>
+                <td>M51R</td>
+                <td>M.G.R.CENTRAL,  P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY RACE COURSE OFFICE,  SECRETARIAT COLONY,  KAKKAN BRIDGE,  BRINDAVAN COLONY</td>
+              </tr>
+              <tr>
+                <th>1009</th>
+                <td>M51V</td>
+                <td>SAIDAPET,  CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE,  VELACHERY,  MADIPAKKAM RD. JN.,  NARAYANAPURAM,  MEDAVAKKAM COLONY,  VEERABADRA NAGAR,  JN.OF MAMBAKKAM &amp; O.BAKKAM RD.,  NOOTHANCHERI CROSS RD.,  MADURAPAKKAM RD.JN.,  PONMAR,  MAMBAKKAM TEMPLE,  MAMBAKKAM RICE MILL</td>
+              </tr>
+              <tr>
+                <th>1011</th>
+                <td>M52ET</td>
+                <td>PAMMAL,  PALLAVARAM,  CHROMEPET,  T.B.SANATORIUM,  TAMBARAM,  IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  URAPAKKAM,  PALAKKA COMPANY</td>
+              </tr>
+              <tr>
+                <th>1013</th>
+                <td>M60</td>
+                <td>SAIDAPET,  CONCORDE,  GUINDY R.S,  ST THOMAS MOUNT PO,  MEENAMABAKKAM OLD AIRPORT,  THIRUSOOLAM NATIONAL AIRPORT,  PALLAVARAM,  PAMMAL,  ANAKAPUTHUR,  ANDARKUPPAM,  KUNDRATHUR B.S.,  SIRUKALATHUR,  ALAGESAN NAGAR</td>
+              </tr>
+              <tr>
+                <th>1015</th>
+                <td>M70</td>
+                <td>M.M.D.A.COLONY RD.JN.,  JN OF III AND 1ST AVE,  JAFFARKHAN PET,  CIPET,  GUINDY R.S,  CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE,  VELACHERY,  I.R.T. RD.JN.,  SRP TOOLS</td>
+              </tr>
+              <tr>
+                <th>1017</th>
+                <td>M88</td>
+                <td>VIRUGAMBAKKAM,  VALASARAVAKKAM,  PORUR,  MOULIVAKKAM,  PERIYAPANICHERI,  THANDALAM RD JN.,  KUNDRATHUR B.S.</td>
+              </tr>
+              <tr>
+                <th>1019</th>
+                <td>M88ET</td>
+                <td>VIRUGAMBAKKAM,  VALASARAVAKKAM,  PORUR,  MOULIVAKKAM,  PERIYAPANICHERI,  THANDALAM RD JN.,  KUNDRATHUR B.S.,  SIRUKALATHUR,  ALAGESAN NAGAR,  PERIYAR NAGAR</td>
+              </tr>
+              <tr>
+                <th>1021</th>
+                <td>M88T</td>
+                <td>VIRUGAMBAKKAM,  VALASARAVAKKAM,  PORUR,  MOULIVAKKAM,  PERIYAPANICHERI,  THANDALAM RD JN.,  KUNDRATHUR B.S.,  SIRUKALATHUR,  ALAGESAN NAGAR,  PUDUPEIR ROAD JN,  NALLUR PUDU NAGAR,  AMARAMBEDU CHATRAM</td>
+              </tr>
+              <tr>
+                <th>1023</th>
+                <td>N45B</td>
+                <td>SECRETARIAT,  CHEPAUK,  TRIPLICANE,  VIVEKANANDA HOUSE,  Y.M.I.A,  LUZ,  F.C.I OLD,  S.H.B,  SAIDAPET,  CONCORDE,  GUINDY TVK ESTATE,  ST THOMAS MOUNT PO,  JN.OF.PALAVANTHANGAL &amp;GST RD,  CHIDAMBARAM STORES,  NANGANALLUR,  MADIPAKKAM RD. JN.</td>
+              </tr>
+              <tr>
+                <th>1025</th>
+                <td>S1</td>
+                <td>DHARGAS</td>
+              </tr>
+              <tr>
+                <th>1027</th>
+                <td>S100</td>
+                <td>PALLAVARAM,  CHROMEPET,  CHITLAPAKKAM,  JAIGOPAL GARODIA HR.SEC.SCH,  TAMBARAM EAST</td>
+              </tr>
+              <tr>
+                <th>1029</th>
+                <td>S118G</td>
+                <td>IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  URAPAKKAM,  PALAKKA COMPANY,  GUDUVANCHERY,  JN.OF MAMBAKKAM RD &amp; ATANOORRD,  KUTHANOOR ROAD JN.,  THIRUTHUVELI</td>
+              </tr>
+              <tr>
+                <th>1031</th>
+                <td>S118N</td>
+                <td>IRUMBULIYUR,  PERUNGALATHUR,  VANDALUR GATE,  VANDALUR ZOO,  URAPAKKAM BRIDGE,  ATHANOOR RD JN,  SETC QUARTERS,  MADAMBAKKAM RICE MILL</td>
+              </tr>
+              <tr>
+                <th>1033</th>
+                <td>S12</td>
+                <td>PERIYAR NAGAR,  MURUGAN KALYANA MANDABAM</td>
+              </tr>
+              <tr>
+                <th>1035</th>
+                <td>S13</td>
+                <td>SECRETARIAT COLONY,  HINDU VIDYALAYA,  SRINIVASA NAGAR</td>
+              </tr>
+              <tr>
+                <th>1037</th>
+                <td>S145</td>
+                <td>SAYANI,  VELLALA ST.JN.,  KILPAUK WATER TANK,  ANNA NAGAR ROUNTANA(METRO),  NADUVANKARAI BRIDGE,  ARUMBAKKAM</td>
+              </tr>
+              <tr>
+                <th>1039</th>
+                <td>S15</td>
+                <td>KANAKAM MAIN ROAD,  IIT</td>
+              </tr>
+              <tr>
+                <th>1041</th>
+                <td>S165</td>
+                <td>THANDALAM,  THARAPAKKAM MAIN RD,  ANAKAPUTHUR AMMANKOVIL,  PAMMAL</td>
+              </tr>
+              <tr>
+                <th>1043</th>
+                <td>S166</td>
+                <td>MOULIVAKKAM,  PERIYAPANICHERI</td>
+              </tr>
+              <tr>
+                <th>1045</th>
+                <td>S167</td>
+                <td>MOULIVAKKAM RD.JN.,  KOLAPAKKAM PUO,  ADYAR BRIDGE INDRA NAGAR RD,  POZHICHALUR,  PAMMAL RD.JN.</td>
+              </tr>
+              <tr>
+                <th>1047</th>
+                <td>S169</td>
+                <td>VOC NAGAR JN.,  KORUKKUPET,  SLUM CLEARANCE BOARD,  K.KANNADASAN NAGAR,  SIDCO,  M.K.B.NAGAR,  SARMA NAGAR</td>
+              </tr>
+              <tr>
+                <th>1049</th>
+                <td>S17</td>
+                <td>R.A.PURAM 3RD CROSS STREET,  ADYAR GATE,  KOTTURPURAM,  CANCER HOSPITAL SCAN CENTRE</td>
+              </tr>
+              <tr>
+                <th>1051</th>
+                <td>S18D</td>
+                <td>CONCORDE,  GUINDY RACE COURSE OFFICE,  SECRETARIAT COLONY,  ST THOMAS MOUNT PO,  VANUVAMPET,  PUZHITHIVAKKAM MRTS,  KAIVELI,  MADIPAKKAM RD. JN./POONIAMMAN</td>
+              </tr>
+              <tr>
+                <th>1053</th>
+                <td>S18H</td>
+                <td>KANNADAPALAYAM,  PAZHANTHANDALAM ROAD JN.,  ETTAYAPURAM,  SOMANGALAM RD JN/N.V.R.D.JN.</td>
+              </tr>
+              <tr>
+                <th>1055</th>
+                <td>S18K</td>
+                <td>P.OR &amp; SONS,  T.V.S,  D.M.S,  S.H.B,  SRINIVASA THEATER,  KADUMBADIAMMAN KOIL</td>
+              </tr>
+              <tr>
+                <th>1057</th>
+                <td>S19</td>
+                <td>KUMARAN KUNDRAM,  PONNIAMMAN KOIL RD. JN.,  ARUNODHAYA NAGAR,  KOVILAMBAKKAM</td>
+              </tr>
+              <tr>
+                <th>1059</th>
+                <td>S2</td>
+                <td>KUMARAN KUNDRAM,  PONNIAMMAN KOIL RD. JN.,  PILLAYAR KOIL,  S.I.V.E.T,  J.S.GRAND PALACE</td>
+              </tr>
+              <tr>
+                <th>1061</th>
+                <td>S20</td>
+                <td>K.K.NAGAR,  NESAPAKKAM,  RAMAPURAM PILLAIYAR KOIL,  RAMAPURAM MIOT</td>
+              </tr>
+              <tr>
+                <th>1063</th>
+                <td>S21C</td>
+                <td>SIMPSON,  DAMS ROAD,  WESLEY H.S,  Y.M.I.A</td>
+              </tr>
+              <tr>
+                <th>1065</th>
+                <td>S22</td>
+                <td>IYYAPPANTHANGAL,  ALAMARAM RD. JN.,  PATTUR</td>
+              </tr>
+              <tr>
+                <th>1067</th>
+                <td>S24</td>
+                <td>SATHYA LOK GURUKULAM,  FISH MARKET,  VELAPPANCHAVADI</td>
+              </tr>
+              <tr>
+                <th>1069</th>
+                <td>S25</td>
+                <td>S.S.MOTOR,  MEENAKSHI AMMAN DENTAL COLL</td>
+              </tr>
+              <tr>
+                <th>1071</th>
+                <td>S26</td>
+                <td>INDIRA COLONY,  NESAPAKKAM MGR STATUE,  RAMAPURAM</td>
+              </tr>
+              <tr>
+                <th>1073</th>
+                <td>S28</td>
+                <td>KOYAMBEDU SCHOOL,  NERKUNDRAM,  MADURAVOYAL MARKET,  VANAGARAM,  PORUR GARDEN,  PORUR</td>
+              </tr>
+              <tr>
+                <th>1075</th>
+                <td>S30</td>
+                <td>KADUMBADIAMMAN KOIL,  METTUPALAYAM,  JAFFARKHAN PET</td>
+              </tr>
+              <tr>
+                <th>1077</th>
+                <td>S31</td>
+                <td>VIRUGAMBAKKAM,  HAPPY SHOPPY,  AMUTHAM STORES,  LAKSHMI APPARTMENTS,  CHINMAYA NAGAR,  KOYAMBEDU P.S</td>
+              </tr>
+              <tr>
+                <th>1079</th>
+                <td>S31A</td>
+                <td>TAMBARAM EAST,  CONVENT,  CAMP ROAD,  BALAJI NAGAR (BHARATH ENG COL),  MEPPADU HOSPITAL</td>
+              </tr>
+              <tr>
+                <th>1081</th>
+                <td>S31B</td>
+                <td>TAMBARAM EAST,  C.K.C.,  CAMP ROAD,  BALAJI NAGAR (BHARATH ENG COL),  MEPPADU HOSPITAL,  ANNAI SATHYA NAGAR,  KANDIGAI SCHOOL</td>
+              </tr>
+              <tr>
+                <th>1083</th>
+                <td>S31G</td>
+                <td>TAMBARAM EAST,  CONVENT,  MAHALAKSHMI NAGAR,  SRINIVASA NAGAR,  MADAMBAKKAM KOIL,  NOOTHANCHERI CROSS RD.,  VENGAIVASAL P.H.CENTRE,  VENGAIVASAL RD.JN.</td>
+              </tr>
+              <tr>
+                <th>1085</th>
+                <td>S31M</td>
+                <td>TAMBARAM EAST,  CONVENT,  CAMP ROAD,  BALAJI NAGAR (BHARATH ENG COL),  MEPPADU HOSPITAL,  AGARAMTHEN,  KOVILAMCHERRY VILLAGE</td>
+              </tr>
+              <tr>
+                <th>1087</th>
+                <td>S35</td>
+                <td>POONAMALLEE RD JN.,  CIPET,  GUINDY TVK ESTATE,  SAIDAPET WEST (JAYARAJ THE),  JAFFARKHAN PET</td>
+              </tr>
+              <tr>
+                <th>1089</th>
+                <td>S36</td>
+                <td>LOYOLA COLLEGE,  STERLING ROAD,  GEMINI</td>
+              </tr>
+              <tr>
+                <th>1091</th>
+                <td>S4</td>
+                <td>KUMARAN KUNDRAM,  POSTAL COLONY,  VIJAYALAKSHMI APARTMENTS,  NAGATHAMMAL KOIL,  KOVILAMBAKKAM</td>
+              </tr>
+              <tr>
+                <th>1093</th>
+                <td>S40</td>
+                <td>STEPHEN CHURCH,  COWL BAZAAR</td>
+              </tr>
+              <tr>
+                <th>1095</th>
+                <td>S42</td>
+                <td>DEVAR NAGAR (SIVASHAKTHI),  THIRUVALUVAR RD.JN.,  THAI MOOGAMBIGAI</td>
+              </tr>
+              <tr>
+                <th>1097</th>
+                <td>S43</td>
+                <td>KANCHI SWEETS (SRINIVASA NAGAR,  SENTHIL NAGAR,  MADANAKUPPAM,  KALLIKUPPAM RED HILLS RD.JN.</td>
+              </tr>
+              <tr>
+                <th>1099</th>
+                <td>S44</td>
+                <td>VEENUS,  LOCO BRIDGE,  SILANTHIKUTTAI,  SRINIVASA NAGAR</td>
+              </tr>
+              <tr>
+                <th>1101</th>
+                <td>S45</td>
+                <td>KAVARAIPALAYAM,  PATTABIRAM,  ANNAIKATTUCHERY,  SORANJERI,  AYAICHERY,  KANNAPALAYAM,  METTUPALAYAM,  PARIVAKKAM</td>
+              </tr>
+              <tr>
+                <th>1103</th>
+                <td>S47</td>
+                <td>KAVARAIPALAYAM,  CORPORATION SCHOOL,  ELLAIAMMAN KOIL,  MITTANAMALLEE TURNING</td>
+              </tr>
+              <tr>
+                <th>1105</th>
+                <td>S48</td>
+                <td>KAVARAIPALAYAM</td>
+              </tr>
+              <tr>
+                <th>1109</th>
+                <td>S50</td>
+                <td>KARUMARI AMMAN ARCH,  SELVAM SCHOOL,  OILCHERY,  SRINIVASA PERUMAL KOIL,  PARIVAKKAM JN.</td>
+              </tr>
+              <tr>
+                <th>1111</th>
+                <td>S51</td>
+                <td>J.J.NAGAR WEST,  J.J.NAGAR EAST,  NERKUNDRAM,  KOYAMBEDU SCHOOL</td>
+              </tr>
+              <tr>
+                <th>1113</th>
+                <td>S52</td>
+                <td>AVADI MOSQUE,  GOVARDANAGIRI,  PARUTHIPATTU RD. JN.,  SUNDARASOZHAPURAM</td>
+              </tr>
+              <tr>
+                <th>1115</th>
+                <td>S52H</td>
+                <td>PAMMAL,  PALLAVARAM,  CHROMEPET,  KUMARAN KUNDRAM</td>
+              </tr>
+              <tr>
+                <th>1117</th>
+                <td>S53</td>
+                <td>J.J.NAGAR WEST,  MOOVAR STATUE,  VANAGARAM</td>
+              </tr>
+              <tr>
+                <th>1119</th>
+                <td>S54C</td>
+                <td>PARIVAKKAM,  KOLAPPANCHERY,  CHITTUKADU,  ANNAMBEDU,  THANDARAI</td>
+              </tr>
+              <tr>
+                <th>1121</th>
+                <td>S54TC</td>
+                <td>IYYAPPANTHANGAL,  KUMUNANCHAVADI,  POONAMALLEE,  NAZARATHPET,  CHEMBARAMBAKKAM RD.JN.</td>
+              </tr>
+              <tr>
+                <th>1123</th>
+                <td>S54VC</td>
+                <td>VARADARAJA PURAM,  THIRUMAZHISAI,  VELLAVEDU,  ANDERSONPET,  PUTHUCHATHIRAM,  PERIYA KOTTAMEDU,  RAMASAMY NAGAR,  PERUMALPATTU,  SRI RAM ENGG.COLLEGE</td>
+              </tr>
+              <tr>
+                <th>1125</th>
+                <td>S55</td>
+                <td>AMBATTUR O.T.,  THIRUMULLAIVOYAL,  VINAYAGAR KOIL,  VENKATACHALAM NAGAR,  UPPARAPALAYAM &amp; POTHUR,  ARIKAMBEDU,  KATTUR</td>
+              </tr>
+              <tr>
+                <th>1127</th>
+                <td>S55B</td>
+                <td>KANNADAPALAYAM,  PAZHANTHANDALAM ROAD JN.,  DURGAS,  PAZHANTHANDALAM ROAD JN.</td>
+              </tr>
+              <tr>
+                <th>1129</th>
+                <td>S55ET</td>
+                <td>TAMBARAM TOWN LIMIT</td>
+              </tr>
+              <tr>
+                <th>1131</th>
+                <td>S55V</td>
+                <td>TAMBARAM TOWN LIMIT,  OLD PERUNGALATHUR,  MUDICHUR VILLAGE,  MANNIVAKKAM</td>
+              </tr>
+              <tr>
+                <th>1133</th>
+                <td>S56</td>
+                <td>LIFT GATE,  SATHYAMURTHY NAGAR,  JN. OF PONNERI RD &amp; ERANOOR,  MANALI RD JN.</td>
+              </tr>
+              <tr>
+                <th>1135</th>
+                <td>S58</td>
+                <td>DUNLOP,  AMBATTUR O.T.,  RATION SHOP</td>
+              </tr>
+              <tr>
+                <th>1137</th>
+                <td>S59</td>
+                <td>AMMA NAGAR,  ROYAL NAGAR/MAC NAGAR,  ACS HOSPITAL,  PATHIRIVEDU</td>
+              </tr>
+              <tr>
+                <th>1139</th>
+                <td>S6</td>
+                <td>TAMBARAM EAST,  C.K.C.,  CAMP ROAD,  BHARATH ENGG. COLL,  MAPPEDU RD. JN.,  PUTHUR MEPPEDU 6TH STREET</td>
+              </tr>
+              <tr>
+                <th>1141</th>
+                <td>S60</td>
+                <td>KOYAMBEDU SCHOOL,  NERKUNDRAM,  SHAKTHI NAGAR,  GANDHI ROAD</td>
+              </tr>
+              <tr>
+                <th>1143</th>
+                <td>S61A</td>
+                <td>KOILPATHAGAI RD.JN.,  H.V.F.MAIN GATE,  C.R.P.CROSS RD.,  C.V.D.MITNAMALLEE RD.JN.,  PALAVEDU</td>
+              </tr>
+              <tr>
+                <th>1145</th>
+                <td>S61K</td>
+                <td>KOILPATHAGAI RD.JN.,  H.V.F.MAIN GATE,  C.R.P.F,  VENGAL CROSS ROAD,  VEERAPURAM</td>
+              </tr>
+              <tr>
+                <th>1147</th>
+                <td>S62</td>
+                <td>PERAMBUR MARKET,  MOOLAKADAI,  GANDHI STATUE,  MOOLACHATHIRAM,  MANALI MARKET</td>
+              </tr>
+              <tr>
+                <th>1149</th>
+                <td>S63</td>
+                <td>MANALI MARKET,  SEAVOIL,  KANADASAN NAGAR,  SIDCO</td>
+              </tr>
+              <tr>
+                <th>1151</th>
+                <td>S64</td>
+                <td>PERAMBUR MARKET,  MOOLAKADAI,  THAPAL PETTI (MADHAVARAM),  TELEPHONE COLONY 1ST STREET,  MANJAMBAKKAM LINK RD.</td>
+              </tr>
+              <tr>
+                <th>1153</th>
+                <td>S65D</td>
+                <td>NATHAMBEDU ROAD JN.,  NATHAMBEDU COLONY,  PAKKAM VILLAGE,  PULIYUR,  PULIYUR KANDIGAI,  SIRUKALATHUR,  V.S.B.GARDEN,  VADHATTUR JN.</td>
+              </tr>
+              <tr>
+                <th>1155</th>
+                <td>S65E</td>
+                <td>KAMARAJ NAGAR,  GOVARDANAGIRI,  MELPAKKAM,  SENNEERKUPPAM,  KARAYANCAHVADI,  POONAMALLEE</td>
+              </tr>
+              <tr>
+                <th>1157</th>
+                <td>S66</td>
+                <td>KUNDRATHUR REGISTER OFFICE,  METRO GRAND CITY,  METHA NAGAR ENTRANCE(ADKUPM),  ANAKAPUTHUR,  PAMMAL</td>
+              </tr>
+              <tr>
+                <th>1159</th>
+                <td>S68</td>
+                <td>SRINIVASA NAGAR,  THAI MOOGAMBIGAI TEMPLE,  SBI,  MOOGAMBIGAI COMPLEX,  KUMARAN NAGAR,  KANAGAMACHATHIRAM</td>
+              </tr>
+              <tr>
+                <th>1161</th>
+                <td>S69</td>
+                <td>ANDARKUPPAM,  ANAKAPUTHUR,  PAMMAL,  PALLAVARAM</td>
+              </tr>
+              <tr>
+                <th>1163</th>
+                <td>S73</td>
+                <td>J.J.NAGAR WEST,  MANTHOPU,  AACHI MASALA FOODS,  KOLADI GROUND</td>
+              </tr>
+              <tr>
+                <th>1165</th>
+                <td>S73C</td>
+                <td>DUNLOP,  AYYAPPA NAGAR</td>
+              </tr>
+              <tr>
+                <th>1167</th>
+                <td>S73CT</td>
+                <td>DUNLOP,  AYYAPPA NAGAR</td>
+              </tr>
+              <tr>
+                <th>1169</th>
+                <td>S74</td>
+                <td>PERUMAL KOIL,  PALLAVARAM GATE</td>
+              </tr>
+              <tr>
+                <th>1171</th>
+                <td>S75</td>
+                <td>VENKATAPURAM,  KARUKKU,  ERIKARAI</td>
+              </tr>
+              <tr>
+                <th>1173</th>
+                <td>S76</td>
+                <td>SAIDAPET,  CONCORDE,  GUINDY R.S</td>
+              </tr>
+              <tr>
+                <th>1175</th>
+                <td>S77FC</td>
+                <td>KAVARAIPALAYAM,  PATTABIRAM,  ANNAIKATTUCHERY,  SITHUKADU,  NEMILICHERI,  THIRUNINDRAVOOR,  NATHAMBEDU ROAD JN.,  NATHAMBEDU COLONY,  PAKKAM VILLAGE,  PULIYUR,  PULIYUR KANDIGAI,  SIRUKALATHUR,  V.S.B.GARDEN,  VADHATTUR JN.,  MELKONDAIYUR,  KARAYANMEDU</td>
+              </tr>
+              <tr>
+                <th>1177</th>
+                <td>S81</td>
+                <td>PALLAVARAM,  GAS COMPANY</td>
+              </tr>
+              <tr>
+                <th>1179</th>
+                <td>S82</td>
+                <td>THILLAI GANGA NAGAR SUBWAY,  VANUVAMPET R.S.,  ULLAGARAM</td>
+              </tr>
+              <tr>
+                <th>1181</th>
+                <td>S84</td>
+                <td>BUTT ROAD,  RAMAPURAM JN.</td>
+              </tr>
+              <tr>
+                <th>1183</th>
+                <td>S86</td>
+                <td>ELLAIAMMAN KOIL,  GOVT.GIRLS SCHOOL,  INDRA GANDHI STATUE,  NESAPAKKAM MGR STATUE,  ANGALAMMAN KOIL(ARASAMARAM)</td>
+              </tr>
+              <tr>
+                <th>1185</th>
+                <td>S87</td>
+                <td>K.K.NAGAR WEST,  VIRUGAMBAKKAM,  CHINMAYA NAGAR,  KOYAMBEDU SCHOOL</td>
+              </tr>
+              <tr>
+                <th>1187</th>
+                <td>S88A</td>
+                <td>MOULIVAKKAM,  PERIYAPANICHERI,  THANDALAM RD JN.,  KUNDRATHUR B.S.,  SIRUKALATHUR,  AMBEDKAR GROUND</td>
+              </tr>
+              <tr>
+                <th>1189</th>
+                <td>S93</td>
+                <td>MADIPAKKAM RD. JN.,  KAMATCHI HOSPITAL,  AGS COLONY,  ARUN NAGAR</td>
+              </tr>
+              <tr>
+                <th>1191</th>
+                <td>S94</td>
+                <td>T.B.SANATORIUM,  CHROMEPET,  MUTHUMARIAMMAN KOIL,  TEMPLE TOWER,  THIRUNEERMALAI,  VAZHUTHALAMBEDU RD. JN</td>
+              </tr>
+              <tr>
+                <th>1193</th>
+                <td>S95</td>
+                <td>BARATHI NAGAR,  DR.AMBEDKAR LAW UNIV</td>
+              </tr>
+              <tr>
+                <th>1195</th>
+                <td>S96</td>
+                <td>TRIPLICANE,  CHEPAUK</td>
+              </tr>
+              <tr>
+                <th>1197</th>
+                <td>S97</td>
+                <td>GUINDY R.S,  PADAVATTAMMAN KOIL,  GURUNANAK COLLEGE</td>
+              </tr>
+              <tr>
+                <th>1199</th>
+                <td>S98</td>
+                <td>ENG.COLLEGE,  WOMEN'S POLYTECHNIC</td>
+              </tr>
+              <tr>
+                <th>1201</th>
+                <td>S99</td>
+                <td>ARUN HOTEL,  NUNGAMBAKKAM R.S.,  MAHALINGAPURAM,  BHARATHI NAGAR</td>
+              </tr>
+              <tr>
+                <th>1203</th>
+                <td>SC1</td>
+                <td>KORUKKUPET,  AMBEDKAR NAGAR,  VALLALAR NAGAR,  THEAGARAYA COLLEGE,  TONDAIAYRPET</td>
+              </tr>
+              <tr>
+                <th>1205</th>
+                <td>T19</td>
+                <td>MOOTAKARAN CHAVADI,  KARAPAKKAM,  SHOZHANGANALLUR P.U.OFFICE,  KUMARAN NAGAR,  SEMMANCHERI,  NAVALUR,  CHURCH,  PALAVASTHIC CHEMICALS,  HINDUSTAN ENG. COLLEGE,  KELAMBAKKAM,  CHENGAMMAL RD. JN.,  KOMAN NAGAR RD JN.,  KALAVAKKAM TEA STALL</td>
+              </tr>
+              <tr>
+                <th>1207</th>
+                <td>T29</td>
+                <td>VEENUS,  PERAMBUR,  GANESH PURAM,  P1.POLICE STATION,  DOVETON,  DASAPRAKASH,  EGMORE,  ANNA ROAD P.O./DAMS ROAD,  WESLEY H.S,  Y.M.I.A,  MANDAVELI,  A.M.S.HOSPITAL,  ADYAR O.T.,  ADYAR DEPOT</td>
+              </tr>
+              <tr>
+                <th>1209</th>
+                <td>V51</td>
+                <td>SAIDAPET,  CONCORDE,  JN.OF RACE COURSE RD,  GURUNANAK COLLEGE,  VELACHERY,  A.V.CONSTRUCTION,  PONNIAMMAN KOIL RD. JN.,  MADIPAKKAM RD. JN.,  KILKATTALAI,  VELLAIKAL,  JN.OF.VLY-TBM RD&amp;MVKM-K.K,  S.I.V.E.T,  MAHALAKSHMI NAGAR,  CONVENT,  TAMBARAM EAST</td>
+              </tr>
+            </tbody>
+          </table>
+      
+      <script src="../static/index.js"></script>
+</body>
+</html>

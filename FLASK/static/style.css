@@ -1,0 +1,408 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* * {
+  margin: 0%;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bolder;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  scroll-behavior: smooth;
+
+} */
+  
+  html {
+    background: linear-gradient(to bottom, #009999 0%, #003300 100%);
+    /* min-height: 100%; */
+    /* font-size: 62.5%; */
+      /* overflow-x: hidden; */
+  }
+  
+  /******************************************** styling navbar******************************************************************************** */
+  
+  nav {
+    background: linear-gradient(to bottom, #000000 0%, #ffcc00 100%);
+    padding: 0.6em 0em;
+  }
+  
+  /* styling ul list inside navbar containing list items */
+  ul {
+    display: flex;
+    justify-content: space-between;
+    /* to push menu button to extreme left */
+    margin-left: -2em;
+    /* for having yellow in right side after login */
+    margin-right: 2em;
+  }
+  
+  /* removing bullets*/
+  li {
+    list-style: none;
+  }
+  
+  /* space between icon and contact us */
+  li span {
+    margin-right: 0.2em;
+  }
+  
+  /* setting text colour of navbar and sidemenu*/
+  nav ul a,
+  #sidemenu a {
+    color: #009999;
+    text-decoration: none;
+    font-weight: 900;
+  }
+  /* for changing color when hovering for both main navbar and sidemenu*/
+  nav a:hover,
+  #sidemenu a:hover {
+    color: #003300;
+  }
+  
+  /* setting colour of home link to red */
+  #home {
+    color: #a11712;
+   
+  }
+  
+  /************************************************* styling sidemenu ***********************************************************************/
+  
+  #sidemenu {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to bottom, #ffff00 0%, #ffcc00 100%);
+    height: 100vh;
+    width: max-content;
+  }
+  
+  /* each link is given padding */
+  #sidemenu a {
+    padding: 2em 0.8em;
+  }
+  
+  /* the padded link for menu title alone is green */
+  #menutitle {
+    background-color: #003300;
+  }
+  
+  /* the menu title list item text is in yellow */
+  #menutit {
+    color: #ffcc00;
+  }
+  
+  /* **************************styling title and logo************************************************ */
+  
+  /* ****************************styling entire container************************************** */
+  #titlebar {
+    background-color: black;
+    height: 125px;
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  /* making logo grow */
+  #logo {
+    flex-grow: 1;
+  }
+  
+  /* styling tagline chose your destination */
+  #tagline {
+    color: #d1c515;
+    font-size: 1.5rem;
+    margin-left: 1.2em;
+    margin-top: 3.5rem;
+    flex-grow: 1;
+  }
+  
+  /* stling plane logo */
+  .fa-plane-departure {
+    margin-top: 1.8rem;
+    margin-left: 4rem;
+    font-size: 5rem;
+    color: rgb(101, 174, 184);
+    opacity: 0.6;
+  }
+  
+  /* styling bluesky title */
+  #title {
+    color: #d1c515;
+    font-weight: 900;
+    font-size: 2.5em;
+    margin-left: 2.4rem;
+    margin-top: -4.5rem;
+  }
+  
+  #bookflt-widget {
+    margin-top: 2em;
+    margin-left: 4em;
+    margin-right: 4em;
+    padding-bottom: 1em;
+    background: linear-gradient(rgb(206, 181, 113),rgb(233, 163, 14));
+  }
+
+  .dataframe{
+    width: 85em;
+  }
+
+  
+  
+  #bookflt {
+    font-weight: 900;
+    font-size: large;
+    text-align: center;
+    line-height: 80px;
+    height: 50px;
+    padding-bottom: 2em;
+    margin-right: 2em;
+  }
+  #header {
+    display: inline-block;
+  
+    vertical-align: middle;
+  }
+  #fromlistcont,
+  #tolistcont {
+    text-align: center;
+  
+    width: 300px;
+  
+    max-width: 400px;
+    border-radius: 8px;
+  }
+  
+  #fromlist,
+  #tolist {
+    max-height: 200px;
+    overflow-y: scroll;
+    border-radius: 8px;
+  }
+  
+  #fromlist::-webkit-scrollbar,
+  #tolist::-webkit-scrollbar {
+    width: 8px;
+    background: #0d1414;
+    border-radius: 0 8px 8px 0;
+  }
+  
+  #fromlist::-webkit-scrollbar-thumb,
+  #tolist::-webkit-scrollbar-thumb {
+    background: #414b57;
+  }
+  
+  #fromlist div,
+  #tolist div,
+  #date div,
+  #searchflt {
+    height: 40px;
+    text-align: center;
+    max-width: 400px;
+  
+    padding: 0.2em 2em;
+  
+    background-color: #2f3640;
+  
+    color: aliceblue;
+    font-weight: 700;
+    line-height: 40px;
+  }
+  
+  #fromlist div:hover,
+  #tolist div:hover {
+    background-color: #414b57;
+  }
+  
+  #fromto {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  #fromlistcont #selectedfrom,
+  #tolistcont #selectedto {
+    height: 40px;
+    color: aliceblue;
+    font-weight: 700;
+    padding: 0.2em 0.2em;
+    line-height: 40px;
+    border-bottom: 1em solid rgb(180, 179, 99);
+    background-color: #2f3640;
+    border: 2px solid white;
+  }
+  
+  #fromlistcont p,
+  #tolistcont p {
+    margin-left: -14em;
+    color: black;
+    font-weight: 900;
+  }
+  
+  #date {
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: -5em;
+  }
+  
+  #date div {
+    margin-top: 2em;
+    max-width: 400px;
+    margin-left: 4em;
+    border: 2px solid white;
+  }
+  
+  #date div input {
+    background-color: #2f3640;
+    color: white;
+    border: none;
+  }
+  
+  #searchflt-btn {
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+  }
+  
+  #searchflt {
+    width: 200px;
+    margin-bottom: 1em;
+    text-align: center;
+    height: 50px;
+    border: 4px solid #414b57;
+  }
+  
+  #border {
+    /* background-color: tomato; */
+    margin: 0em 5em;
+    padding: 2em 0em;
+    border: 5px solid rgb(133, 119, 116);
+    margin-bottom: 1em;
+  }
+  
+  #showflt,
+  #flttable {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  
+  table caption {
+    padding-bottom: 2em;
+    font-weight: 900;
+    font-size: larger;
+  }
+  
+  td,
+  th {
+    padding: 1em;
+  }
+  
+  table {
+    border: 2px solid rgb(255, 255, 255);
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    margin: 1em;
+  }
+  
+  tr{
+    background: #838f9e;
+    font-weight: 900;
+  }
+  
+  #heading{
+    background: #2f3640;
+    color: white;
+  }
+  
+  td button{
+    background-color: #414b57;
+    height: 40px;
+    width: 100px;
+    color: white;
+    font-weight: 700;
+  }
+  
+  #about{
+    margin: 2em;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  img{
+    width: 400px;
+    height: 450px;
+  }
+  
+  #text{
+    margin-left: 1em;
+    
+    width: 800px;
+  }
+  
+  #text-title{
+    font-size: 1.6em;
+    font-style: italic;
+    word-spacing: 2px;
+    font-weight: 800;
+    color: #ffff00;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-bottom: 1em;
+  }
+  
+  #text-content{
+    color: #d1c515;
+    line-height: 24px;
+    font-size: 1.6em;
+  }
+  
+  #pic{
+    background:url("./pexels-rafael-cerqueira-4737484.jpg");
+    width: 100%;
+    height: 590px;
+    background-size: cover;
+    position: fixed;
+  }
+  
+  #log-title{
+    
+    opacity:0.5;
+    width: 450px;
+    background-color: white;
+    height: 400px;
+    margin-left: 30em;
+    margin-top: 3em;
+    justify-self: center;
+  }
+  
+  #login-tit{
+    font-weight: 900;
+    font-size: 1.6em;
+    color:black;
+    margin: 1em;
+    padding-top: 1em;
+  }
+  
+  #logcontent{
+    margin-left: 4em;
+  }
+  
+  #logcontent div{
+    margin-bottom: 1em;
+  }
+  
+  #logcontent div input{
+    height: 20px;
+    margin-left: 1em;
+  }
+  
+  #logbut, #signup{
+    height: 40px;
+    width: 100px;
+    margin-left: 12em;
+    margin-top: 1em;
+    background-color: #ffcc00;
+  }
+  
+  #noacc{
+    margin-top: 2em;
+    margin-left: 9em;
+  }
